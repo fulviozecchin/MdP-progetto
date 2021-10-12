@@ -30,9 +30,17 @@ public class ImageEditorController {
 	public ImageEditorController(AsciiPanelFactory panelFactory) {
 		this.panelFactory = panelFactory;
 		this.model = panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16);
+		preparingModel(model);
 		this.view = new ImageEditorView();
 		this.view.add(model);
 		initController();
+	}
+	
+	private void preparingModel(AsciiPanel model) {
+		model.setBounds(80, 0, 80 * 16, 80 * 16);
+		model.setCursorDistanceFromLeft(0);
+		model.setCursorDistanceFromTop(0);
+		model.write("Empty");
 	}
 	
 	/**
@@ -40,14 +48,7 @@ public class ImageEditorController {
 	 * of view.
 	 * 
 	 */
-	public void initController() {
-		
-		//TODO: capire se cosi' puo' andare bene o se va spostato nella view
-		
-		view.getPanel().setBounds(80, 0, 80 * 16, 80 * 16);
-		view.getPanel().setCursorDistanceFromLeft(0);
-		view.getPanel().setCursorDistanceFromTop(0);
-		view.getPanel().write("Empty");
+	private void initController() {
 		
 		//selected char button
 		view.getCharIndexButton().addActionListener(new ActionListener() {
