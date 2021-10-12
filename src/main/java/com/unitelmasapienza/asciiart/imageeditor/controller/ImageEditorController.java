@@ -42,6 +42,8 @@ public class ImageEditorController {
 	 */
 	public void initController() {
 		
+		//TODO: capire se cosi' puo' andare bene
+		
 		view.getPanel().setBounds(80, 0, 80 * 16, 80 * 16);
 		view.getPanel().setCursorDistanceFromLeft(0);
 		view.getPanel().setCursorDistanceFromTop(0);
