@@ -32,8 +32,10 @@ public class ImageEditorController {
 		this.model = panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16);
 		preparingModel(model);
 		this.view = new ImageEditorView();
+		this.view.setPanel(model);
 		this.view.add(model);
 		initController();
+		view.setVisible(true);
 	}
 	
 	/**
@@ -168,8 +170,8 @@ public class ImageEditorController {
 		});
 		
 		//panel-view
-		model.addMouseListener(new EditorViewMouseLintener(view));
-		model.addMouseMotionListener(new EditorViewMouseMotionLintener(view));
+		view.getPanel().addMouseListener(new EditorViewMouseLintener(view));
+		view.getPanel().addMouseMotionListener(new EditorViewMouseMotionLintener(view));
 		
 		//menu bar
 		view.getMenuBarFileSave().addActionListener(new ActionSave());
@@ -191,6 +193,5 @@ public class ImageEditorController {
 		
 		view.updatePreview();
 	}
-
 
 }

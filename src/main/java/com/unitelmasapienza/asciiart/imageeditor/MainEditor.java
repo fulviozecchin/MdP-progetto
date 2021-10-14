@@ -1,5 +1,8 @@
 package com.unitelmasapienza.asciiart.imageeditor;
 
+import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+
 /**
  * The <b>application's entry point</b>
  * @author Fulvio Zecchin
@@ -14,6 +17,9 @@ public class MainEditor {
 	 */
 	public static void main(String[] args)	{
 		ImageEditor.getInstance().setVisible(true);
+		
+		//Test per provare le mie modifiche
+//		new ImageEditorController(new AsciiPanelFactoryConcrete());
 	}
 }
 
