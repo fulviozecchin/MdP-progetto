@@ -36,6 +36,10 @@ public class ImageEditorController {
 		initController();
 	}
 	
+	/**
+	 * This method sets graphical information for model
+	 * @param model is the model
+	 */
 	private void preparingModel(AsciiPanel model) {
 		model.setBounds(80, 0, 80 * 16, 80 * 16);
 		model.setCursorDistanceFromLeft(0);
