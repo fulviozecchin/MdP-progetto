@@ -13,8 +13,6 @@ import javax.swing.WindowConstants;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorViewMouseLintener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorViewMouseMotionLintener;
 
 /**
  * VIEW
@@ -208,73 +206,11 @@ public class ImageEditorView extends JFrame {
 		menuBarFile.add(menuBarFileImport);
 		this.setJMenuBar(menuBar);
 		menuBar.setVisible(true);
-		
 	}
 
 	
 	
 	//EVENTS
-	
-	/**
-	 * Handles the event click on the <b>"Pick"</b> button of the GUI
-	 * Replaces the font in use with one selected from those already present on the canvas 
-	 * 
-	 * @param button is the index of the button/function that is set
-	 */
-	public void onPick(int button) {
-		int valueX = getPanel().getMouseCursorX();
-		int valueY = getPanel().getMouseCursorY();
-		setSelectedChar(getPanel().pickPanelCharIndex(valueX, valueY));
-		setDrawnCharColor(getPanel().pickPanelCharsForegroundColors(valueX, valueY));
-		setDrawnCharBackgroundColor(getPanel().pickPanelCharsBackgroundColors(valueX, valueY));
-		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
-		getCharColorPreview().setBackground(getDrawnCharColor());
-		getCharBackgroundColorPreview().repaint();
-		getCharColorPreview().repaint();
-		getCharIndexButton().setLabel(getSelectedChar() + "");
-		setSelectedToolIndex(0);
-		updatePreview();
-	}
-
-	/**
-	 * Handles the click event on the application drawing canvas
-	 * Draws the selected character on the canvas
-	 * 
-	 * @param button is the index of the button/function that is set
-	 */
-	public void onClick(int button) {
-		int valueX = getPanel().getMouseCursorX();
-		int valueY = getPanel().getMouseCursorY();
-
-		getPanel().setCursorDistanceFromLeft(valueX);
-		getPanel().setCursorDistanceFromTop(valueY);
-
-		if (button == 1)
-			getPanel().write((char) (getSelectedChar() + 0), getDrawnCharColor(), getDrawnCharBackgroundColor());
-		else
-			getPanel().write((char) 0);
-
-		getPanel().repaint();
-	}
-
-	
-	/**
-	 * Handles the event click on the <b>"Fill"</b> button of the GUI
-	 * Fills the entire drawing canvas with the selected font
-	 * 
-	 * @param button is the index of the button/function that is set
-	 */
-	public void onFill(int button) {
-		int valueX = getPanel().getMouseCursorX();
-		int valueY = getPanel().getMouseCursorY();
-
-		if (button == 1) 
-			getPanel().fill((char) (getSelectedChar() + 0), valueX, valueY, getDrawnCharColor(), getDrawnCharBackgroundColor());
-		else 
-			getPanel().fill((char) (0), valueX, valueY, Color.black, Color.black);
-
-		getPanel().repaint();
-	}
 	
 	/**
 	 * Updates the preview of the selected character
@@ -300,55 +236,9 @@ public class ImageEditorView extends JFrame {
 		getPanel().repaint();
 	}
 	
-	/**
-	 * Resets the drawing canvas by creating a new one. 
-	 * As input it takes the dimensions of the new canvas (width and height)
-	 * 
-	 * @param width is the width of the new canvas
-	 * @param height is the height of the new canvas
-	 */
-	public void reset(int width, int height) {
-		this.remove(getPanel());
-		setPanel(new AsciiPanel(width, height, AsciiFont.CP437_16x16));
-		this.add(getPanel());
-		getPanel().clear();
-		getPanel().setCursorDistanceFromLeft(0);
-		getPanel().setCursorDistanceFromTop(0);
-		getPanel().write("Empty");
-		getPanel().setBounds(80, 0, width * 16, height * 16);
-		getPanel().addMouseListener(new EditorViewMouseLintener(this));
-		getPanel().addMouseMotionListener(new EditorViewMouseMotionLintener(this));
-	}
+
 	
-	/**
-	 * Updates the selected character when it is chosen from the character palette
-	 * 
-	 * @param i is the chosen character index
-	 */
-	public void onSelectChar(int i) {
-		setSelectedChar(i);
-		getCharIndexButton().setLabel(i + "");
-		updatePreview();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
@@ -373,9 +263,6 @@ public class ImageEditorView extends JFrame {
 	
 	
 	//GETTER & SETTER
-	
-	
-	
 	
 	public AsciiPanel getPanel() {
 		return panel;

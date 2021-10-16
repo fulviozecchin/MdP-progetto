@@ -193,5 +193,102 @@ public class ImageEditorController {
 		
 		view.updatePreview();
 	}
+	
+	
+	
+	
+	//EVENTS
+	
+	/**
+	 * Handles the event click on the <b>"Pick"</b> button of the GUI
+	 * Replaces the font in use with one selected from those already present on the canvas 
+	 * 
+	 * @param button is the index of the button/function that is set
+	 */
+	public void onPick(int button) {
+		//TODO: Valutare se prenderli dalla nuova AsciiPanelView
+		int valueX = model.getMouseCursorX();
+		int valueY = model.getMouseCursorY();
+		view.setSelectedChar(model.pickPanelCharIndex(valueX, valueY));
+		view.setDrawnCharColor(model.pickPanelCharsForegroundColors(valueX, valueY));
+		view.setDrawnCharBackgroundColor(model.pickPanelCharsBackgroundColors(valueX, valueY));
+		view.getCharBackgroundColorPreview().setBackground(view.getDrawnCharBackgroundColor());
+		view.getCharColorPreview().setBackground(view.getDrawnCharColor());
+		view.getCharBackgroundColorPreview().repaint();
+		view.getCharColorPreview().repaint();
+		view.getCharIndexButton().setLabel(view.getSelectedChar() + "");
+		view.setSelectedToolIndex(0);
+		view.updatePreview();
+	}
+	
+	/**
+	 * Handles the click event on the application drawing canvas
+	 * Draws the selected character on the canvas
+	 * 
+	 * @param button is the index of the button/function that is set
+	 */
+	public void onClick(int button) {
+		int valueX = model.getMouseCursorX();
+		int valueY = model.getMouseCursorY();
+
+		model.setCursorDistanceFromLeft(valueX);
+		model.setCursorDistanceFromTop(valueY);
+
+		if (button == 1)
+			model.write((char) (view.getSelectedChar() + 0), view.getDrawnCharColor(), view.getDrawnCharBackgroundColor());
+		else
+			model.write((char) 0);
+
+		model.repaint();
+	}
+	
+	/**
+	 * Handles the event click on the <b>"Fill"</b> button of the GUI
+	 * Fills the entire drawing canvas with the selected font
+	 * 
+	 * @param button is the index of the button/function that is set
+	 */
+	public void onFill(int button) {
+		int valueX = model.getMouseCursorX();
+		int valueY = model.getMouseCursorY();
+
+		if (button == 1) 
+			model.fill((char) (view.getSelectedChar() + 0), valueX, valueY, view.getDrawnCharColor(), view.getDrawnCharBackgroundColor());
+		else 
+			model.fill((char) (0), valueX, valueY, Color.black, Color.black);
+
+		model.repaint();
+	}
+	
+	/**
+	 * Updates the selected character when it is chosen from the character palette
+	 * 
+	 * @param i is the chosen character index
+	 */
+	public void onSelectChar(int i) {
+		view.setSelectedChar(i);
+		view.getCharIndexButton().setLabel(i + "");
+		view.updatePreview();
+	}
+	
+	/**
+	 * Resets the drawing canvas by creating a new one. 
+	 * As input it takes the dimensions of the new canvas (width and height)
+	 * 
+	 * @param width is the width of the new canvas
+	 * @param height is the height of the new canvas
+	 */
+	public void reset(int width, int height) {
+		view.remove(model);
+		this.model = panelFactory.createAsciiPanel(width, height, AsciiFont.CP437_16x16);
+		view.add(model);
+		model.clear();
+		model.setCursorDistanceFromLeft(0);
+		model.setCursorDistanceFromTop(0);
+		model.write("Empty");
+		model.setBounds(80, 0, width * 16, height * 16);
+		model.addMouseListener(new EditorViewMouseLintener(view));
+		model.addMouseMotionListener(new EditorViewMouseMotionLintener(view));
+	}
 
 }

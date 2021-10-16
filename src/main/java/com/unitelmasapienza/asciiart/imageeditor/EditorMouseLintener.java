@@ -35,7 +35,7 @@ public class EditorMouseLintener implements MouseListener {
 
 	/**
 	 * It is called when the mouse is clicked.
-	 * depending on the functionality, so based on the selected button, 
+	 * Depending on the functionality, so based on the selected button, 
 	 * it calls the relative action (click, pick or fill)
 	 * 
 	 */

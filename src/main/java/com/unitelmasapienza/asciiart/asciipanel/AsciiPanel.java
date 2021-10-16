@@ -8,10 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.LookupOp;
 import java.awt.image.ShortLookupTable;
-import java.beans.PropertyChangeSupport;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -24,8 +24,6 @@ import javax.swing.JPanel;
  * MODEL
  */
 public class AsciiPanel extends JPanel {
-	
-	private PropertyChangeSupport support;
 	
 	/**
 	 * The indefier to serialize/deserialize the object
