@@ -1,8 +1,8 @@
 package com.unitelmasapienza.asciiart.imageeditor.view;
 
-public class ImageEditorBuilder {
+public class ImageEditorViewBuilder {
 
-	public ImageEditorBuilder() {
+	public ImageEditorViewBuilder() {
 		// TODO Auto-generated constructor stub
 	}
 

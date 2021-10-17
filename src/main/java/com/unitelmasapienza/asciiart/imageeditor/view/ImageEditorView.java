@@ -207,7 +207,6 @@ public class ImageEditorView extends JFrame {
 		this.setJMenuBar(menuBar);
 		menuBar.setVisible(true);
 	}
-
 	
 	
 	//EVENTS
@@ -222,46 +221,7 @@ public class ImageEditorView extends JFrame {
 		getSelectedCharPreview().repaint();
 	}
 	
-	
-	/**
-	 * Called when the mouse is moved within the canvas. 
-	 * Saves the <i>x</i> and <i>y</i> coordinates of the cursor and the selected button/function.
-	 * @param button is the index of the button/function that is set
-	 * @param x is the value of <i>x</i>-coordinate
-	 * @param y is the value of <i>y</i>-coordinate
-	 */
-	public void onCursorMove(int button, int x, int y) {
-		getPanel().setMouseCursorX(x / 16);
-		getPanel().setMouseCursorY(y / 16);
-		getPanel().repaint();
-	}
-	
 
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//GETTER & SETTER
 	
 	public AsciiPanel getPanel() {

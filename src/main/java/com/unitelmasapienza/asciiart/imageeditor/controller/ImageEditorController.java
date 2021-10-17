@@ -11,16 +11,23 @@ import javax.swing.JColorChooser;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
+import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
 import com.unitelmasapienza.asciiart.imageeditor.ActionLoad;
 import com.unitelmasapienza.asciiart.imageeditor.ActionSave;
-import com.unitelmasapienza.asciiart.imageeditor.CharacterSelector;
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.ImageNew;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorViewMouseLintener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorViewMouseMotionLintener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
+import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 public class ImageEditorController {
+	
+	/**
+	 * The only instance of the class
+	 * 
+	 */
+	public static ImageEditorController instance;
 	
 	private AsciiPanelFactory panelFactory;
 	
@@ -36,6 +43,19 @@ public class ImageEditorController {
 		this.view.add(model);
 		initController();
 		view.setVisible(true);
+	}
+	
+	/**
+	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
+	 * If it does not exist it creates and returns it.
+	 * 
+	 * @return ImageEditor instance
+	 */
+	public static ImageEditorController getInstance() {
+
+		if (instance == null)
+			instance = new ImageEditorController(new AsciiPanelFactoryConcrete());
+		return instance;
 	}
 	
 	/**
@@ -60,7 +80,7 @@ public class ImageEditorController {
 		view.getCharIndexButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CharacterSelector.getInstance().setVisible(true);
+				CharacterSelectorView.getInstance().setVisible(true);
 			}
 		});
 		
@@ -170,8 +190,8 @@ public class ImageEditorController {
 		});
 		
 		//panel-view
-		view.getPanel().addMouseListener(new EditorViewMouseLintener(view));
-		view.getPanel().addMouseMotionListener(new EditorViewMouseMotionLintener(view));
+		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
+		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
 		
 		//menu bar
 		view.getMenuBarFileSave().addActionListener(new ActionSave());
@@ -195,10 +215,9 @@ public class ImageEditorController {
 	}
 	
 	
-	
-	
 	//EVENTS
 	
+
 	/**
 	 * Handles the event click on the <b>"Pick"</b> button of the GUI
 	 * Replaces the font in use with one selected from those already present on the canvas 
@@ -287,8 +306,37 @@ public class ImageEditorController {
 		model.setCursorDistanceFromTop(0);
 		model.write("Empty");
 		model.setBounds(80, 0, width * 16, height * 16);
-		model.addMouseListener(new EditorViewMouseLintener(view));
-		model.addMouseMotionListener(new EditorViewMouseMotionLintener(view));
+		model.addMouseListener(new EditorControllerMouseLintener(this));
+		model.addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
+	}
+	
+	/**
+	 * Called when the mouse is moved within the canvas. 
+	 * Saves the <i>x</i> and <i>y</i> coordinates of the cursor and the selected button/function.
+	 * @param button is the index of the button/function that is set
+	 * @param x is the value of <i>x</i>-coordinate
+	 * @param y is the value of <i>y</i>-coordinate
+	 */
+	public void onCursorMove(int button, int x, int y) {
+		view.getPanel().setMouseCursorX(x / 16);
+		view.getPanel().setMouseCursorY(y / 16);
+		view.getPanel().repaint();
+	}
+
+	public AsciiPanel getModel() {
+		return model;
+	}
+
+	public void setModel(AsciiPanel model) {
+		this.model = model;
+	}
+
+	public ImageEditorView getView() {
+		return view;
+	}
+
+	public void setView(ImageEditorView view) {
+		this.view = view;
 	}
 
 }

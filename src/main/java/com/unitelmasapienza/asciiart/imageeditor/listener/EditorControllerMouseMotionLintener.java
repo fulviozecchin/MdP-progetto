@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
 
 /**
  * The class represents the mouse listener for <b>mouse movement</b> functionality for the drawing canvas panel.
@@ -12,21 +12,21 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  * @author Fulvio Zecchin
  *
  */
-public class EditorViewMouseMotionLintener implements MouseMotionListener {
+public class EditorControllerMouseMotionLintener implements MouseMotionListener {
 
 	/**
 	 * Represents the instance of the main application window on which the drawing panel is attached.
 	 * 
 	 * @see ImageEditor which represent the main frame of application.
 	 */
-	private ImageEditorView imageEditorView;
+	private ImageEditorController imageEditorController;
 
 	/**
 	 * Public constructor. Receives as input the ImageEditor to which will be attached the panel of which this class is the mouse listener.
 	 * @param ie is the ImageEditor instance
 	 */
-	public EditorViewMouseMotionLintener(ImageEditorView imageEditorView) {
-		this.setImageEditorView(imageEditorView);
+	public EditorControllerMouseMotionLintener(ImageEditorController imageEditorController) {
+		this.setImageEditorController(imageEditorController);
 	}
 
 	/**
@@ -43,23 +43,23 @@ public class EditorViewMouseMotionLintener implements MouseMotionListener {
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// System.out.println("Mouse moved:"+e.getButton()+" "+e.getX()+" "+e.getY());
-		getImageEditorView().onCursorMove(e.getButton(), e.getX(), e.getY());
+		getImageEditorController().onCursorMove(e.getButton(), e.getX(), e.getY());
 	}
 
 	/**
 	 * The image editor getter
 	 * @return the imageEditor
 	 */
-	ImageEditorView getImageEditorView() {
-		return imageEditorView;
+	ImageEditorController getImageEditorController() {
+		return imageEditorController;
 	}
 
 	/**
 	 * The image editor setter
-	 * @param imageEditorView the imageEditorView to set
+	 * @param imageEditorController the imageEditorController to set
 	 */
-	void setImageEditorView(ImageEditorView imageEditorView) {
-		this.imageEditorView = imageEditorView;
+	void setImageEditorController(ImageEditorController imageEditorController) {
+		this.imageEditorController = imageEditorController;
 	}
 
 }

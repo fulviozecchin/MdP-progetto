@@ -3,6 +3,8 @@ package com.unitelmasapienza.asciiart.imageeditor.listener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 /**
@@ -11,21 +13,21 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  * @author Fulvio Zecchin
  *
  */
-public class EditorViewMouseLintener implements MouseListener {
+public class EditorControllerMouseLintener implements MouseListener {
 
 	/**
 	 * Represents the instance of the main application window on which the drawing panel is attached.
 	 * 
 	 * @see ImageEditor which represent the main frame of application.
 	 */
-	private ImageEditorView imageEditorView;
+	private ImageEditorController imageEditorController;
 
 	/**
 	 * Public constructor. Receives as input the ImageEditor to which will be attached the panel of which this class is the mouse listener.
 	 * @param ie is the ImageEditor instance
 	 */
-	public EditorViewMouseLintener(ImageEditorView imageEditorView) {
-		this.setImageEditorView(imageEditorView);
+	public EditorControllerMouseLintener(ImageEditorController imageEditorController) {
+		this.setImageEditorController(imageEditorController);
 	}
 
 	/**
@@ -43,15 +45,15 @@ public class EditorViewMouseLintener implements MouseListener {
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		switch (getImageEditorView().getSelectedToolIndex()) {
+		switch (getImageEditorController().getView().getSelectedToolIndex()) {
 		case 0:
-			getImageEditorView().onClick(e.getButton());
+			getImageEditorController().onClick(e.getButton());
 			break;
 		case 1:
-			getImageEditorView().onPick(e.getButton());
+			getImageEditorController().onPick(e.getButton());
 			break;
 		case 2:
-			getImageEditorView().onFill(e.getButton());
+			getImageEditorController().onFill(e.getButton());
 			break;
 		default:
 			break;
@@ -83,16 +85,16 @@ public class EditorViewMouseLintener implements MouseListener {
 	 * The image editor getter
 	 * @return the imageEditor
 	 */
-	ImageEditorView getImageEditorView() {
-		return imageEditorView;
+	ImageEditorController getImageEditorController() {
+		return imageEditorController;
 	}
 
 	/**
 	 * The image editor setter
 	 * @param imageEditor the imageEditor to set
 	 */
-	void setImageEditorView(ImageEditorView imageEditorView) {
-		this.imageEditorView = imageEditorView;
+	void setImageEditorController(ImageEditorController imageEditorController) {
+		this.imageEditorController = imageEditorController;
 	}
 
 }
