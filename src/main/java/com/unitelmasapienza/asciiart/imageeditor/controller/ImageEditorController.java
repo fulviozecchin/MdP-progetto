@@ -15,11 +15,11 @@ import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcret
 import com.unitelmasapienza.asciiart.imageeditor.ActionLoad;
 import com.unitelmasapienza.asciiart.imageeditor.ActionSave;
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
-import com.unitelmasapienza.asciiart.imageeditor.ImageNew;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
 import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageNewView;
 
 public class ImageEditorController {
 	
@@ -206,7 +206,7 @@ public class ImageEditorController {
 		view.getMenuBarFileNew().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImageNew.getInstance().setVisible(true);
+				ImageNewView.getInstance().setVisible(true);
 				;
 			}
 		});
@@ -300,14 +300,17 @@ public class ImageEditorController {
 	public void reset(int width, int height) {
 		view.remove(model);
 		this.model = panelFactory.createAsciiPanel(width, height, AsciiFont.CP437_16x16);
-		view.add(model);
+		
 		model.clear();
 		model.setCursorDistanceFromLeft(0);
 		model.setCursorDistanceFromTop(0);
 		model.write("Empty");
 		model.setBounds(80, 0, width * 16, height * 16);
-		model.addMouseListener(new EditorControllerMouseLintener(this));
-		model.addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
+		
+		view.setPanel(model);
+		view.add(model);
+		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
+		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
 	}
 	
 	/**
