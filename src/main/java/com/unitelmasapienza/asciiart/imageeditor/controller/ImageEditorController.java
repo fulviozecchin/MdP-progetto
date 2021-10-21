@@ -12,9 +12,9 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
-import com.unitelmasapienza.asciiart.imageeditor.ActionLoad;
-import com.unitelmasapienza.asciiart.imageeditor.ActionSave;
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadView;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
 import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
@@ -194,8 +194,8 @@ public class ImageEditorController {
 		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
 		
 		//menu bar
-		view.getMenuBarFileSave().addActionListener(new ActionSave());
-		view.getMenuBarFileLoad().addActionListener(new ActionLoad());
+		view.getMenuBarFileSave().addActionListener(new ActionSaveView());
+		view.getMenuBarFileLoad().addActionListener(new ActionLoadView());
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
