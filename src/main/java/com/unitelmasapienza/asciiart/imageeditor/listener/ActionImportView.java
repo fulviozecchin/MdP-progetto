@@ -11,6 +11,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 
+import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
+import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+
 /**
  * The class manages the Action Listener for the <b>import images function</b>
  * @see ImageImporter that represents the importing images frame
@@ -40,7 +44,7 @@ public class ActionImportView implements ActionListener {
 		int returnVal = fileChooser.showOpenDialog(ImageImporter.getInstance());
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			try {
-				ImageEditor.getInstance().setImportBI(ImageIO
+				ImageEditorController.getInstance().getView().setImportBI(ImageIO
 						.read(new File(fileChooser.getSelectedFile().getAbsolutePath())));
 				System.out.println("Resizing...");
 				int panelWidth = ImageEditor.getInstance().getGeneralPanel().getPanelWidthInCharacters();
