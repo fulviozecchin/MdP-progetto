@@ -8,9 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.ActionConvert;
 import com.unitelmasapienza.asciiart.imageeditor.ActionImport;
 import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionConvertView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportView;
 /**
  * The class manages the <b>importing images frame</b> into the canvas of application
@@ -81,7 +82,7 @@ public class ImageImporterView extends JFrame {
 	 * 
 	 */
 	private ImageImporterView() {
-		super("ASCII ImageEditor - Import");
+		super("ASCII Image Editor - Import");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);
 		this.setResizable(false);
@@ -92,7 +93,7 @@ public class ImageImporterView extends JFrame {
 		setConvertButton(new JButton("Convert"));
 		setImportButton(new JButton("Import ..."));
 		getImportButton().addActionListener(new ActionImportView());
-		getConvertButton().addActionListener(new ActionConvert(ImageEditor.getInstance().getGeneralPanel(), getThresholdTextbox(), getAllColorsCheckbox()));
+		getConvertButton().addActionListener(new ActionConvertView(ImageEditorController.getInstance().getModel(), getThresholdTextbox(), getAllColorsCheckbox()));
 		this.add(getImportButton());
 		this.add(getThresholdLabel());
 		this.add(getThresholdTextbox());

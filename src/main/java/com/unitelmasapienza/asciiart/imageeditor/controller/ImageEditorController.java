@@ -12,13 +12,13 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
-import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
 import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageImporterView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageNewView;
 
 public class ImageEditorController {
@@ -81,6 +81,22 @@ public class ImageEditorController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CharacterSelectorView.getInstance().setVisible(true);
+			}
+		});
+		
+		//paint button
+		view.getPaintToolButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setSelectedToolIndex(0);
+			}
+		});
+		
+		//fill button
+		view.getFillToolButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setSelectedToolIndex(2);
 			}
 		});
 		
@@ -149,7 +165,7 @@ public class ImageEditorController {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Color newColor = JColorChooser.showDialog(view.getCharBackgroundColorPreview(), "Choose Foreground Color", view.getCharBackgroundColorPreview().getBackground());
+				Color newColor = JColorChooser.showDialog(view.getCharBackgroundColorPreview(), "Choose Background Color", view.getCharBackgroundColorPreview().getBackground());
 
 				if (newColor != null) {
 					view.setDrawnCharBackgroundColor(newColor);
@@ -173,22 +189,6 @@ public class ImageEditorController {
 
 		});
 		
-		//fill button
-		view.getFillToolButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(2);
-			}
-		});
-		
-		//paint button
-		view.getPaintToolButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(0);
-			}
-		});
-		
 		//panel-view
 		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
 		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
@@ -199,7 +199,7 @@ public class ImageEditorController {
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImageImporter.getInstance().setVisible(true);
+				ImageImporterView.getInstance().setVisible(true);
 				;
 			}
 		});
