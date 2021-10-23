@@ -11,7 +11,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
 
@@ -42,22 +41,25 @@ public class ActionImportView implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser fileChooser = new JFileChooser("resources/");
 		int returnVal = fileChooser.showOpenDialog(ImageImporter.getInstance());
+		
+		ImageEditorController controller = ImageEditorController.getInstance();
+		
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			try {
-				ImageEditorController.getInstance().getView().setImportBI(ImageIO
+				controller.getView().setImportBI(ImageIO
 						.read(new File(fileChooser.getSelectedFile().getAbsolutePath())));
 				System.out.println("Resizing...");
-				int panelWidth = ImageEditor.getInstance().getGeneralPanel().getPanelWidthInCharacters();
-				int panelHeight = ImageEditor.getInstance().getGeneralPanel().getPanelHeightInCharacters();
+				int panelWidth = controller.getModel().getPanelWidthInCharacters();
+				int panelHeight = controller.getModel().getPanelHeightInCharacters();
 
-				BufferedImage resized = new BufferedImage(panelWidth, panelHeight, ImageEditor.getInstance().getImportBI().getType());
+				BufferedImage resized = new BufferedImage(panelWidth, panelHeight, controller.getView().getImportBI().getType());
 				Graphics2D graphics = resized.createGraphics();
 				graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-				graphics.drawImage(ImageEditor.getInstance().getImportBI(), 0, 0, panelWidth, panelHeight, 0, 0,
-						ImageEditor.getInstance().getImportBI().getWidth(), ImageEditor.getInstance().getImportBI().getHeight(),
+				graphics.drawImage(controller.getView().getImportBI(), 0, 0, panelWidth, panelHeight, 0, 0,
+						controller.getView().getImportBI().getWidth(), controller.getView().getImportBI().getHeight(),
 						null);
 				graphics.dispose();
-				ImageEditor.getInstance().setImportBI(resized);
+				controller.getView().setImportBI(resized);
 
 			} catch (IOException e1) {
 				e1.printStackTrace();
