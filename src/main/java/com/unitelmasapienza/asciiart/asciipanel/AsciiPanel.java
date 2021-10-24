@@ -11,6 +11,8 @@ import java.awt.image.ShortLookupTable;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -23,7 +25,7 @@ import javax.swing.JPanel;
  * @author Fulvio Zecchin
  * MODEL
  */
-public class AsciiPanel extends JPanel {
+public class AsciiPanel extends JPanel implements Observer {
 	
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -1485,6 +1487,12 @@ public class AsciiPanel extends JPanel {
 	 */
 	private void setOffscreenGraphics(Graphics offscreenGraphics) {
 		this.offscreenGraphics = offscreenGraphics;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		
 	}
 
 }
