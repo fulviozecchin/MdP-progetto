@@ -1,6 +1,6 @@
 package com.unitelmasapienza.asciiart.imageeditor.factory;
 
-import com.unitelmasapienza.asciiart.asciipanel.model.AsciiPanelBuilder;
+import com.unitelmasapienza.asciiart.asciipanel.AsciiPanelBuilder;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 /**

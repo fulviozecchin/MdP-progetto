@@ -19,7 +19,7 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageImporterView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 
 /**
  * The class represents the action listener for the <b>image conversion functionality</b>, after the image has been imported.
@@ -134,8 +134,8 @@ public class ActionConvertView implements ActionListener {
 
 				}
 			getAsciiPanel().repaint();
-			ImageImporterView.getInstance().setVisible(false);
-			ImageImporterView.getInstance().close();
+			ImporterView.getInstance().setVisible(false);
+			ImporterView.getInstance().close();
 		}
 	}
 

@@ -21,7 +21,7 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportView;
  * @author Fulvio Zecchin
  *
  */
-public class ImageImporterView extends JFrame {
+public class ImporterView extends JFrame {
 
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -63,7 +63,7 @@ public class ImageImporterView extends JFrame {
 	 * The only instance of the class
 	 * 
 	 */
-	static ImageImporterView instance;
+	static ImporterView instance;
 
 	/**
 	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
@@ -71,9 +71,9 @@ public class ImageImporterView extends JFrame {
 	 * 
 	 * @return ImageImporter instance
 	 */
-	public static ImageImporterView getInstance() {
+	public static ImporterView getInstance() {
 		if (instance == null)
-			instance = new ImageImporterView();
+			instance = new ImporterView();
 		return instance;
 	}
 
@@ -81,7 +81,7 @@ public class ImageImporterView extends JFrame {
 	 * The constructor is private because by implementing the <b><i>Singleton</i></b> Pattern it is not visible outside the class
 	 * 
 	 */
-	private ImageImporterView() {
+	private ImporterView() {
 		super("ASCII Image Editor - Import");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);

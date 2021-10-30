@@ -2,7 +2,7 @@ package com.unitelmasapienza.asciiart.asciipanel.factory;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.asciipanel.model.AsciiPanelBuilder;
+import com.unitelmasapienza.asciiart.asciipanel.AsciiPanelBuilder;
 import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorFactory;
 
 /**

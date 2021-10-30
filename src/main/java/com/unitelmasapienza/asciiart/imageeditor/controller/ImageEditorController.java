@@ -18,8 +18,8 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseL
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
 import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageImporterView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageNewView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
+import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
 
 public class ImageEditorController {
 	
@@ -199,14 +199,14 @@ public class ImageEditorController {
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImageImporterView.getInstance().setVisible(true);
+				ImporterView.getInstance().setVisible(true);
 				;
 			}
 		});
 		view.getMenuBarFileNew().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImageNewView.getInstance().setVisible(true);
+				NewView.getInstance().setVisible(true);
 				;
 			}
 		});

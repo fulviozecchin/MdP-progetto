@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.ImageNew;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageNewView;
+import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
 
 /**
  * The class represents the action listener for the <b>reset functionality</b> of the main canvas panel.
@@ -29,13 +29,13 @@ public class ActionNewView implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		ImageEditorController controller = ImageEditorController.getInstance();
-		ImageNewView imageNewView = ImageNewView.getInstance();
+		NewView newView = NewView.getInstance();
 		try {
-			int widthValue = Integer.parseInt(imageNewView.getWidthTextbox().getText());
-			int heightValue = Integer.parseInt(imageNewView.getHeightTextbox().getText());
+			int widthValue = Integer.parseInt(newView.getWidthTextbox().getText());
+			int heightValue = Integer.parseInt(newView.getHeightTextbox().getText());
 			controller.reset(widthValue, heightValue);
 			controller.getView().repaint();
-			imageNewView.setVisible(false);
+			newView.setVisible(false);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

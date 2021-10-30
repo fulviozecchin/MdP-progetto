@@ -18,7 +18,7 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewView;
  * @author Fulvio Zecchin
  *
  */
-public class ImageNewView extends JFrame {
+public class NewView extends JFrame {
 
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -60,7 +60,7 @@ public class ImageNewView extends JFrame {
 	 * The only instance of the class
 	 * 
 	 */
-	static ImageNewView instance;
+	static NewView instance;
 
 	/**
 	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
@@ -68,9 +68,9 @@ public class ImageNewView extends JFrame {
 	 * 
 	 * @return CharacterSelector instance
 	 */
-	public static ImageNewView getInstance() {
+	public static NewView getInstance() {
 		if (instance == null)
-			instance = new ImageNewView();
+			instance = new NewView();
 		return instance;
 	}
 
@@ -78,7 +78,7 @@ public class ImageNewView extends JFrame {
 	 * The constructor is private because by implementing the <b><i>Singleton</i></b> Pattern it is not visible outside the class
 	 * 
 	 */
-	private ImageNewView() {
+	private NewView() {
 		super("ASCII - New");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);

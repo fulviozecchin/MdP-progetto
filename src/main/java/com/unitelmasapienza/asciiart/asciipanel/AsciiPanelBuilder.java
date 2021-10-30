@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.asciipanel.model;
+package com.unitelmasapienza.asciiart.asciipanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,8 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
-import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 
 /**
  * This class is an implementation of <b>Builder Design Pattern</b>.
@@ -95,7 +93,7 @@ public class AsciiPanelBuilder {
 	 */
     public void loadGlyphsList() {
         try {
-            setGlyphSprite(ImageIO.read(AsciiPanelData.class.getClassLoader().getResource(getPanelFontFilename())));
+            setGlyphSprite(ImageIO.read(AsciiPanel.class.getClassLoader().getResource(getPanelFontFilename())));
         } catch (IOException e) {
             System.err.println("loadGlyphs(): " + e.getMessage());
         }
@@ -154,9 +152,11 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
-	public AsciiPanelData build() {
-		return new AsciiPanelData(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
-				defaultForegroundColor, panelOldCharsBackgroundColors, panelOldCharsForegroundColors);
+	public AsciiPanel build() {
+		//TODO: fixare
+		return new AsciiPanel();
+//		return new AsciiPanel(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
+//				defaultForegroundColor, panelOldCharsBackgroundColors, panelOldCharsForegroundColors);
 	}
 
 	//GETTERS & SETTERS
