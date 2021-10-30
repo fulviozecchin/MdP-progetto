@@ -25,7 +25,7 @@ import javax.swing.JPanel;
  * @author Fulvio Zecchin
  * MODEL
  */
-public class AsciiPanel extends JPanel implements Observer {
+public class AsciiPanel extends JPanel {
 	
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -1487,12 +1487,6 @@ public class AsciiPanel extends JPanel implements Observer {
 	 */
 	private void setOffscreenGraphics(Graphics offscreenGraphics) {
 		this.offscreenGraphics = offscreenGraphics;
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		
-		
 	}
 
 }
