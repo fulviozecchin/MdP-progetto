@@ -310,6 +310,42 @@ public class AsciiPanel extends JPanel {
         }
         setAsciiFont(font);
     }
+    
+    /**
+     * Class constructor specifying all fields. This is called directly from panel builder to create the final objet.
+     * In the specific case it's an implementation of <i>Builder Pattern</i>.
+     * @see AsciiPanelBuilder to check all value control (nullable, default value etc.) and see the modular construction
+     * of object by cascading methods calls.
+     * @see AsciiPanelFactoryConcrete check the cascading methods calls to the Builder Class.
+     * @param width is the panel width in characters
+     * @param height is the panel height in characters
+     * @param font is the Ascii Font
+     * @param defaultBackgroundColor is the default color for background
+     * @param defaultForegroundColor is the default color for foreground
+     * @param panelCharsMatrix is matrix [x][y]
+     * @param panelCharsBackgroundColors is the color for panel chars background
+     * @param panelCharsForegroundColors is the color for panel chars foreground
+     * @param panelOldCharsBackgroundColors is the old color for panel chars background
+     * @param panelOldCharsForegroundColors is the old color for panel chars foreground
+     * 
+     */
+    public AsciiPanel(int width, int height, AsciiFont font, Color defaultBackgroundColor, Color defaultForegroundColor, char[][] panelCharsMatrix,
+    		Color[][] panelCharsBackgroundColors, Color[][] panelCharsForegroundColors, Color[][] panelOldCharsBackgroundColors, Color[][] panelOldCharsForegroundColors) {
+    	super();
+    	setPanelWidthInCharacters(width);
+    	setPanelHeightInCharacters(height);
+    	setAsciiFont(font);
+    	
+    	setDefaultBackgroundColor(defaultBackgroundColor);
+    	setDefaultForegroundColor(defaultForegroundColor);
+    	
+    	setPanelCharsMatrix(panelCharsMatrix);
+    	setPanelCharsBackgroundColors(panelCharsBackgroundColors);
+    	setPanelCharsForegroundColors(panelCharsForegroundColors);
+    	
+    	setPanelOldCharsBackgroundColors(panelOldCharsBackgroundColors);
+    	setPanelOldCharsForegroundColors(panelOldCharsForegroundColors);
+    }
 
     /**
      * The method is called every time some event (even the moving mouse cursor) happens on the canvas.

@@ -19,12 +19,23 @@ import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorFactory;
 public class AsciiPanelFactoryConcrete extends AsciiPanelFactory {
 	
 	AsciiPanelBuilder builder = new AsciiPanelBuilder();
-
+	
 	@Override
 	public AsciiPanel createAsciiPanel(int width, int height, AsciiFont font) {
 		
-		//FIXME: per ora e' solo un new AsciiPanel, sara' da capire come farlo con il builder
-		return new AsciiPanel(width, height, font);
+		AsciiPanel panel = builder.createAsciiPanel(width, height, font)
+				.defaultBackgroundColor()
+				.defaultForegroundColor()
+				
+				.panelCharsMatrix(null)
+				.panelCharsBackgroundColors(null)
+				.panelCharsForegroundColors(null)
+				
+				.panelOldCharsBackgroundColors(null)
+				.panelOldCharsForegroundColors(null)
+				
+				.build();
+		return panel;
 	}
 	
 }

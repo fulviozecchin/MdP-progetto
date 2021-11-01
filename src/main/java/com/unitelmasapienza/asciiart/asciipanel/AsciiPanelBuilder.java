@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  */
 public class AsciiPanelBuilder {
 	
-	private Graphics offscreenGraphics;
+    private Graphics offscreenGraphics;
     private int panelWidthInCharacters;
     private int panelHeightInCharacters;
     private int charWidth = 9;
@@ -37,7 +37,8 @@ public class AsciiPanelBuilder {
     private Color[][] panelOldCharsBackgroundColors;
     private Color[][] panelOldCharsForegroundColors;
     private AsciiFont asciiFont;
-    private int mouseCursorX,mouseCursorY;
+    private int mouseCursorX;
+    private int mouseCursorY;
 	private Image offscreenBuffer;
 	
 	public AsciiPanelBuilder createAsciiPanel(int width, int height, AsciiFont font) {
@@ -64,49 +65,12 @@ public class AsciiPanelBuilder {
      * @param font is the font to use
      */
     public void setAsciiFont(AsciiFont font) {
- 
         if(this.asciiFont == font) {
             return;
         }
         this.asciiFont = font;
-
-        this.setCharHeight(font.getFontHeight());
-        this.setCharWidth(font.getFontWidth());
-        this.setPanelFontFilename(font.getFontFilename());
-
-//        Dimension panelSize = new Dimension(getCharWidth() * getPanelWidthInCharacters(), getCharHeight() * getPanelHeightInCharacters());
-//        setPreferredSize(panelSize);
-
-        setGlyphsList(new BufferedImage[256]);
-
-//        setOffscreenBuffer(new BufferedImage(panelSize.width, panelSize.height, BufferedImage.TYPE_INT_RGB));
-//        setOffscreenGraphics(getOffscreenBuffer().getGraphics());
-
-        loadGlyphsList();
-
-        setPanelOldChars(new char[getPanelWidthInCharacters()][getPanelHeightInCharacters()]);
     }
     
-	/**
-	 * Load the character list of the table character selection frame.
-	 * 
-	 */
-    public void loadGlyphsList() {
-        try {
-            setGlyphSprite(ImageIO.read(AsciiPanel.class.getClassLoader().getResource(getPanelFontFilename())));
-        } catch (IOException e) {
-            System.err.println("loadGlyphs(): " + e.getMessage());
-        }
-
-        for (int i = 0; i < 256; i++) {
-            int sx = (i % 16) * getCharWidth();
-            int sy = (i / 16) * getCharHeight();
-
-            getGlyphsList()[i] = new BufferedImage(getCharWidth(), getCharHeight(), BufferedImage.TYPE_INT_ARGB);
-            getGlyphsList()[i].getGraphics().drawImage(getGlyphSprite(), 0, 0, getCharWidth(), getCharHeight(), sx, sy, sx + getCharWidth(), sy + getCharHeight(), null);
-        }
-    }
-	
 	public AsciiPanelBuilder defaultBackgroundColor() {
 		this.defaultBackgroundColor = Color.BLACK;
 		return this;
@@ -117,26 +81,26 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
-//	public AsciiPanelBuilder panelCharsMatrix(char[][] panelCharsMatrix) {
-//		if(panelCharsMatrix == null || panelCharsMatrix.length == 0) {
-//			this.panelCharsMatrix = new char[panelWidthInCharacters][panelHeightInCharacters];
-//		} else this.panelCharsMatrix = panelCharsMatrix;
-//		return this;
-//	}
+	public AsciiPanelBuilder panelCharsMatrix(char[][] panelCharsMatrix) {
+		if(panelCharsMatrix == null || panelCharsMatrix.length == 0) {
+			this.panelCharsMatrix = new char[panelWidthInCharacters][panelHeightInCharacters];
+		} else this.panelCharsMatrix = panelCharsMatrix;
+		return this;
+	}
 	
-//	public AsciiPanelBuilder panelCharsBackgroundColors(Color[][] panelCharsBackgroundColors) {
-//		if(panelCharsBackgroundColors == null || panelCharsBackgroundColors.length == 0) {
-//			this.panelCharsBackgroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
-//		} else this.panelCharsBackgroundColors = panelCharsBackgroundColors;
-//		return this;
-//	}
-//	
-//	public AsciiPanelBuilder panelCharsForegroundColors(Color[][] panelCharsForegroundColors) {
-//		if(panelCharsForegroundColors == null || panelCharsForegroundColors.length == 0) {
-//			this.panelCharsForegroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
-//		} else this.panelCharsForegroundColors = panelCharsForegroundColors;
-//		return this;
-//	}
+	public AsciiPanelBuilder panelCharsBackgroundColors(Color[][] panelCharsBackgroundColors) {
+		if(panelCharsBackgroundColors == null || panelCharsBackgroundColors.length == 0) {
+			this.panelCharsBackgroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
+		} else this.panelCharsBackgroundColors = panelCharsBackgroundColors;
+		return this;
+	}
+	
+	public AsciiPanelBuilder panelCharsForegroundColors(Color[][] panelCharsForegroundColors) {
+		if(panelCharsForegroundColors == null || panelCharsForegroundColors.length == 0) {
+			this.panelCharsForegroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
+		} else this.panelCharsForegroundColors = panelCharsForegroundColors;
+		return this;
+	}
 	
 	public AsciiPanelBuilder panelOldCharsBackgroundColors(Color[][] panelOldCharsBackgroundColors) {
 		if(panelOldCharsBackgroundColors == null || panelOldCharsBackgroundColors.length == 0) {
@@ -153,21 +117,14 @@ public class AsciiPanelBuilder {
 	}
 	
 	public AsciiPanel build() {
-		//TODO: fixare
-		return new AsciiPanel();
-//		return new AsciiPanel(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
-//				defaultForegroundColor, panelOldCharsBackgroundColors, panelOldCharsForegroundColors);
+		return new AsciiPanel(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
+				defaultForegroundColor, panelCharsMatrix, panelCharsBackgroundColors, panelCharsForegroundColors,
+				panelOldCharsBackgroundColors, panelOldCharsForegroundColors);
 	}
-
-	//GETTERS & SETTERS
 	
-	public BufferedImage[] getGlyphsList() {
-		return glyphsList;
-	}
+	
+	//GETTERS & SETTERS
 
-	public void setGlyphsList(BufferedImage[] glyphsList) {
-		this.glyphsList = glyphsList;
-	}
 
 	public Graphics getOffscreenGraphics() {
 		return offscreenGraphics;
@@ -217,12 +174,76 @@ public class AsciiPanelBuilder {
 		this.panelFontFilename = panelFontFilename;
 	}
 
+	public Color getDefaultBackgroundColor() {
+		return defaultBackgroundColor;
+	}
+
+	public void setDefaultBackgroundColor(Color defaultBackgroundColor) {
+		this.defaultBackgroundColor = defaultBackgroundColor;
+	}
+
+	public Color getDefaultForegroundColor() {
+		return defaultForegroundColor;
+	}
+
+	public void setDefaultForegroundColor(Color defaultForegroundColor) {
+		this.defaultForegroundColor = defaultForegroundColor;
+	}
+
+	public int getCursorDistanceFromLeft() {
+		return cursorDistanceFromLeft;
+	}
+
+	public void setCursorDistanceFromLeft(int cursorDistanceFromLeft) {
+		this.cursorDistanceFromLeft = cursorDistanceFromLeft;
+	}
+
+	public int getCursorDistanceFromTop() {
+		return cursorDistanceFromTop;
+	}
+
+	public void setCursorDistanceFromTop(int cursorDistanceFromTop) {
+		this.cursorDistanceFromTop = cursorDistanceFromTop;
+	}
+
 	public BufferedImage getGlyphSprite() {
 		return glyphSprite;
 	}
 
 	public void setGlyphSprite(BufferedImage glyphSprite) {
 		this.glyphSprite = glyphSprite;
+	}
+
+	public BufferedImage[] getGlyphsList() {
+		return glyphsList;
+	}
+
+	public void setGlyphsList(BufferedImage[] glyphsList) {
+		this.glyphsList = glyphsList;
+	}
+
+	public char[][] getPanelCharsMatrix() {
+		return panelCharsMatrix;
+	}
+
+	public void setPanelCharsMatrix(char[][] panelCharsMatrix) {
+		this.panelCharsMatrix = panelCharsMatrix;
+	}
+
+	public Color[][] getPanelCharsBackgroundColors() {
+		return panelCharsBackgroundColors;
+	}
+
+	public void setPanelCharsBackgroundColors(Color[][] panelCharsBackgroundColors) {
+		this.panelCharsBackgroundColors = panelCharsBackgroundColors;
+	}
+
+	public Color[][] getPanelCharsForegroundColors() {
+		return panelCharsForegroundColors;
+	}
+
+	public void setPanelCharsForegroundColors(Color[][] panelCharsForegroundColors) {
+		this.panelCharsForegroundColors = panelCharsForegroundColors;
 	}
 
 	public char[][] getPanelOldChars() {
@@ -249,20 +270,20 @@ public class AsciiPanelBuilder {
 		this.panelOldCharsForegroundColors = panelOldCharsForegroundColors;
 	}
 
-	public Color getDefaultBackgroundColor() {
-		return defaultBackgroundColor;
+	public int getMouseCursorX() {
+		return mouseCursorX;
 	}
 
-	public void setDefaultBackgroundColor(Color defaultBackgroundColor) {
-		this.defaultBackgroundColor = defaultBackgroundColor;
+	public void setMouseCursorX(int mouseCursorX) {
+		this.mouseCursorX = mouseCursorX;
 	}
 
-	public Color getDefaultForegroundColor() {
-		return defaultForegroundColor;
+	public int getMouseCursorY() {
+		return mouseCursorY;
 	}
 
-	public void setDefaultForegroundColor(Color defaultForegroundColor) {
-		this.defaultForegroundColor = defaultForegroundColor;
+	public void setMouseCursorY(int mouseCursorY) {
+		this.mouseCursorY = mouseCursorY;
 	}
 
 	public Image getOffscreenBuffer() {
@@ -271,10 +292,6 @@ public class AsciiPanelBuilder {
 
 	public void setOffscreenBuffer(Image offscreenBuffer) {
 		this.offscreenBuffer = offscreenBuffer;
-	}
-
-	public AsciiFont getAsciiFont() {
-		return asciiFont;
 	}
 
 }
