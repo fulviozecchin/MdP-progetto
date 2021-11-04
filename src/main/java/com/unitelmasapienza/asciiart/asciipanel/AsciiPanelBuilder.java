@@ -1,13 +1,9 @@
 package com.unitelmasapienza.asciiart.asciipanel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 /**
  * This class is an implementation of <b>Builder Design Pattern</b>.
@@ -17,6 +13,12 @@ import javax.imageio.ImageIO;
  *
  */
 public class AsciiPanelBuilder {
+	
+	/**
+	 * Follow all fields of AsciiPanel
+	 * @see AsciiPanel to understand every field
+	 * 
+	 */
 	
     private Graphics offscreenGraphics;
     private int panelWidthInCharacters;
@@ -41,6 +43,21 @@ public class AsciiPanelBuilder {
     private int mouseCursorY;
 	private Image offscreenBuffer;
 	
+	/**
+	 * This is the public constructor 'starter' for creation of AsciiPanel.
+	 * As <i>Builder Pattern</i> implementation wants, we can add a single cascade call for every property/field
+	 * that we want to set.
+	 * Every set-method of Builder class, will return Builder itself (this), so we can 'cascade' to call all the set
+	 * methods we need.
+	 * At the end, to create the real AsciiPanel object, we need to call the .build() method of this class.
+	 * It will call an AsciiPanel constructor which will return it to caller.
+	 * 
+	 * @param width is the width in characters for panel
+	 * @param height is the height in characters for panel
+	 * @param font is the font for panel
+	 * @return Builder itself, as <i>Builder Pattern</i>. To get the AsciiPanel object call the build() methods of this class.
+	 * 
+	 */
 	public AsciiPanelBuilder createAsciiPanel(int width, int height, AsciiFont font) {
 		
 		if (width < 1) {
@@ -63,6 +80,7 @@ public class AsciiPanelBuilder {
      * Sets the used font. It is advisable to make sure the parent component is properly sized after setting the font
      * as the panel dimensions will most likely change
      * @param font is the font to use
+     * 
      */
     public void setAsciiFont(AsciiFont font) {
         if(this.asciiFont == font) {
@@ -71,16 +89,32 @@ public class AsciiPanelBuilder {
         this.asciiFont = font;
     }
     
+    /**
+     * Sets the default color background for canvas
+     * @return Builder itself, as <i>Builder Pattern</i>.
+     * 
+     */
 	public AsciiPanelBuilder defaultBackgroundColor() {
 		this.defaultBackgroundColor = Color.BLACK;
 		return this;
 	}
 	
+	/**
+	 * Sets the default color foreground for canvas
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 * 
+	 */
 	public AsciiPanelBuilder defaultForegroundColor() {
 		this.defaultForegroundColor = Color.WHITE;
 		return this;
 	}
 	
+	/**
+	 * Sets the panel matrix for entire drawing space.
+	 * @param panelCharsMatrix is the matrix to set. If it's null, a new one will be created.
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 * 
+	 */
 	public AsciiPanelBuilder panelCharsMatrix(char[][] panelCharsMatrix) {
 		if(panelCharsMatrix == null || panelCharsMatrix.length == 0) {
 			this.panelCharsMatrix = new char[panelWidthInCharacters][panelHeightInCharacters];
@@ -88,6 +122,12 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
+	/**
+	 * Sets the chars background color from an array of colors which identified a specific char background color by its [x][y] coordinates.
+	 * @param panelCharsBackgroundColors is the background color for specific char. If it's null, a new one is created.
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 * 
+	 */
 	public AsciiPanelBuilder panelCharsBackgroundColors(Color[][] panelCharsBackgroundColors) {
 		if(panelCharsBackgroundColors == null || panelCharsBackgroundColors.length == 0) {
 			this.panelCharsBackgroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
@@ -95,6 +135,11 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
+	/**
+	 * Sets the chars foreground color from an array of colors which identified a specific char foreground color by its [x][y] coordinates.
+	 * @param panelCharsForegroundColors is the foreground color for specific char. If it's null, a new one is created.
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
 	public AsciiPanelBuilder panelCharsForegroundColors(Color[][] panelCharsForegroundColors) {
 		if(panelCharsForegroundColors == null || panelCharsForegroundColors.length == 0) {
 			this.panelCharsForegroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
@@ -102,6 +147,11 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
+	/**
+	 * Sets the old chars background color
+	 * @param panelOldCharsBackgroundColors
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
 	public AsciiPanelBuilder panelOldCharsBackgroundColors(Color[][] panelOldCharsBackgroundColors) {
 		if(panelOldCharsBackgroundColors == null || panelOldCharsBackgroundColors.length == 0) {
 			this.panelOldCharsBackgroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
@@ -109,6 +159,11 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
+	/**
+	 * Sets the old char foreground color
+	 * @param panelOldCharsForegroundColors
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
 	public AsciiPanelBuilder panelOldCharsForegroundColors(Color[][] panelOldCharsForegroundColors) {
 		if(panelOldCharsForegroundColors == null || panelOldCharsForegroundColors.length == 0) {
 			this.panelOldCharsForegroundColors = new Color[panelWidthInCharacters][panelHeightInCharacters];
@@ -116,6 +171,10 @@ public class AsciiPanelBuilder {
 		return this;
 	}
 	
+	/**
+	 * 
+	 * @return The AsciiPanel object
+	 */
 	public AsciiPanel build() {
 		return new AsciiPanel(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
 				defaultForegroundColor, panelCharsMatrix, panelCharsBackgroundColors, panelCharsForegroundColors,
