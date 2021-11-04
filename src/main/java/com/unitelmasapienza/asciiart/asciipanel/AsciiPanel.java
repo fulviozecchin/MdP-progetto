@@ -1370,7 +1370,7 @@ public class AsciiPanel extends JPanel {
 	}
 
 	/**
-	 * The chars matrix [x][y] of entire drawing space getter
+	 * The chars matrix [x][y] of entire drawing space setter
 	 * @param chars is the char matrix to set
 	 */
 	public void setPanelCharsMatrix(char[][] chars) {
@@ -1482,7 +1482,7 @@ public class AsciiPanel extends JPanel {
 	}
 
 	/**
-	 * he old panel chars foreground colors setter
+	 * The old panel chars foreground colors setter
 	 * @param panelNewCharsForegroundColors is the new panel chars foreground colors to set
 	 */
 	private void setPanelOldCharsForegroundColors(Color[][] panelNewCharsForegroundColors) {
