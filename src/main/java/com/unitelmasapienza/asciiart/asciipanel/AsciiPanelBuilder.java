@@ -78,7 +78,8 @@ public class AsciiPanelBuilder {
 	
     /**
      * Sets the used font. It is advisable to make sure the parent component is properly sized after setting the font
-     * as the panel dimensions will most likely change
+     * as the panel dimensions will most likely change.
+     * 
      * @param font is the font to use
      * 
      */
@@ -90,7 +91,8 @@ public class AsciiPanelBuilder {
     }
     
     /**
-     * Sets the default color background for canvas
+     * Sets the default color background for canvas.
+     * 
      * @return Builder itself, as <i>Builder Pattern</i>.
      * 
      */
@@ -100,7 +102,8 @@ public class AsciiPanelBuilder {
 	}
 	
 	/**
-	 * Sets the default color foreground for canvas
+	 * Sets the default color foreground for canvas.
+	 * 
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 * 
 	 */
@@ -112,6 +115,7 @@ public class AsciiPanelBuilder {
 	/**
 	 * Sets the panel matrix for entire drawing space.
 	 * @param panelCharsMatrix is the matrix to set. If it's null, a new one will be created.
+	 * 
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 * 
 	 */
@@ -124,6 +128,7 @@ public class AsciiPanelBuilder {
 	
 	/**
 	 * Sets the chars background color from an array of colors which identified a specific char background color by its [x][y] coordinates.
+	 * 
 	 * @param panelCharsBackgroundColors is the background color for specific char. If it's null, a new one is created.
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 * 
@@ -137,6 +142,7 @@ public class AsciiPanelBuilder {
 	
 	/**
 	 * Sets the chars foreground color from an array of colors which identified a specific char foreground color by its [x][y] coordinates.
+	 * 
 	 * @param panelCharsForegroundColors is the foreground color for specific char. If it's null, a new one is created.
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 */
@@ -149,6 +155,7 @@ public class AsciiPanelBuilder {
 	
 	/**
 	 * Sets the old chars background color
+	 * 
 	 * @param panelOldCharsBackgroundColors
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 */
@@ -161,6 +168,7 @@ public class AsciiPanelBuilder {
 	
 	/**
 	 * Sets the old char foreground color
+	 * 
 	 * @param panelOldCharsForegroundColors
 	 * @return Builder itself, as <i>Builder Pattern</i>.
 	 */
@@ -172,8 +180,11 @@ public class AsciiPanelBuilder {
 	}
 	
 	/**
+	 * This is the method used at the end of 'cascade' calls to Builder for create the AsciiPanel object.
+	 * It calls the AsciiPanel constructor passing all fields already populated with values.
+	 * Then receives from AsciiPanel the concrete object to return.
 	 * 
-	 * @return The AsciiPanel object
+	 * @return The AsciiPanel object is the concrete built panel object.
 	 */
 	public AsciiPanel build() {
 		return new AsciiPanel(panelWidthInCharacters, panelHeightInCharacters, asciiFont, defaultBackgroundColor,
