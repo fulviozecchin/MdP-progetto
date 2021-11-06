@@ -21,6 +21,17 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
 
+/**
+ * This class, in <b>MVC (Model View cController) Design Pattern</b> represents the controller.
+ * We can see it as the controller of the application in general.
+ * So as a <i>controller</i> it is responsible for initializing the components, 
+ * preparing the <i>View</i> and the <i>Model</i> (which it has as private fields).
+ * It is also responsible for reacting and processing the interactions that the user has with the <i>View</i>, 
+ * calling the related business logic.
+ * 
+ * @author Fulvio Zecchin
+ *
+ */
 public class ImageEditorController {
 	
 	/**
@@ -29,11 +40,31 @@ public class ImageEditorController {
 	 */
 	public static ImageEditorController instance;
 	
+	/**
+	 * The factory that concretely creates/initialize AsciiPanel (Model)
+	 * for application.
+	 * 
+	 */
 	private AsciiPanelFactory panelFactory;
 	
+	/**
+	 * This represents the <i>Model</i> field for the Controller.
+	 * 
+	 */
 	private AsciiPanel model;
+	
+	/**
+	 * This represents the <i>View</i> field for the Controller.
+	 * 
+	 */
 	private ImageEditorView view;
 	
+	/**
+	 * Public constructor to create the controller and initialize model and view.
+	 * It needs an AsciiPanelFactory to set the factory for instantiate AsciiPanel (Model).
+	 * 
+	 * @param panelFactory is the factory that will be responsible for creating AsciiPanel.
+	 */
 	public ImageEditorController(AsciiPanelFactory panelFactory) {
 		this.panelFactory = panelFactory;
 		this.model = panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16);
@@ -46,15 +77,17 @@ public class ImageEditorController {
 	}
 	
 	/**
-	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
+	 * <b>Singleton</b> implementation. Checks if an instance of the class already exists and returns it. 
 	 * If it does not exist it creates and returns it.
 	 * 
-	 * @return ImageEditor instance
+	 * In fact, this can be seen as the <i>'access point'</i> of the application;  
+	 * the one that initializes the controller, and consequently all the components useful for the application.
+	 * 
+	 * @return ImageEditorController the controller instance
 	 */
 	public static ImageEditorController getInstance() {
-
 		if (instance == null)
-			instance = new ImageEditorController(new AsciiPanelFactoryConcrete());
+			instance = new ImageEditorController(new AsciiPanelFactoryConcrete()); //Here we're passing a valid concrete factory for AsciiPanel
 		return instance;
 	}
 	
@@ -70,8 +103,10 @@ public class ImageEditorController {
 	}
 	
 	/**
-	 * Method to inizialize the controller. Add the actionListeners to GUI buttons
-	 * of view.
+	 * This is the method to initialize the controller. 
+	 * It provides to make all the necessary operations to prepare the elements of the application, 
+	 * then it initializes the <i>View</i> (adding all the graphical elements to the GUI) 
+	 * and the relative listeners to the View and model.
 	 * 
 	 */
 	private void initController() {
@@ -225,7 +260,6 @@ public class ImageEditorController {
 	 * @param button is the index of the button/function that is set
 	 */
 	public void onPick(int button) {
-		//TODO: Valutare se prenderli dalla nuova AsciiPanelView
 		int valueX = model.getMouseCursorX();
 		int valueY = model.getMouseCursorY();
 		view.setSelectedChar(model.pickPanelCharIndex(valueX, valueY));
@@ -326,18 +360,38 @@ public class ImageEditorController {
 		view.getPanel().repaint();
 	}
 
+	/**
+	 * Controller <i>Model</i> getter.
+	 * 
+	 * @return the controller's model
+	 */
 	public AsciiPanel getModel() {
 		return model;
 	}
 
+	/**
+	 * Controller <i>model</i> setter.
+	 * 
+	 * @param model is the model to set in controller's model field.
+	 */
 	public void setModel(AsciiPanel model) {
 		this.model = model;
 	}
 
+	/**
+	 * Controller <i>view</i> getter.
+	 * 
+	 * @return the controller's view
+	 */
 	public ImageEditorView getView() {
 		return view;
 	}
 
+	/**
+	 * Controller <i>view</i> setter.
+	 * 
+	 * @param view is the view to set in controller's view field.
+	 */
 	public void setView(ImageEditorView view) {
 		this.view = view;
 	}
