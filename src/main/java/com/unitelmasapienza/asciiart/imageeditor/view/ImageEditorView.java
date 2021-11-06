@@ -13,8 +13,6 @@ import javax.swing.WindowConstants;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.EditorMouseLintener;
-import com.unitelmasapienza.asciiart.imageeditor.EditorMouseMotionLintener;
 
 /**
  * VIEW

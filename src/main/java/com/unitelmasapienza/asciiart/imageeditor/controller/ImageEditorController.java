@@ -66,14 +66,14 @@ public class ImageEditorController {
 	 * @param panelFactory is the factory that will be responsible for creating AsciiPanel.
 	 */
 	public ImageEditorController(AsciiPanelFactory panelFactory) {
-		this.panelFactory = panelFactory;
-		this.model = panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16);
+		setPanelFactory(panelFactory);
+		setModel(panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16));
 		preparingModel(model);
-		this.view = new ImageEditorView();
-		this.view.setPanel(model);
-		this.view.add(model);
+		setView(new ImageEditorView());
+		getView().setPanel(model);
+		getView().add(model);
 		initController();
-		view.setVisible(true);
+		getView().setVisible(true);
 	}
 	
 	/**
@@ -358,6 +358,17 @@ public class ImageEditorController {
 		view.getPanel().setMouseCursorX(x / 16);
 		view.getPanel().setMouseCursorY(y / 16);
 		view.getPanel().repaint();
+	}
+	
+	/**
+	 * The factory setter.
+	 * It's a private setter because the purpose is to call it only inside the controller constructor,
+	 * passing the concrete factory.
+	 * 
+	 * @param panelFactory is the concrete factory of AsciiPanel for controller.
+	 */
+	private void setPanelFactory(AsciiPanelFactory panelFactory) {
+		this.panelFactory = panelFactory;
 	}
 
 	/**
