@@ -3,7 +3,7 @@ package com.unitelmasapienza.asciiart.imageeditor.view;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -21,7 +21,7 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportView;
  * @author Fulvio Zecchin
  *
  */
-public class ImporterView extends JFrame {
+public class ImporterView extends JDialog {
 
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -82,7 +82,7 @@ public class ImporterView extends JFrame {
 	 * 
 	 */
 	private ImporterView() {
-		super("ASCII Image Editor - Import");
+//		super("ASCII Image Editor - Import");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);
 		this.setResizable(false);
