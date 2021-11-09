@@ -162,17 +162,20 @@ public class ImageEditorView extends JFrame {
 		setPlusButton(new JButton("+"));
 		setCharIndexButton(new JButton("1"));
 		
-		setPickToolButton(new JButton("Pick"));
+		setPickToolButton(new JButton());
 		ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
 		getPickToolButton().setIcon(pickIcon);
+		getPickToolButton().setToolTipText("Pick");
 		
-		setPaintToolButton(new JButton("Paint"));
+		setPaintToolButton(new JButton());
 		ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
 		getPaintToolButton().setIcon(paintIcon);
+		getPaintToolButton().setToolTipText("Paint");
 		
-		setFillToolButton(new JButton("Fill"));
+		setFillToolButton(new JButton());
 		ImageIcon fillIcon = new ImageIcon("src/main/resources/icons/fill icon.png");
 		getFillToolButton().setIcon(fillIcon);
+		getFillToolButton().setToolTipText("Fill");
 		
 		getCharColorPreview().setBackground(getDrawnCharColor());
 		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
