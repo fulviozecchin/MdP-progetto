@@ -160,7 +160,7 @@ public class ImageEditorView extends JFrame {
 		setCharBackgroundColorPreview(new JPanel());
 		setMinusButton(new JButton("-"));
 		setPlusButton(new JButton("+"));
-		setCharIndexButton(new JButton("1"));
+		setCharIndexButton(new JButton("1")); //ARRIVATO QUI
 		
 		setPickToolButton(new JButton());
 		ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
@@ -217,7 +217,7 @@ public class ImageEditorView extends JFrame {
 		getMenuBarFileLoad().setIcon(loadIcon);
 		
 		ImageIcon saveImage = new ImageIcon("src/main/resources/icons/save icon.png");
-		setMenuBarFileSave(new JMenuItem("Save with name..."));
+		setMenuBarFileSave(new JMenuItem("Save..."));
 		getMenuBarFileSave().setIcon(saveImage);
 		
 		ImageIcon importImage = new ImageIcon("src/main/resources/icons/import icon.png");

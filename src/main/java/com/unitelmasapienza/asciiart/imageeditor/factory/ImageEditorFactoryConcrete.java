@@ -1,13 +1,12 @@
 package com.unitelmasapienza.asciiart.imageeditor.factory;
 
-import com.unitelmasapienza.asciiart.asciipanel.AsciiPanelBuilder;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 /**
  * This is a factory class to implement the <b>Factory Design Pattern</b>.
  * In <i>Factory Pattern</i> this represent the <i>Concrete Creator</i>.
  * 
- * So this class will implement and return the creation of AsciiPanel instances.
+ * So this class will implement and return the creation of Views instances.
  * @see ImageEditorFactory if you want to see what methods are declared by the 
  * <i>Creator</i> abstract class.
  * 
@@ -16,8 +15,6 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  */
 public class ImageEditorFactoryConcrete extends ImageEditorFactory {
 	
-	AsciiPanelBuilder builder = new AsciiPanelBuilder();
-
 	@Override
 	public ImageEditorView createView() {
 		
