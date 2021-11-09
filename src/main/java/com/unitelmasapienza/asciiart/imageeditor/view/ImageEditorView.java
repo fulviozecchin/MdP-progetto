@@ -3,6 +3,7 @@ package com.unitelmasapienza.asciiart.imageeditor.view;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -161,8 +162,14 @@ public class ImageEditorView extends JFrame {
 		setPlusButton(new JButton("+"));
 		setCharIndexButton(new JButton("1"));
 		setPickToolButton(new JButton("Pick"));
+		
 		setPaintToolButton(new JButton("Paint"));
+		ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
+		getPaintToolButton().setIcon(paintIcon);
+		
 		setFillToolButton(new JButton("Fill"));
+		ImageIcon fillIcon = new ImageIcon("src/main/resources/icons/fill icon.png");
+		getFillToolButton().setIcon(fillIcon);
 		
 		getCharColorPreview().setBackground(getDrawnCharColor());
 		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
@@ -194,10 +201,22 @@ public class ImageEditorView extends JFrame {
 		//aggiunta barra menu in alto della GUI
 		setMenuBar(new JMenuBar());
 		setMenuBarFile(new JMenu("File"));
+		
+		ImageIcon newIcon = new ImageIcon("src/main/resources/icons/new icon.png");
 		setMenuBarFileNew(new JMenuItem("New..."));
+		getMenuBarFileNew().setIcon(newIcon);
+		
+		ImageIcon loadIcon = new ImageIcon("src/main/resources/icons/load icon.png");
 		setMenuBarFileLoad(new JMenuItem("Load..."));
-		setMenuBarFileSave(new JMenuItem("Save..."));
+		getMenuBarFileLoad().setIcon(loadIcon);
+		
+		ImageIcon saveImage = new ImageIcon("src/main/resources/icons/save icon.png");
+		setMenuBarFileSave(new JMenuItem("Save with name..."));
+		getMenuBarFileSave().setIcon(saveImage);
+		
+		ImageIcon importImage = new ImageIcon("src/main/resources/icons/import icon.png");
 		setMenuBarFileImport(new JMenuItem("Import..."));
+		getMenuBarFileImport().setIcon(importImage);
 		
 		menuBar.add(menuBarFile);
 		menuBarFile.add(menuBarFileNew);
