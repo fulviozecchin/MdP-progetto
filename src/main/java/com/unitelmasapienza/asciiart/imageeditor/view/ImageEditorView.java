@@ -161,7 +161,10 @@ public class ImageEditorView extends JFrame {
 		setMinusButton(new JButton("-"));
 		setPlusButton(new JButton("+"));
 		setCharIndexButton(new JButton("1"));
+		
 		setPickToolButton(new JButton("Pick"));
+		ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
+		getPickToolButton().setIcon(pickIcon);
 		
 		setPaintToolButton(new JButton("Paint"));
 		ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
