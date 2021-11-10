@@ -2,7 +2,6 @@ package com.unitelmasapienza.asciiart.asciipanel.factory;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorFactoryConcrete;
 
 /**
  * This is a factory abstract class to implement the <b>Factory Design Pattern</b>.

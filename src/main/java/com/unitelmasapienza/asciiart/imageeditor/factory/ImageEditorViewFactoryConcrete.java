@@ -7,13 +7,13 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  * In <i>Factory Pattern</i> this represent the <i>Concrete Creator</i>.
  * 
  * So this class will implement and return the creation of Views instances.
- * @see ImageEditorFactory if you want to see what methods are declared by the 
+ * @see ImageEditorViewFactory if you want to see what methods are declared by the 
  * <i>Creator</i> abstract class.
  * 
  * @author Fulvio Zecchin
  *
  */
-public class ImageEditorFactoryConcrete extends ImageEditorFactory {
+public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 	
 	@Override
 	public ImageEditorView createView() {

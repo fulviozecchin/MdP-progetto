@@ -160,7 +160,7 @@ public class ImageEditorView extends JFrame {
 		setCharBackgroundColorPreview(new JPanel());
 		setMinusButton(new JButton("-"));
 		setPlusButton(new JButton("+"));
-		setCharIndexButton(new JButton("1")); //ARRIVATO QUI
+		setCharIndexButton(new JButton("1"));
 		
 		setPickToolButton(new JButton());
 		ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
