@@ -12,6 +12,8 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
+import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactory;
+import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactoryConcrete;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
@@ -48,6 +50,13 @@ public class ImageEditorController {
 	private AsciiPanelFactory panelFactory;
 	
 	/**
+	 * The factory that concretely creates/initialize AsciiPanel (Model)
+	 * for application.
+	 * 
+	 */
+	private ImageEditorViewFactory viewFactory;
+	
+	/**
 	 * This represents the <i>Model</i> field for the Controller.
 	 * 
 	 */
@@ -65,11 +74,13 @@ public class ImageEditorController {
 	 * 
 	 * @param panelFactory is the factory that will be responsible for creating AsciiPanel.
 	 */
-	public ImageEditorController(AsciiPanelFactory panelFactory) {
+	public ImageEditorController(AsciiPanelFactory panelFactory, ImageEditorViewFactory viewFactory) {
 		setPanelFactory(panelFactory);
+		setViewFactory(viewFactory);
 		setModel(panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16));
 		preparingModel(model);
-		setView(new ImageEditorView());
+//		setView(new ImageEditorView());
+		setView(viewFactory.createView());
 		getView().setPanel(model);
 		getView().add(model);
 		initController();
@@ -87,7 +98,7 @@ public class ImageEditorController {
 	 */
 	public static ImageEditorController getInstance() {
 		if (instance == null)
-			instance = new ImageEditorController(new AsciiPanelFactoryConcrete()); //Here we're passing a valid concrete factory for AsciiPanel
+			instance = new ImageEditorController(new AsciiPanelFactoryConcrete(), new ImageEditorViewFactoryConcrete()); //Here we're passing a valid concrete factory for AsciiPanel
 		return instance;
 	}
 	
@@ -361,7 +372,7 @@ public class ImageEditorController {
 	}
 	
 	/**
-	 * The factory setter.
+	 * The panel factory setter.
 	 * It's a private setter because the purpose is to call it only inside the controller constructor,
 	 * passing the concrete factory.
 	 * 
@@ -369,6 +380,17 @@ public class ImageEditorController {
 	 */
 	private void setPanelFactory(AsciiPanelFactory panelFactory) {
 		this.panelFactory = panelFactory;
+	}
+	
+	/**
+	 * The view factory setter.
+	 * It's a private setter because the purpose is to call it only inside the controller constructor,
+	 * passing the concrete factory.
+	 * 
+	 * @param viewFactory is the concrete factory of ImageEditorView for controller.
+	 */
+	private void setViewFactory(ImageEditorViewFactory viewFactory) {
+		this.viewFactory = viewFactory;
 	}
 
 	/**

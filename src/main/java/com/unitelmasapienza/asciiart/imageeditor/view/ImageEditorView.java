@@ -233,6 +233,77 @@ public class ImageEditorView extends JFrame {
 		menuBar.setVisible(true);
 	}
 	
+	public ImageEditorView(AsciiPanel selectedCharPreview, 
+			JPanel charColorPreview, 
+			JPanel charBackgroundColorPreview, 
+			JButton minusButton,
+			JButton plusButton, 
+			JButton charIndexButton, 
+			JButton pickToolButton, 
+			JButton paintToolButton,
+			JButton fillToolButton, 
+			JPanel controlTool, 
+			JMenuBar menuBar, 
+			JMenu fileMenu, 
+			JMenuItem newFileItem, 
+			JMenuItem loadFileItem,
+			JMenuItem saveFileItem, 
+			JMenuItem importFileItem) {
+		
+		super("ASCII ImageEditor");
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.setBounds(0, 0, 80 * 16 + 80, 60 * 16);
+		this.setLayout(null);
+		
+		controlTool.setLayout(null);
+		
+		//GUI Buttons
+		setSelectedCharPreview(selectedCharPreview);
+		setCharColorPreview(charColorPreview);
+		setCharBackgroundColorPreview(charBackgroundColorPreview);
+		setMinusButton(minusButton);
+		setPlusButton(plusButton);
+		setCharIndexButton(charIndexButton);
+		setPickToolButton(pickToolButton);
+		setPaintToolButton(paintToolButton);
+		setFillToolButton(fillToolButton);
+		
+		getCharColorPreview().setBackground(getDrawnCharColor());
+		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
+		
+		getPaintToolButton().setBounds(0, 0, 80, 40);
+		getFillToolButton().setBounds(0, 40, 80, 40);
+		getPickToolButton().setBounds(0, 80, 80, 40);
+		getMinusButton().setBounds(0, 120, 15, 40);
+		getCharIndexButton().setBounds(15, 120, 34, 40);
+		getPlusButton().setBounds(65, 120, 15, 40);
+		getCharColorPreview().setBounds(0, 160, 40, 40);
+		getCharBackgroundColorPreview().setBounds(40, 160, 40, 40);
+		getSelectedCharPreview().setBounds(49, 120, 16, 16);
+		
+		controlTool.setBounds(0, 0, 80, 80 * 16);
+		this.add(controlTool);
+		
+		//Menu Bar
+		setMenuBar(menuBar);
+		setMenuBarFile(fileMenu);
+		
+		setMenuBarFileNew(newFileItem);
+		setMenuBarFileLoad(loadFileItem);
+		setMenuBarFileSave(saveFileItem);
+		setMenuBarFileImport(importFileItem);
+		
+		this.menuBar.add(getMenuBarFile());
+		getMenuBarFile().add(getMenuBarFileNew());
+		getMenuBarFile().add(getMenuBarFileLoad());
+		getMenuBarFile().add(getMenuBarFileSave());
+		getMenuBarFile().add(getMenuBarFileImport());
+		
+		this.setJMenuBar(menuBar);
+		this.menuBar.setVisible(true);
+		
+	}
+	
 	
 	//EVENTS
 	

@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 
 public class ImageEditorViewBuilder {
@@ -41,10 +42,18 @@ public class ImageEditorViewBuilder {
 	
 	//Methods to build with object properties
 	
+	public ImageEditorViewBuilder selectedCharPreview(AsciiPanel... selectedChar) {
+		
+		if(selectedChar.length > 0 && selectedChar[0] != null) setSelectedCharPreview(selectedChar[0]);
+		else setSelectedCharPreview(new AsciiPanel(1, 1, AsciiFont.CP437_16x16));
+		
+		return this;
+	}
+	
 	public ImageEditorViewBuilder charColorPreview(JPanel... charColorPreview) {
 		
-		if(charColorPreview.length > 0) setCharBackgroundColorPreview(charColorPreview[0]);
-		else setCharBackgroundColorPreview(new JPanel());
+		if(charColorPreview.length > 0) setCharColorPreview(charColorPreview[0]);
+		else setCharColorPreview(new JPanel());
 		
 		return this;
 	}
@@ -120,25 +129,6 @@ public class ImageEditorViewBuilder {
 		
 		return this;
 	}
-	
-	public ImageEditorViewBuilder charColorPreview(Color... color) {
-		
-		if(color.length > 0) getCharColorPreview().setBackground(color[0]);
-		else {
-			getCharColorPreview().setBackground(getDrawnCharColor());
-		}
-		return this;
-	}
-	
-	public ImageEditorViewBuilder charBackgroundColorPreview(Color... backgroundColor) {
-		
-		if(backgroundColor.length > 0) getCharBackgroundColorPreview().setBackground(backgroundColor[0]);
-		else {
-			getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
-		}
-		return this;
-	}
-	
 	
 	//Chiamare alla fine per il controlTool che conterra' tutti gli elementi di disegno della GUI
 	public ImageEditorViewBuilder createControlTool() {
@@ -228,6 +218,25 @@ public class ImageEditorViewBuilder {
 		}
 		
 		return this;
+	}
+	
+	public ImageEditorView build() {
+		return new ImageEditorView(getSelectedCharPreview(),
+				getCharColorPreview(),
+				getCharBackgroundColorPreview(),
+				getMinusButton(),
+				getPlusButton(),
+				getCharIndexButton(),
+				getPickToolButton(),
+				getPaintToolButton(),
+				getFillToolButton(),
+				getControlTool(),
+				getMenuBar(),
+				getMenuBarFile(),
+				getMenuBarFileNew(),
+				getMenuBarFileLoad(),
+				getMenuBarFileSave(),
+				getMenuBarFileImport());
 	}
 	
 	

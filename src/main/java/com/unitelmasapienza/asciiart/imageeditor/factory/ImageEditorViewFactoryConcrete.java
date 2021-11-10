@@ -1,6 +1,7 @@
 package com.unitelmasapienza.asciiart.imageeditor.factory;
 
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorViewBuilder;
 
 /**
  * This is a factory class to implement the <b>Factory Design Pattern</b>.
@@ -15,11 +16,29 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  */
 public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 	
+	ImageEditorViewBuilder builder = new ImageEditorViewBuilder();
+	
 	@Override
 	public ImageEditorView createView() {
 		
-		
-		return null;
+		ImageEditorView view = builder.selectedCharPreview()
+				.charColorPreview()
+				.charBackgroundColorPreview()
+				.minusButton()
+				.plusButton()
+				.charIndexButton()
+				.pickToolButton()
+				.paintToolButton()
+				.fillToolButton()
+				.createControlTool()
+				.menuBar()
+				.newFileMenuItem()
+				.loadFileMenuItem()
+				.saveFileMenuItem()
+				.importFileMenuItem()
+				.addFileToMenuBar()
+				.build();
+		return view;
 	}
 	
 }
