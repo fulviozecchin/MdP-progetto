@@ -317,6 +317,7 @@ public class AsciiPanel extends JPanel {
      * @see AsciiPanelBuilder to check all value control (nullable, default value etc.) and see the modular construction
      * of object by cascading methods calls.
      * @see AsciiPanelFactoryConcrete check the cascading methods calls to the Builder Class.
+     * 
      * @param width is the panel width in characters
      * @param height is the panel height in characters
      * @param font is the Ascii Font
