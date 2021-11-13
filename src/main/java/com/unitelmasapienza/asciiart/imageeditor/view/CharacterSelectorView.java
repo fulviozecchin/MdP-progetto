@@ -14,7 +14,9 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionViewCharListener
 
 /**
  * The class manages the <b>character palette frame</b> for choosing and selecting the character to draw
+ * 
  * @see ActionViewCharListener which is the related Action Listener
+ * 
  * @author Fulvio Zecchin
  *
  */

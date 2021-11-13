@@ -15,14 +15,32 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactoryConcrete;
 
 /**
- * VIEW
+ * This class is the main graphics class for the application. It's represents the GUI used by user to interact with
+ * application.
+ * Technically, in programming side, this is also <i>View</i> in <b>Model-View-Controller</b> Design Pattern.
+ * So as a <i>view</i> it is responsible for relations with user, to catch and react on his input during the 
+ * navigation, but also to show him the result of computation and the application status.
+ * For this reasons, this class contains (as the correct implementation of MVC wants) an instance of AsciiPanel
+ * which represents the <i>Model</i> in this application.
+ * This view, uses the model to get the status of application, in drawing space, and immediately show them to user.
+ * 
+ * @see ImageEditorController to understand how the <i>Controller</i> of the application works.
+ * @see AsciiPanel to understand the <i>Model</i> details for the application.
+ * 
  * @author Fulvio Zecchin
  *
  */
 public class ImageEditorView extends JFrame {
 	
 	/**
+	 * The indefier to serialize/deserialize the object
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * MODEL
+	 * 
 	 */
 	private AsciiPanel panel;
 
@@ -140,97 +158,6 @@ public class ImageEditorView extends JFrame {
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'Import'
 	 */
 	private JMenuItem menuBarFileImport;
-	
-	/**
-	 * This is the view constructor. It initializes the GUI that the user will use.
-	 */
-//	public ImageEditorView() {
-//		
-//		//preparazione elementi della GUI
-//		super("ASCII ImageEditor");
-//		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//		setSelectedCharPreview(new AsciiPanel(1, 1, AsciiFont.CP437_16x16));
-//		this.setBounds(0, 0, 80 * 16 + 80, 60 * 16);
-//		this.setLayout(null);
-//
-//		JPanel controlTool = new JPanel();
-//		controlTool.setLayout(null);
-//		setCharColorPreview(new JPanel());
-//		setCharBackgroundColorPreview(new JPanel());
-//		setMinusButton(new JButton("-"));
-//		setPlusButton(new JButton("+"));
-//		setCharIndexButton(new JButton("1"));
-//		
-//		setPickToolButton(new JButton());
-//		ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
-//		getPickToolButton().setIcon(pickIcon);
-//		getPickToolButton().setToolTipText("Pick");
-//		
-//		setPaintToolButton(new JButton());
-//		ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
-//		getPaintToolButton().setIcon(paintIcon);
-//		getPaintToolButton().setToolTipText("Paint");
-//		
-//		setFillToolButton(new JButton());
-//		ImageIcon fillIcon = new ImageIcon("src/main/resources/icons/fill icon.png");
-//		getFillToolButton().setIcon(fillIcon);
-//		getFillToolButton().setToolTipText("Fill");
-//		
-//		getCharColorPreview().setBackground(getDrawnCharColor());
-//		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
-//		
-//		//aggiunta elementi alla GUI
-//		controlTool.add(getMinusButton());
-//		controlTool.add(getCharIndexButton());
-//		controlTool.add(getPlusButton());
-//		controlTool.add(getCharColorPreview());
-//		controlTool.add(getCharBackgroundColorPreview());
-//		controlTool.add(getPickToolButton());
-//		controlTool.add(getPaintToolButton());
-//		controlTool.add(getFillToolButton());
-//		controlTool.add(getSelectedCharPreview());
-//		
-//		getPaintToolButton().setBounds(0, 0, 80, 40);
-//		getFillToolButton().setBounds(0, 40, 80, 40);
-//		getPickToolButton().setBounds(0, 80, 80, 40);
-//		getMinusButton().setBounds(0, 120, 15, 40);
-//		getCharIndexButton().setBounds(15, 120, 34, 40);
-//		getPlusButton().setBounds(65, 120, 15, 40);
-//		getCharColorPreview().setBounds(0, 160, 40, 40);
-//		getCharBackgroundColorPreview().setBounds(40, 160, 40, 40);
-//		getSelectedCharPreview().setBounds(49, 120, 16, 16);
-//		
-//		controlTool.setBounds(0, 0, 80, 80 * 16);
-//		this.add(controlTool);
-//		
-//		//aggiunta barra menu in alto della GUI
-//		setMenuBar(new JMenuBar());
-//		setMenuBarFile(new JMenu("File"));
-//		
-//		ImageIcon newIcon = new ImageIcon("src/main/resources/icons/new icon.png");
-//		setMenuBarFileNew(new JMenuItem("New..."));
-//		getMenuBarFileNew().setIcon(newIcon);
-//		
-//		ImageIcon loadIcon = new ImageIcon("src/main/resources/icons/load icon.png");
-//		setMenuBarFileLoad(new JMenuItem("Load..."));
-//		getMenuBarFileLoad().setIcon(loadIcon);
-//		
-//		ImageIcon saveImage = new ImageIcon("src/main/resources/icons/save icon.png");
-//		setMenuBarFileSave(new JMenuItem("Save..."));
-//		getMenuBarFileSave().setIcon(saveImage);
-//		
-//		ImageIcon importImage = new ImageIcon("src/main/resources/icons/import icon.png");
-//		setMenuBarFileImport(new JMenuItem("Import..."));
-//		getMenuBarFileImport().setIcon(importImage);
-//		
-//		menuBar.add(menuBarFile);
-//		menuBarFile.add(menuBarFileNew);
-//		menuBarFile.add(menuBarFileLoad);
-//		menuBarFile.add(menuBarFileSave);
-//		menuBarFile.add(menuBarFileImport);
-//		this.setJMenuBar(menuBar);
-//		menuBar.setVisible(true);
-//	}
 	
 	/**
 	 * This is public constructor used by Builder to create physically the ImageEditorView object for application.
@@ -466,224 +393,252 @@ public class ImageEditorView extends JFrame {
 	}
 
 	/**
+	 * The char background color preview setter.
 	 * 
-	 * @param charBackgroundColorPreview
+	 * @param charBackgroundColorPreview is the char color background preview object to set.
 	 */
 	public void setCharBackgroundColorPreview(JPanel charBackgroundColorPreview) {
 		this.charBackgroundColorPreview = charBackgroundColorPreview;
 	}
 
 	/**
+	 * The minus button getter.
 	 * 
-	 * @return
+	 * @return the minus button.
 	 */
 	public JButton getMinusButton() {
 		return minusButton;
 	}
 
 	/**
+	 * The minus button setter.
 	 * 
-	 * @param minusButton
+	 * @param minusButton the button to set.
 	 */
 	public void setMinusButton(JButton minusButton) {
 		this.minusButton = minusButton;
 	}
 
 	/**
+	 * The plus button getter.
 	 * 
-	 * @return
+	 * @return the plus button.
 	 */
 	public JButton getPlusButton() {
 		return plusButton;
 	}
 
 	/**
+	 * The plus button setter.
 	 * 
-	 * @param plusButton
+	 * @param plusButton the button to set.
 	 */
 	public void setPlusButton(JButton plusButton) {
 		this.plusButton = plusButton;
 	}
 
 	/**
+	 * The char index button getter.
 	 * 
-	 * @return
+	 * @return the char index button.
 	 */
 	public JButton getCharIndexButton() {
 		return charIndexButton;
 	}
 
 	/**
+	 * The char index button setter.
 	 * 
-	 * @param charIndexButton
+	 * @param charIndexButton the button to set.
 	 */
 	public void setCharIndexButton(JButton charIndexButton) {
 		this.charIndexButton = charIndexButton;
 	}
 
 	/**
+	 * The pick tool button getter.
 	 * 
-	 * @return
+	 * @return the pick tool button.
 	 */
 	public JButton getPickToolButton() {
 		return pickToolButton;
 	}
 
 	/**
+	 * The pick tool button getter.
 	 * 
-	 * @param pickToolButton
+	 * @param pickToolButton the button to set.
 	 */
 	public void setPickToolButton(JButton pickToolButton) {
 		this.pickToolButton = pickToolButton;
 	}
 
 	/**
+	 * The paint tool button getter.
 	 * 
-	 * @return
+	 * @return the paint tool button.
 	 */
 	public JButton getPaintToolButton() {
 		return paintToolButton;
 	}
 
 	/**
+	 * The paint tool button setter.
 	 * 
-	 * @param paintToolButton
+	 * @param paintToolButton the button to set.
 	 */
 	public void setPaintToolButton(JButton paintToolButton) {
 		this.paintToolButton = paintToolButton;
 	}
 
 	/**
+	 * The fill tool button getter.
 	 * 
-	 * @return
+	 * @return the fill tool button.
 	 */
 	public JButton getFillToolButton() {
 		return fillToolButton;
 	}
 
 	/**
+	 * The fill tool button setter.
 	 * 
-	 * @param fillToolButton
+	 * @param fillToolButton the button to set.
 	 */
 	public void setFillToolButton(JButton fillToolButton) {
 		this.fillToolButton = fillToolButton;
 	}
 
 	/**
+	 * The selected char preview getter.
 	 * 
-	 * @return
+	 * @return the selected char preview.
 	 */
 	public AsciiPanel getSelectedCharPreview() {
 		return selectedCharPreview;
 	}
 
 	/**
+	 * The selected char preview setter.
 	 * 
-	 * @param selectedCharPreview
+	 * @param selectedCharPreview preview to set.
 	 */
 	public void setSelectedCharPreview(AsciiPanel selectedCharPreview) {
 		this.selectedCharPreview = selectedCharPreview;
 	}
 
 	/**
+	 * The imported Buffered Image getter.
 	 * 
-	 * @return
+	 * @return the Buffered Image
 	 */
 	public BufferedImage getImportBI() {
 		return importBI;
 	}
 
 	/**
+	 * The imported Buffered Image setter.
 	 * 
-	 * @param importBI
+	 * @param importBI is the Buffered Image to set.
 	 */
 	public void setImportBI(BufferedImage importBI) {
 		this.importBI = importBI;
 	}
 
 	/**
+	 * The top menu bar setter.
 	 * 
-	 * @param menuBar
+	 * @param menuBar top menu bar to set.
 	 */
 	public void setMenuBar(JMenuBar menuBar) {
 		this.menuBar = menuBar;
 	}
 
 	/**
+	 * The top menu bar File object getter.
 	 * 
-	 * @return
+	 * @return top menu bar File.
 	 */
 	public JMenu getMenuBarFile() {
 		return menuBarFile;
 	}
 
 	/**
+	 * The top menu bar File object setter. 
 	 * 
-	 * @param menuBarFile
+	 * @param menuBarFile the menu object to set.
 	 */
 	public void setMenuBarFile(JMenu menuBarFile) {
 		this.menuBarFile = menuBarFile;
 	}
 
 	/**
+	 * The <i>New</i> item of menu file getter.
 	 * 
-	 * @return
+	 * @return the new item of menu file.
 	 */
 	public JMenuItem getMenuBarFileNew() {
 		return menuBarFileNew;
 	}
 
 	/**
+	 * The <i>New</i> item of menu file setter. 
 	 * 
-	 * @param menuBarFileNew
+	 * @param menuBarFileNew item to set
 	 */
 	public void setMenuBarFileNew(JMenuItem menuBarFileNew) {
 		this.menuBarFileNew = menuBarFileNew;
 	}
 
 	/**
+	 * The <i>Load</i> item of menu file getter.
 	 * 
-	 * @return
+	 * @return the load item of menu file.
 	 */
 	public JMenuItem getMenuBarFileLoad() {
 		return menuBarFileLoad;
 	}
 
 	/**
+	 * The <i>Load</i> item of menu file setter. 
 	 * 
-	 * @param menuBarFileLoad
+	 * @param menuBarFileLoad item to set.
 	 */
 	public void setMenuBarFileLoad(JMenuItem menuBarFileLoad) {
 		this.menuBarFileLoad = menuBarFileLoad;
 	}
 
 	/**
+	 * The <i>Save</i> item of menu file getter.
 	 * 
-	 * @return
+	 * @return the save item of menu file.
 	 */
 	public JMenuItem getMenuBarFileSave() {
 		return menuBarFileSave;
 	}
 
 	/**
+	 * The <i>Save</i> item of menu file setter. 
 	 * 
-	 * @param menuBarFileSave
+	 * @param menuBarFileSave item to set.
 	 */
 	public void setMenuBarFileSave(JMenuItem menuBarFileSave) {
 		this.menuBarFileSave = menuBarFileSave;
 	}
 
 	/**
+	 * The <i>Import</i> item of menu file getter.
 	 * 
-	 * @return
+	 * @return the import item of menu file.
 	 */
 	public JMenuItem getMenuBarFileImport() {
 		return menuBarFileImport;
 	}
 
 	/**
-	 * 
-	 * @param menuBarFileImport
+	 * The <i>Import</i> item of menu file setter.
+	 *  
+	 * @param menuBarFileImport item to set
 	 */
 	public void setMenuBarFileImport(JMenuItem menuBarFileImport) {
 		this.menuBarFileImport = menuBarFileImport;

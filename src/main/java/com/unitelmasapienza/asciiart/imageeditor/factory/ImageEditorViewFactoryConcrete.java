@@ -16,8 +16,22 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorViewBuilder;
  */
 public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 	
+	/**
+	 * This is a <b>Builder Design Pattern</b> implementation.
+	 * This fields represents the real builder for this factory.
+	 * 
+	 * Every time that we will have need of an object of type ImageEditorViewBuilder, 
+	 * we can demand it therefore to the builder.
+	 * 
+	 */
 	ImageEditorViewBuilder builder = new ImageEditorViewBuilder();
 	
+	/**
+	 * Thanks to the implementation of the <b>Builder Pattern</b>, in this method to create the ImageEditorViewBuilder,
+	 * the concrete factory will only care about calling the cascade set methods of the builder, 
+	 * so here we will choose which fields we want to set for the creation of ImageEditorViewBuilder object.
+	 * 
+	 */
 	@Override
 	public ImageEditorView createView() {
 		

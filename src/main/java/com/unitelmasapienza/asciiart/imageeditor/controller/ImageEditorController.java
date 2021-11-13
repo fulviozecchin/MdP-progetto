@@ -24,7 +24,7 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
 
 /**
- * This class, in <b>MVC (Model View cController) Design Pattern</b> represents the controller.
+ * This class, in <b>MVC (Model View Controller) Design Pattern</b> represents the controller.
  * We can see it as the controller of the application in general.
  * So as a <i>controller</i> it is responsible for initializing the components, 
  * preparing the <i>View</i> and the <i>Model</i> (which it has as private fields).

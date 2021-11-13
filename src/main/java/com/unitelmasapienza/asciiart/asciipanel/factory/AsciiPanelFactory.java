@@ -16,5 +16,14 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
  */
 public abstract class AsciiPanelFactory {
 	
+	/**
+	 * This method is an abstract method for creation of AsciiPanel.
+	 * It returns an AsciiPanel object.
+	 * 
+	 * @param width is the panel width in characters
+	 * @param height is the panel height in characters
+	 * @param font is the font to set for AsciiPanel
+	 * @return a new instance of AsciiPanel object
+	 */
 	public abstract AsciiPanel createAsciiPanel(int width, int height, AsciiFont font);
 }
