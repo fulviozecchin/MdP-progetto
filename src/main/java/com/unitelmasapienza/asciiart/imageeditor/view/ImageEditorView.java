@@ -403,56 +403,63 @@ public class ImageEditorView extends JFrame {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * The selected char index getter.
+	 *  
+	 * @return the selected char index.
 	 */
 	public Integer getSelectedChar() {
 		return selectedChar;
 	}
 
 	/**
+	 * The selected char index setter.
 	 * 
-	 * @param selectedChar
+	 * @param selectedChar is the char index to set.
 	 */
 	public void setSelectedChar(Integer selectedChar) {
 		this.selectedChar = selectedChar;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * The tool index getter.
+	 *  
+	 * @return the tool index.
 	 */
 	public Integer getSelectedToolIndex() {
 		return selectedToolIndex;
 	}
 
 	/**
+	 * The tool index setter.
 	 * 
-	 * @param selectedToolIndex
+	 * @param selectedToolIndex is the tool index to set.
 	 */
 	public void setSelectedToolIndex(Integer selectedToolIndex) {
 		this.selectedToolIndex = selectedToolIndex;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * The char color preview getter.
+	 *  
+	 * @return the char color preview object.
 	 */
 	public JPanel getCharColorPreview() {
 		return charColorPreview;
 	}
 
 	/**
-	 * 
-	 * @param charColorPreview
+	 * The char color preview setter.
+	 *  
+	 * @param charColorPreview is the char color preview object to set.
 	 */
 	public void setCharColorPreview(JPanel charColorPreview) {
 		this.charColorPreview = charColorPreview;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * The char background color preview getter.
+	 *  
+	 * @return the char background color preview object.
 	 */
 	public JPanel getCharBackgroundColorPreview() {
 		return charBackgroundColorPreview;
