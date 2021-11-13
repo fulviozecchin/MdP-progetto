@@ -348,166 +348,336 @@ public class ImageEditorView extends JFrame {
 
 	//GETTER & SETTER
 	
+	/**
+	 * The panel (model) getter.
+	 * 
+	 * @return the AsciiPanel of the view.
+	 */
 	public AsciiPanel getPanel() {
 		return panel;
 	}
 
+	/**
+	 * The panel (model) setter.
+	 * 
+	 * @param panel the AsciiPanel to set on view.
+	 */
 	public void setPanel(AsciiPanel panel) {
 		this.panel = panel;
 	}
 
+	/**
+	 * The drawn char color getter.
+	 * 
+	 * @return the drawn char color.
+	 */
 	public Color getDrawnCharColor() {
 		return drawnCharColor;
 	}
 
+	/**
+	 * The drawn char color setter.
+	 * 
+	 * @param drawnCharColor is the color to set.
+	 */
 	public void setDrawnCharColor(Color drawnCharColor) {
 		this.drawnCharColor = drawnCharColor;
 	}
 
+	/**
+	 * The drawn char background color getter.
+	 * 
+	 * @return the drawn char color background.
+	 */
 	public Color getDrawnCharBackgroundColor() {
 		return drawnCharBackgroundColor;
 	}
 
+	/**
+	 * The drawn char background color setter.
+	 * 
+	 * @param drawnCharBackgroundColor the background color to set.
+	 */
 	public void setDrawnCharBackgroundColor(Color drawnCharBackgroundColor) {
 		this.drawnCharBackgroundColor = drawnCharBackgroundColor;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Integer getSelectedChar() {
 		return selectedChar;
 	}
 
+	/**
+	 * 
+	 * @param selectedChar
+	 */
 	public void setSelectedChar(Integer selectedChar) {
 		this.selectedChar = selectedChar;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Integer getSelectedToolIndex() {
 		return selectedToolIndex;
 	}
 
+	/**
+	 * 
+	 * @param selectedToolIndex
+	 */
 	public void setSelectedToolIndex(Integer selectedToolIndex) {
 		this.selectedToolIndex = selectedToolIndex;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JPanel getCharColorPreview() {
 		return charColorPreview;
 	}
 
+	/**
+	 * 
+	 * @param charColorPreview
+	 */
 	public void setCharColorPreview(JPanel charColorPreview) {
 		this.charColorPreview = charColorPreview;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JPanel getCharBackgroundColorPreview() {
 		return charBackgroundColorPreview;
 	}
 
+	/**
+	 * 
+	 * @param charBackgroundColorPreview
+	 */
 	public void setCharBackgroundColorPreview(JPanel charBackgroundColorPreview) {
 		this.charBackgroundColorPreview = charBackgroundColorPreview;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getMinusButton() {
 		return minusButton;
 	}
 
+	/**
+	 * 
+	 * @param minusButton
+	 */
 	public void setMinusButton(JButton minusButton) {
 		this.minusButton = minusButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getPlusButton() {
 		return plusButton;
 	}
 
+	/**
+	 * 
+	 * @param plusButton
+	 */
 	public void setPlusButton(JButton plusButton) {
 		this.plusButton = plusButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getCharIndexButton() {
 		return charIndexButton;
 	}
 
+	/**
+	 * 
+	 * @param charIndexButton
+	 */
 	public void setCharIndexButton(JButton charIndexButton) {
 		this.charIndexButton = charIndexButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getPickToolButton() {
 		return pickToolButton;
 	}
 
+	/**
+	 * 
+	 * @param pickToolButton
+	 */
 	public void setPickToolButton(JButton pickToolButton) {
 		this.pickToolButton = pickToolButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getPaintToolButton() {
 		return paintToolButton;
 	}
 
+	/**
+	 * 
+	 * @param paintToolButton
+	 */
 	public void setPaintToolButton(JButton paintToolButton) {
 		this.paintToolButton = paintToolButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JButton getFillToolButton() {
 		return fillToolButton;
 	}
 
+	/**
+	 * 
+	 * @param fillToolButton
+	 */
 	public void setFillToolButton(JButton fillToolButton) {
 		this.fillToolButton = fillToolButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public AsciiPanel getSelectedCharPreview() {
 		return selectedCharPreview;
 	}
 
+	/**
+	 * 
+	 * @param selectedCharPreview
+	 */
 	public void setSelectedCharPreview(AsciiPanel selectedCharPreview) {
 		this.selectedCharPreview = selectedCharPreview;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public BufferedImage getImportBI() {
 		return importBI;
 	}
 
+	/**
+	 * 
+	 * @param importBI
+	 */
 	public void setImportBI(BufferedImage importBI) {
 		this.importBI = importBI;
 	}
 
+	/**
+	 * 
+	 * @param menuBar
+	 */
 	public void setMenuBar(JMenuBar menuBar) {
 		this.menuBar = menuBar;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JMenu getMenuBarFile() {
 		return menuBarFile;
 	}
 
+	/**
+	 * 
+	 * @param menuBarFile
+	 */
 	public void setMenuBarFile(JMenu menuBarFile) {
 		this.menuBarFile = menuBarFile;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JMenuItem getMenuBarFileNew() {
 		return menuBarFileNew;
 	}
 
+	/**
+	 * 
+	 * @param menuBarFileNew
+	 */
 	public void setMenuBarFileNew(JMenuItem menuBarFileNew) {
 		this.menuBarFileNew = menuBarFileNew;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JMenuItem getMenuBarFileLoad() {
 		return menuBarFileLoad;
 	}
 
+	/**
+	 * 
+	 * @param menuBarFileLoad
+	 */
 	public void setMenuBarFileLoad(JMenuItem menuBarFileLoad) {
 		this.menuBarFileLoad = menuBarFileLoad;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JMenuItem getMenuBarFileSave() {
 		return menuBarFileSave;
 	}
 
+	/**
+	 * 
+	 * @param menuBarFileSave
+	 */
 	public void setMenuBarFileSave(JMenuItem menuBarFileSave) {
 		this.menuBarFileSave = menuBarFileSave;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public JMenuItem getMenuBarFileImport() {
 		return menuBarFileImport;
 	}
 
+	/**
+	 * 
+	 * @param menuBarFileImport
+	 */
 	public void setMenuBarFileImport(JMenuItem menuBarFileImport) {
 		this.menuBarFileImport = menuBarFileImport;
 	}
