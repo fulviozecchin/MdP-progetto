@@ -77,10 +77,9 @@ public class ImageEditorController {
 	public ImageEditorController(AsciiPanelFactory panelFactory, ImageEditorViewFactory viewFactory) {
 		setPanelFactory(panelFactory);
 		setViewFactory(viewFactory);
-		setModel(panelFactory.createAsciiPanel(80, 60, AsciiFont.CP437_16x16));
+		setModel(getPanelFactory().createAsciiPanel(80, 60, AsciiFont.CP437_16x16));
 		preparingModel(model);
-//		setView(new ImageEditorView());
-		setView(viewFactory.createView());
+		setView(getViewFactory().createView());
 		getView().setPanel(model);
 		getView().add(model);
 		initController();
@@ -121,8 +120,13 @@ public class ImageEditorController {
 	 * 
 	 */
 	private void initController() {
+		setListeners();
+		getView().updatePreview();
+	}
+	
+	private void setListeners() {
 		
-		//selected char button
+		//Listener for selected char button
 		view.getCharIndexButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -130,7 +134,7 @@ public class ImageEditorController {
 			}
 		});
 		
-		//paint button
+		//Listener for paint button
 		view.getPaintToolButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -138,7 +142,7 @@ public class ImageEditorController {
 			}
 		});
 		
-		//fill button
+		//Listener for fill button
 		view.getFillToolButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -146,7 +150,7 @@ public class ImageEditorController {
 			}
 		});
 		
-		//pick button
+		//Listener for pick button
 		view.getPickToolButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -154,8 +158,9 @@ public class ImageEditorController {
 			}
 		});
 		
-		//minus button
+		//Listener for minus button
 		view.getMinusButton().addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (view.getSelectedChar() > 0)
@@ -166,8 +171,9 @@ public class ImageEditorController {
 			}
 		});
 		
-		//plus button
+		//Listener for plus button
 		view.getPlusButton().addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (view.getSelectedChar() < 255)
@@ -177,7 +183,7 @@ public class ImageEditorController {
 			}
 		});
 		
-		//char color preview
+		//Listener for char color preview
 		view.getCharColorPreview().addMouseListener(new MouseListener() {
 
 			@Override
@@ -206,7 +212,7 @@ public class ImageEditorController {
 
 		});
 		
-		//background char color preview
+		//Listener for background char color preview
 		view.getCharBackgroundColorPreview().addMouseListener(new MouseListener() {
 
 			@Override
@@ -235,11 +241,11 @@ public class ImageEditorController {
 
 		});
 		
-		//panel-view
+		//Listener for panel-view
 		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
 		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
 		
-		//menu bar
+		//Listener for menu bar
 		view.getMenuBarFileSave().addActionListener(new ActionSaveView());
 		view.getMenuBarFileLoad().addActionListener(new ActionLoadView());
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
@@ -256,8 +262,6 @@ public class ImageEditorController {
 				;
 			}
 		});
-		
-		view.updatePreview();
 	}
 	
 	
@@ -371,6 +375,21 @@ public class ImageEditorController {
 		view.getPanel().repaint();
 	}
 	
+	
+	
+	//GETTERS AND SETTERS
+	
+	
+	/**
+	 * The panel factory getter.
+	 * It's used to use the panelFatory inside this class.
+	 * 
+	 * @return this panelFactory.
+	 */
+	private AsciiPanelFactory getPanelFactory() {
+		return panelFactory;
+	}
+	
 	/**
 	 * The panel factory setter.
 	 * It's a private setter because the purpose is to call it only inside the controller constructor,
@@ -381,7 +400,17 @@ public class ImageEditorController {
 	private void setPanelFactory(AsciiPanelFactory panelFactory) {
 		this.panelFactory = panelFactory;
 	}
-	
+
+	/**
+	 * The view factory getter.
+	 * It's used to use the viewFactory inside this class.
+	 * 
+	 * @return this viewFactory.
+	 */
+	private ImageEditorViewFactory getViewFactory() {
+		return viewFactory;
+	}
+
 	/**
 	 * The view factory setter.
 	 * It's a private setter because the purpose is to call it only inside the controller constructor,
