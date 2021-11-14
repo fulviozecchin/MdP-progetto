@@ -15,6 +15,12 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  */
 public abstract class ImageEditorViewFactory {
 
+	/**
+	 * This method is an abstract method for creation of ImageEditorView.
+	 * It returns an ImageEditorView object.
+	 * 
+	 * @return a new instance of ImageEditorView object.
+	 */
 	public abstract ImageEditorView createView();
 
 }

@@ -3,7 +3,6 @@ package com.unitelmasapienza.asciiart.imageeditor.listener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
@@ -16,22 +15,25 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 public class EditorControllerMouseLintener implements MouseListener {
 
 	/**
-	 * Represents the instance of the main application window on which the drawing panel is attached.
+	 * This field is the controller instance that is responsible of binding the view (and her listeners) with the panel.
 	 * 
-	 * @see ImageEditor which represent the main frame of application.
+	 * @see ImageEditorController wich represent the main controller of application.
+	 * @see ImageEditorView which represent the main View of application.
 	 */
 	private ImageEditorController imageEditorController;
 
 	/**
-	 * Public constructor. Receives as input the ImageEditor to which will be attached the panel of which this class is the mouse listener.
-	 * @param ie is the ImageEditor instance
+	 * Public constructor. Receives as input the controller that acts as a 'bridge' between the view and the panel (model). 
+	 * It will add this mouse listener to the panel, which in turn is bound to the view.
+	 * 
+	 * @param imageEditorController is the controller instance.
 	 */
 	public EditorControllerMouseLintener(ImageEditorController imageEditorController) {
 		this.setImageEditorController(imageEditorController);
 	}
 
 	/**
-	 * Implementation of MouseListener interface method
+	 * Implementation of MouseListener interface method.
 	 * 
 	 */
 	@Override
@@ -40,7 +42,7 @@ public class EditorControllerMouseLintener implements MouseListener {
 	/**
 	 * It is called when the mouse is clicked.
 	 * depending on the functionality, so based on the selected button, 
-	 * it calls the relative action (click, pick or fill)
+	 * it calls the relative action (click, pick or fill).
 	 * 
 	 */
 	@Override
@@ -82,16 +84,18 @@ public class EditorControllerMouseLintener implements MouseListener {
 	public void mouseExited(MouseEvent e) {}
 
 	/**
-	 * The image editor getter
-	 * @return the imageEditor
+	 * The controller field getter.
+	 * 
+	 * @return the controller field.
 	 */
 	ImageEditorController getImageEditorController() {
 		return imageEditorController;
 	}
 
 	/**
-	 * The image editor setter
-	 * @param imageEditor the imageEditor to set
+	 * The controller field setter.
+	 * 
+	 * @param imageEditorController is the controller to set.
 	 */
 	void setImageEditorController(ImageEditorController imageEditorController) {
 		this.imageEditorController = imageEditorController;

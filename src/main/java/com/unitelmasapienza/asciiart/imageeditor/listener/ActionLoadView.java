@@ -7,13 +7,15 @@ import javax.swing.JFileChooser;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiRaster;
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 /**
- * The class manages the Action Listener for the <b>function of loading an existing ascii image</b> in the drawing canvas.
- * @see ImageEditor which represents the main frame class for the application 
+ * The class manages the Action Listener for the <b>function of loading an existing Ascii image</b> in the drawing canvas.
+ * 
+ * @see ImageEditorView which represents the main View class for the application 
  *      and calls the loading action at the click of the <b>Load...</b> button under <i>File</i> menu.
+ *      
  * @author Fulvio Zecchin
  *
  */
@@ -33,7 +35,7 @@ public class ActionLoadView implements ActionListener {
 	
 	/**
 	 * Describes the behavior when a is clicked the <b>load</b> button from 
-	 * <i>file</i> menu' in main frame ImageEditor.
+	 * <i>file</i> menu' in main frame ImageEditorView.
 	 * 
 	 * It starts with a file system path to navigate to in order to choose the image to load.
 	 * Once chosen it is loaded (painted) into the main canvas
@@ -51,16 +53,18 @@ public class ActionLoadView implements ActionListener {
 	}
 
 	/**
-	 * The parent dialog getter
-	 * @return the parentDialog
+	 * The parent dialog getter.
+	 * 
+	 * @return the parentDialog.
 	 */
 	AsciiPanel getParentDialog() {
 		return parentDialog;
 	}
 
 	/**
-	 * The parent dialog setter
-	 * @param parentDialog the parentDialog to set
+	 * The parent dialog setter.
+	 * 
+	 * @param parentDialog the parentDialog to set.
 	 */
 	void setParentDialog(AsciiPanel parentDialog) {
 		this.parentDialog = parentDialog;

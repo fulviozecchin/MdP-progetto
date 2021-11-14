@@ -124,6 +124,10 @@ public class ImageEditorController {
 		getView().updatePreview();
 	}
 	
+	/**
+	 * This method is to add all event listeners to the GUI element of application.
+	 * 
+	 */
 	private void setListeners() {
 		
 		//Listener for selected char button

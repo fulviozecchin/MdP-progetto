@@ -13,10 +13,13 @@ import javax.swing.JFileChooser;
 
 import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 
 /**
- * The class manages the Action Listener for the <b>import images function</b>
- * @see ImageImporter that represents the importing images frame
+ * The class manages the Action Listener for the <b>import images function</b>.
+ * 
+ * @see ImporterView that represents the importing images frame.
+ * 
  * @author Fulvio Zecchin
  *
  */
@@ -31,7 +34,7 @@ public class ActionImportView implements ActionListener {
 	/**
 	 * Describes the behavior when a is clicked the <i>import</i> button from 
 	 * the Importer frame.
-	 * @see ImageImporter that represents the importing images frame 
+	 * @see ImporterView that represents the importing images frame 
 	 * 
 	 * It starts with a file system path to navigate to in order to choose the image to import. 
 	 * Once the image is chosen, it resizes it and adapts it to the size of the canvas in the drawing 

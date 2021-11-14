@@ -1,7 +1,7 @@
 package com.unitelmasapienza.asciiart.imageeditor.view;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -18,7 +18,7 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewView;
  * @author Fulvio Zecchin
  *
  */
-public class NewView extends JFrame {
+public class NewView extends JDialog {
 
 	/**
 	 * The indefier to serialize/deserialize the object
@@ -79,7 +79,7 @@ public class NewView extends JFrame {
 	 * 
 	 */
 	private NewView() {
-		super("ASCII - New");
+		super.setTitle("Create New Canvas");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);
 		this.setResizable(false);

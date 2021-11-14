@@ -16,16 +16,16 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
-import com.unitelmasapienza.asciiart.imageeditor.ImageImporter;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 
 /**
  * The class represents the action listener for the <b>image conversion functionality</b>, after the image has been imported.
- * @see ImageEditor which represents the main frame class for the application 
+ * 
+ * @see ImageEditorView which represents the main view class for the application 
  *      and calls the importing action at the click of the <b>Import...</b> button under <i>File</i> menu.
- * @see ImageImporter which represents the frame for image importing that containing 
+ * @see ImporterView which represents the frame for image importing that containing 
  *      the <b>Convert</b> button to which this Listener is linked.
  *      It also provides to create the present class 
  *      passing him the values that come inserted in the relative importing frame.

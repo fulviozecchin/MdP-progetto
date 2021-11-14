@@ -8,16 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.ActionImport;
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionConvertView;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportView;
 /**
- * The class manages the <b>importing images frame</b> into the canvas of application
- * @see ImageEditor which represents the main frame class for the application 
+ * The class manages the <b>importing images frame</b> into the canvas of application.
+ * 
+ * @see ImageEditorView which represents the main View class for the application 
  *      and calls the importing action at the click of the <b>Import...</b> button under <i>File</i> menu.
- * @see ActionImport which is the related Action Listener
+ * @see ActionImportView which is the related Action Listener.
+ * 
  * @author Fulvio Zecchin
  *
  */
@@ -82,7 +82,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 */
 	private ImporterView() {
-//		super("ASCII Image Editor - Import");
+		super.setTitle("Import Drawing");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);
 		this.setResizable(false);

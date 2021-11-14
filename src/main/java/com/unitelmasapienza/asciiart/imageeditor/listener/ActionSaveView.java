@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
 
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 
 /**
  * The class represents the listener for the <b>save functionality</b> of a drawn canvas.
  * 
- * @see ImageEditor which represents the main frame class for the application 
+ * @see ImageEditorView which represents the main View class for the application 
  *      and calls the saving action at the click of the <b>Save...</b> button under <i>File</i> menu.
  * 
  * @author Fulvio Zecchin
