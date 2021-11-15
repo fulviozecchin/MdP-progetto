@@ -1,6 +1,5 @@
 package com.unitelmasapienza.asciiart.imageeditor.view;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
@@ -13,13 +12,22 @@ import javax.swing.JPanel;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 
+/**
+ * This class is an implementation of <b>Builder Design Pattern</b>.
+ * We direct call this Builder class for create and initialize an ImageEditorView object.
+ * 
+ * @author Fulvio Zecchin
+ *
+ */
 public class ImageEditorViewBuilder {
 	
-	private AsciiPanel panel;
-	private Color drawnCharColor = Color.WHITE;
-	private Color drawnCharBackgroundColor = Color.BLACK;
-	private Integer selectedChar = 1;
-	private Integer selectedToolIndex = 0;
+	/**
+	 * Follow all relevant fields to inizialize of ImageEditorView.
+	 * 
+	 * @see ImageEditorView to understand every field.
+	 * 
+	 */
+	
 	private JPanel charColorPreview;
 	private JPanel charBackgroundColorPreview;
 	private JButton minusButton;
@@ -37,6 +45,7 @@ public class ImageEditorViewBuilder {
 	private JMenuItem menuBarFileSave;
 	private JMenuItem menuBarFileImport;
 	
+	//This field will be passed to concrete view object already
 	private JPanel controlTool;
 	
 	
@@ -242,46 +251,6 @@ public class ImageEditorViewBuilder {
 	
 	//GETTERS AND SETTERS
 	
-
-	private AsciiPanel getPanel() {
-		return panel;
-	}
-
-	private void setPanel(AsciiPanel panel) {
-		this.panel = panel;
-	}
-
-	private Color getDrawnCharColor() {
-		return drawnCharColor;
-	}
-
-	private void setDrawnCharColor(Color drawnCharColor) {
-		this.drawnCharColor = drawnCharColor;
-	}
-
-	private Color getDrawnCharBackgroundColor() {
-		return drawnCharBackgroundColor;
-	}
-
-	private void setDrawnCharBackgroundColor(Color drawnCharBackgroundColor) {
-		this.drawnCharBackgroundColor = drawnCharBackgroundColor;
-	}
-
-	private Integer getSelectedChar() {
-		return selectedChar;
-	}
-
-	private void setSelectedChar(Integer selectedChar) {
-		this.selectedChar = selectedChar;
-	}
-
-	private Integer getSelectedToolIndex() {
-		return selectedToolIndex;
-	}
-
-	private void setSelectedToolIndex(Integer selectedToolIndex) {
-		this.selectedToolIndex = selectedToolIndex;
-	}
 
 	private JPanel getCharColorPreview() {
 		return charColorPreview;

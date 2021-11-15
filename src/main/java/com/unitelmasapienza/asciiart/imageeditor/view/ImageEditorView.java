@@ -206,7 +206,7 @@ public class ImageEditorView extends JFrame {
 			JMenuItem saveFileItem, 
 			JMenuItem importFileItem) {
 		
-		super("ASCII ImageEditor");
+		super("ASCII ART - Image Editor");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 80 * 16 + 80, 60 * 16);
 		this.setLayout(null);

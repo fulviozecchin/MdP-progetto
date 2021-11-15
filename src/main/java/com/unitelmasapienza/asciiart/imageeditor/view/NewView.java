@@ -6,15 +6,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.ActionNew;
-import com.unitelmasapienza.asciiart.imageeditor.ImageEditor;
 import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewView;
 
 /**
  * The class manages the frame dialog for the creation of a <b>new main drawing canvas</b>.
- * @see ImageEditor which represents the main frame class for the application 
+ * 
+ * @see ImageEditorView which represents the main frame class for the application 
  *      and calls the new frame action at the click of the <b>New...</b> button under <i>File</i> menu.
- * @see ActionNew which is the related Action Listener
+ * @see ActionNewView which is the related Action Listener.
+ * 
  * @author Fulvio Zecchin
  *
  */
