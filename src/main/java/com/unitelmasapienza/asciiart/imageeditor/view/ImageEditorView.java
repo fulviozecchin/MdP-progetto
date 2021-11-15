@@ -262,6 +262,7 @@ public class ImageEditorView extends JFrame {
 	
 	//EVENTS
 	
+	
 	/**
 	 * Updates the preview of the selected character
 	 * 
