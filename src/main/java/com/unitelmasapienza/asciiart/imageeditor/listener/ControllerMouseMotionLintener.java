@@ -12,7 +12,7 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  * @author Fulvio Zecchin
  *
  */
-public class EditorControllerMouseMotionLintener implements MouseMotionListener {
+public class ControllerMouseMotionLintener implements MouseMotionListener {
 
 	/**
 	 * Represents the instance of the main application window on which the drawing panel is attached.
@@ -28,7 +28,7 @@ public class EditorControllerMouseMotionLintener implements MouseMotionListener 
 	 * 
 	 * @param ie is the ImageEditor instance
 	 */
-	public EditorControllerMouseMotionLintener(ImageEditorController imageEditorController) {
+	public ControllerMouseMotionLintener(ImageEditorController imageEditorController) {
 		this.setImageEditorController(imageEditorController);
 	}
 

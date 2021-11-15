@@ -14,11 +14,11 @@ import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
 import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
 import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactory;
 import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactoryConcrete;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadView;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveView;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseLintener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.EditorControllerMouseMotionLintener;
-import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadListener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveListener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ControllerMouseLintener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ControllerMouseMotionLintener;
+import com.unitelmasapienza.asciiart.imageeditor.view.SelectCharView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
 import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
@@ -134,7 +134,7 @@ public class ImageEditorController {
 		view.getCharIndexButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CharacterSelectorView.getInstance().setVisible(true);
+				SelectCharView.getInstance().setVisible(true);
 			}
 		});
 		
@@ -246,12 +246,12 @@ public class ImageEditorController {
 		});
 		
 		//Listener for panel-view
-		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
-		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
+		view.getPanel().addMouseListener(new ControllerMouseLintener(this));
+		view.getPanel().addMouseMotionListener(new ControllerMouseMotionLintener(this));
 		
 		//Listener for menu bar
-		view.getMenuBarFileSave().addActionListener(new ActionSaveView());
-		view.getMenuBarFileLoad().addActionListener(new ActionLoadView());
+		view.getMenuBarFileSave().addActionListener(new ActionSaveListener());
+		view.getMenuBarFileLoad().addActionListener(new ActionLoadListener());
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -362,8 +362,8 @@ public class ImageEditorController {
 		
 		view.setPanel(model);
 		view.add(model);
-		view.getPanel().addMouseListener(new EditorControllerMouseLintener(this));
-		view.getPanel().addMouseMotionListener(new EditorControllerMouseMotionLintener(this));
+		view.getPanel().addMouseListener(new ControllerMouseLintener(this));
+		view.getPanel().addMouseMotionListener(new ControllerMouseMotionLintener(this));
 	}
 	
 	/**

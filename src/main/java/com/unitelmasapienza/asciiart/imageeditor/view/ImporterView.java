@@ -9,14 +9,14 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionConvertView;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportView;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionConvertListener;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportListener;
 /**
  * The class manages the <b>importing images frame</b> into the canvas of application.
  * 
  * @see ImageEditorView which represents the main View class for the application 
  *      and calls the importing action at the click of the <b>Import...</b> button under <i>File</i> menu.
- * @see ActionImportView which is the related Action Listener.
+ * @see ActionImportListener which is the related Action Listener.
  * 
  * @author Fulvio Zecchin
  *
@@ -82,7 +82,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 */
 	private ImporterView() {
-		super.setTitle("Import Drawing");
+		super.setTitle("Import Image");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 320, 230);
 		this.setResizable(false);
@@ -92,8 +92,8 @@ public class ImporterView extends JDialog {
 		setAllColorsCheckbox(new JCheckBox("all colors", true));
 		setConvertButton(new JButton("Convert"));
 		setImportButton(new JButton("Import ..."));
-		getImportButton().addActionListener(new ActionImportView());
-		getConvertButton().addActionListener(new ActionConvertView(ImageEditorController.getInstance().getModel(), getThresholdTextbox(), getAllColorsCheckbox()));
+		getImportButton().addActionListener(new ActionImportListener());
+		getConvertButton().addActionListener(new ActionConvertListener(ImageEditorController.getInstance().getModel(), getThresholdTextbox(), getAllColorsCheckbox()));
 		this.add(getImportButton());
 		this.add(getThresholdLabel());
 		this.add(getThresholdTextbox());

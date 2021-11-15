@@ -6,14 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewView;
+import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewListener;
 
 /**
  * The class manages the frame dialog for the creation of a <b>new main drawing canvas</b>.
  * 
  * @see ImageEditorView which represents the main frame class for the application 
  *      and calls the new frame action at the click of the <b>New...</b> button under <i>File</i> menu.
- * @see ActionNewView which is the related Action Listener.
+ * @see ActionNewListener which is the related Action Listener.
  * 
  * @author Fulvio Zecchin
  *
@@ -89,7 +89,7 @@ public class NewView extends JDialog {
 		setHeightLabel(new JLabel("Height:"));
 		setHeightTextbox(new JTextField("60"));
 		setCreateNewButton(new JButton("Create New"));
-		getCreateNewButton().addActionListener(new ActionNewView());
+		getCreateNewButton().addActionListener(new ActionNewListener());
 		this.add(getWidthLabel());
 		this.add(getWidthTextbox());
 		this.add(getHeightLabel());

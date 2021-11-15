@@ -20,7 +20,7 @@ import com.unitelmasapienza.asciiart.imageeditor.listener.ActionViewCharListener
  * @author Fulvio Zecchin
  *
  */
-public class CharacterSelectorView extends JDialog {
+public class SelectCharView extends JDialog {
 
 	/**
 	 * The identifier to serialize/deserialize the object
@@ -45,7 +45,7 @@ public class CharacterSelectorView extends JDialog {
 	 * The only instance of the class.
 	 * 
 	 */
-	static CharacterSelectorView instance;
+	static SelectCharView instance;
 
 	/**
 	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
@@ -53,9 +53,9 @@ public class CharacterSelectorView extends JDialog {
 	 * 
 	 * @return CharacterSelector instance
 	 */
-	public static CharacterSelectorView getInstance() {
+	public static SelectCharView getInstance() {
 		if (instance == null)
-			instance = new CharacterSelectorView();
+			instance = new SelectCharView();
 		return instance;
 	}
 
@@ -63,7 +63,7 @@ public class CharacterSelectorView extends JDialog {
 	 * The constructor is private because by implementing the <b><i>Singleton</i></b> Pattern it is not visible outside the class.
 	 * 
 	 */
-	private CharacterSelectorView() {
+	private SelectCharView() {
 		super.setTitle("Character Selector");
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		this.setBounds(0, 0, 16 * 16, 16 * 16 + 32);

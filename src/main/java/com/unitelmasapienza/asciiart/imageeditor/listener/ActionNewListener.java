@@ -17,7 +17,7 @@ import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
  * @author Fulvio Zecchin
  *
  */
-public class ActionNewView implements ActionListener {
+public class ActionNewListener implements ActionListener {
 
 	/**
 	 * Describes the behavior when a is clicked the <i>Create New</i> button from 

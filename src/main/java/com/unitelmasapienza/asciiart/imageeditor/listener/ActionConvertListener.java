@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor;
+package com.unitelmasapienza.asciiart.imageeditor.listener;
 
 import java.awt.Color;
 import java.awt.Transparency;
@@ -16,12 +16,16 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
 
 /**
  * The class represents the action listener for the <b>image conversion functionality</b>, after the image has been imported.
- * @see ImageEditor which represents the main frame class for the application 
+ * 
+ * @see ImageEditorView which represents the main view class for the application 
  *      and calls the importing action at the click of the <b>Import...</b> button under <i>File</i> menu.
- * @see ImageImporter which represents the frame for image importing that containing 
+ * @see ImporterView which represents the frame for image importing that containing 
  *      the <b>Convert</b> button to which this Listener is linked.
  *      It also provides to create the present class 
  *      passing him the values that come inserted in the relative importing frame.
@@ -29,7 +33,7 @@ import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
  * @author Fulvio Zecchin
  *
  */
-public class ActionConvert implements ActionListener {
+public class ActionConvertListener implements ActionListener {
 
 	/**
 	 * The canvas/panel into which the imported image will be converted and drawn
@@ -56,7 +60,7 @@ public class ActionConvert implements ActionListener {
 	 * @param thresholdTextbox is the threshold object read by the importing frame
 	 * @param allColorsCheckbox is the enable/disable button object read by the importing frame
 	 */
-	public ActionConvert(AsciiPanel asciiPanel, JTextField thresholdTextbox, JCheckBox allColorsCheckbox) {
+	public ActionConvertListener(AsciiPanel asciiPanel, JTextField thresholdTextbox, JCheckBox allColorsCheckbox) {
 		this.setAsciiPanel(asciiPanel);
 		this.setThresholdTextbox(thresholdTextbox);
 		this.setAllColorsCheckbox(allColorsCheckbox);
@@ -72,7 +76,7 @@ public class ActionConvert implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		BufferedImage bufferedImg = ImageEditor.getInstance().getImportBI();
+		BufferedImage bufferedImg = ImageEditorController.getInstance().getView().getImportBI();
 
 		System.out.println("Convert Pressed..");
 		if (bufferedImg != null) {
@@ -130,8 +134,8 @@ public class ActionConvert implements ActionListener {
 
 				}
 			getAsciiPanel().repaint();
-			ImageImporter.getInstance().setVisible(false);
-			ImageImporter.getInstance().close();
+			ImporterView.getInstance().setVisible(false);
+			ImporterView.getInstance().close();
 		}
 	}
 

@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.CharacterSelectorView;
+import com.unitelmasapienza.asciiart.imageeditor.view.SelectCharView;
 
 /**
  * The class manages the <b>Action Listener for each character selected from the character palette frame</b>.
  * 
- * @see CharacterSelectorView that represents the character palette view frame of application.
+ * @see SelectCharView that represents the character palette view frame of application.
  * 
  * @author Fulvio Zecchin
  *

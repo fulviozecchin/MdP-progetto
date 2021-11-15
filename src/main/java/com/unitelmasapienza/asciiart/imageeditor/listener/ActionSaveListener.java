@@ -1,26 +1,29 @@
-package com.unitelmasapienza.asciiart.imageeditor;
+package com.unitelmasapienza.asciiart.imageeditor.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFileChooser;
 
+import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+
 /**
  * The class represents the listener for the <b>save functionality</b> of a drawn canvas.
  * 
- * @see ImageEditor which represents the main frame class for the application 
+ * @see ImageEditorView which represents the main View class for the application 
  *      and calls the saving action at the click of the <b>Save...</b> button under <i>File</i> menu.
  * 
  * @author Fulvio Zecchin
  *
  */
-public class ActionSave implements ActionListener {
+public class ActionSaveListener implements ActionListener {
 
 	/**
 	 * Public default constructor
 	 * 
 	 */
-	public ActionSave() {}
+	public ActionSaveListener() {}
 
 	/**
 	 * Describes the behavior when a is clicked the <i>Save...</i> button from <i>File</i> menu.
@@ -30,10 +33,10 @@ public class ActionSave implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser fileChooser = new JFileChooser("resources/");
-		int returnVal = fileChooser.showSaveDialog(ImageEditor.getInstance());
+		int returnVal = fileChooser.showSaveDialog(ImageEditorController.getInstance().getView());
 
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			ImageEditor.getInstance().getGeneralPanel().save(fileChooser.getSelectedFile().getAbsolutePath());
+			ImageEditorController.getInstance().getView().getPanel().save(fileChooser.getSelectedFile().getAbsolutePath());
 		}
 	}
 

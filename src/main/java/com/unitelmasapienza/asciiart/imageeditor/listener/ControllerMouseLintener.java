@@ -12,7 +12,7 @@ import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
  * @author Fulvio Zecchin
  *
  */
-public class EditorControllerMouseLintener implements MouseListener {
+public class ControllerMouseLintener implements MouseListener {
 
 	/**
 	 * This field is the controller instance that is responsible of binding the view (and her listeners) with the panel.
@@ -28,7 +28,7 @@ public class EditorControllerMouseLintener implements MouseListener {
 	 * 
 	 * @param imageEditorController is the controller instance.
 	 */
-	public EditorControllerMouseLintener(ImageEditorController imageEditorController) {
+	public ControllerMouseLintener(ImageEditorController imageEditorController) {
 		this.setImageEditorController(imageEditorController);
 	}
 
