@@ -107,7 +107,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @return the createNewButton
 	 */
-	JButton getCreateNewButton() {
+	public JButton getCreateNewButton() {
 		return createNewButton;
 	}
 
@@ -116,7 +116,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @param createNewButton is the button to set
 	 */
-	void setCreateNewButton(JButton createNewButton) {
+	public void setCreateNewButton(JButton createNewButton) {
 		this.createNewButton = createNewButton;
 	}
 
@@ -125,7 +125,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @return the widthLabel
 	 */
-	JLabel getWidthLabel() {
+	public JLabel getWidthLabel() {
 		return widthLabel;
 	}
 
@@ -134,7 +134,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @param widthLabel is the label to set
 	 */
-	void setWidthLabel(JLabel widthLabel) {
+	public void setWidthLabel(JLabel widthLabel) {
 		this.widthLabel = widthLabel;
 	}
 
@@ -161,7 +161,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @return the heightLabel
 	 */
-	JLabel getHeightLabel() {
+	public JLabel getHeightLabel() {
 		return heightLabel;
 	}
 
@@ -170,7 +170,7 @@ public class NewView extends JDialog {
 	 * 
 	 * @param heightLabel is the label to set
 	 */
-	void setHeightLabel(JLabel heightLabel) {
+	public void setHeightLabel(JLabel heightLabel) {
 		this.heightLabel = heightLabel;
 	}
 

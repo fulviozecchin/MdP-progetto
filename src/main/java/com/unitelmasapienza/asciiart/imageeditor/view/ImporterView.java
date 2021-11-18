@@ -122,7 +122,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @return the importButton
 	 */
-	JButton getImportButton() {
+	public JButton getImportButton() {
 		return importButton;
 	}
 
@@ -131,7 +131,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @param importButton is the button to set
 	 */
-	void setImportButton(JButton importButton) {
+	public void setImportButton(JButton importButton) {
 		this.importButton = importButton;
 	}
 
@@ -140,7 +140,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @return the convertButton
 	 */
-	JButton getConvertButton() {
+	public JButton getConvertButton() {
 		return convertButton;
 	}
 
@@ -149,7 +149,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @param convertButton is the button to set
 	 */
-	void setConvertButton(JButton convertButton) {
+	public void setConvertButton(JButton convertButton) {
 		this.convertButton = convertButton;
 	}
 
@@ -158,7 +158,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @return the thresholdLabel
 	 */
-	JLabel getThresholdLabel() {
+	public JLabel getThresholdLabel() {
 		return thresholdLabel;
 	}
 
@@ -167,7 +167,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @param thresholdLabel is the label to set
 	 */
-	void setThresholdLabel(JLabel thresholdLabel) {
+	public void setThresholdLabel(JLabel thresholdLabel) {
 		this.thresholdLabel = thresholdLabel;
 	}
 
@@ -176,7 +176,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @return the thresholdTextbox
 	 */
-	JTextField getThresholdTextbox() {
+	public JTextField getThresholdTextbox() {
 		return thresholdTextbox;
 	}
 
@@ -185,7 +185,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @param thresholdTextbox is the textbox to set
 	 */
-	void setThresholdTextbox(JTextField thresholdTextbox) {
+	public void setThresholdTextbox(JTextField thresholdTextbox) {
 		this.thresholdTextbox = thresholdTextbox;
 	}
 
@@ -194,7 +194,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @return the allColorsCheckbox
 	 */
-	JCheckBox getAllColorsCheckbox() {
+	public JCheckBox getAllColorsCheckbox() {
 		return allColorsCheckbox;
 	}
 
@@ -203,7 +203,7 @@ public class ImporterView extends JDialog {
 	 * 
 	 * @param allColorsCheckbox is the checkbox to set
 	 */
-	void setAllColorsCheckbox(JCheckBox allColorsCheckbox) {
+	public void setAllColorsCheckbox(JCheckBox allColorsCheckbox) {
 		this.allColorsCheckbox = allColorsCheckbox;
 	}
 }

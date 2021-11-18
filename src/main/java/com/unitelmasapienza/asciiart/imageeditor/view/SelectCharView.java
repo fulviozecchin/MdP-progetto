@@ -90,4 +90,42 @@ public class SelectCharView extends JDialog {
 		instance.dispose();
 		instance = null;
 	}
+
+	/**
+	 * The frame Label getter.
+	 * 
+	 * @return the frame label.
+	 */
+	private JLabel getFrameLabel() {
+		return frameLabel;
+	}
+
+	/**
+	 * The frame label setter.
+	 * 
+	 * @param frameLabel the frame label to set.
+	 */
+	private void setFrameLabel(JLabel frameLabel) {
+		this.frameLabel = frameLabel;
+	}
+
+	/**
+	 * The chars palette getter.
+	 * 
+	 * @return the list with all chars as button.
+	 */
+	private List<JButton> getCharsPalette() {
+		return charsPalette;
+	}
+
+	/**
+	 * The chars palette getter.
+	 * 
+	 * @param charsPalette the list with all chars as button to set.
+	 */
+	private void setCharsPalette(List<JButton> charsPalette) {
+		this.charsPalette = charsPalette;
+	}
+	
+	
 }
