@@ -53,7 +53,7 @@ public class ControllerMouseMotionLintener implements MouseMotionListener {
 	 * 
 	 * @return the controller field.
 	 */
-	ImageEditorController getImageEditorController() {
+	public ImageEditorController getImageEditorController() {
 		return imageEditorController;
 	}
 
@@ -62,7 +62,7 @@ public class ControllerMouseMotionLintener implements MouseMotionListener {
 	 * 
 	 * @param imageEditorController the controller to set.
 	 */
-	void setImageEditorController(ImageEditorController imageEditorController) {
+	public void setImageEditorController(ImageEditorController imageEditorController) {
 		this.imageEditorController = imageEditorController;
 	}
 

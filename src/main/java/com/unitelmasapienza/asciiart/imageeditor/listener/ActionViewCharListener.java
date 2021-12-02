@@ -20,7 +20,7 @@ public class ActionViewCharListener implements ActionListener {
 	 * Represents the index of the selected character
 	 * 
 	 */
-	int selectedCharIndex;
+	private int selectedCharIndex;
 	
 	/**
 	 * The public constructor of the class.

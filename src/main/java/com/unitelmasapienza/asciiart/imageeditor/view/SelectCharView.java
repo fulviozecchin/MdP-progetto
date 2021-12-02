@@ -33,19 +33,19 @@ public class SelectCharView extends JDialog {
 	 * However, it is never used in the application.
 	 * 
 	 */
-	JLabel frameLabel;
+	private JLabel frameLabel;
 	
 	/**
 	 * Represents the list of characters (treated as buttons) that you can select.
 	 * 
 	 */
-	List<JButton> charsPalette;
+	private List<JButton> charsPalette;
 	
 	/**
 	 * The only instance of the class.
 	 * 
 	 */
-	static SelectCharView instance;
+	private static SelectCharView instance;
 
 	/**
 	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 

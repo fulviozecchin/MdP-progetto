@@ -88,7 +88,7 @@ public class ControllerMouseLintener implements MouseListener {
 	 * 
 	 * @return the controller field.
 	 */
-	ImageEditorController getImageEditorController() {
+	public ImageEditorController getImageEditorController() {
 		return imageEditorController;
 	}
 
@@ -97,7 +97,7 @@ public class ControllerMouseLintener implements MouseListener {
 	 * 
 	 * @param imageEditorController is the controller to set.
 	 */
-	void setImageEditorController(ImageEditorController imageEditorController) {
+	public void setImageEditorController(ImageEditorController imageEditorController) {
 		this.imageEditorController = imageEditorController;
 	}
 

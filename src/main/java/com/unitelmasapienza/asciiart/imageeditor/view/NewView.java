@@ -60,7 +60,7 @@ public class NewView extends JDialog {
 	 * The only instance of the class
 	 * 
 	 */
-	static NewView instance;
+	private static NewView instance;
 
 	/**
 	 * <b><i>Singleton</i></b> implementation. Checks if an instance of the class already exists and returns it. 
