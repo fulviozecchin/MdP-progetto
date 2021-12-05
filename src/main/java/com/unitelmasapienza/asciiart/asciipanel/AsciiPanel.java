@@ -722,10 +722,10 @@ public class AsciiPanel extends JPanel {
       //      throw new IllegalArgumentException("character " + character + " must be within range [0," + glyphs.length + "]." );
 
         if (x >= 0 && x < getPanelWidthInCharacters())
-        //    throw new IllegalArgumentException("x " + x + " must be within range [0," + widthInCharacters + ")" );
+        //    throw new IllegalArgumentException("x " + x + " must be within range [0," + getPanelWidthInCharacters() + ")" );
 
         if (y >= 0 && y < getPanelHeightInCharacters())
-          //  throw new IllegalArgumentException("y " + y + " must be within range [0," + heightInCharacters + ")" );
+          //  throw new IllegalArgumentException("y " + y + " must be within range [0," + getPanelHeightInCharacters() + ")" );
         {
         
         getPanelCharsMatrix()[x][y] = character;
