@@ -34,7 +34,7 @@ public class ActionNewListener implements ActionListener {
 			int widthValue = Integer.parseInt(newView.getWidthTextbox().getText());
 			int heightValue = Integer.parseInt(newView.getHeightTextbox().getText());
 			controller.reset(widthValue, heightValue);
-			controller.getView().repaint();
+			controller.resetView();
 			newView.setVisible(false);
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -52,10 +52,10 @@ public class ControllerMouseLintener implements MouseListener {
 			getImageEditorController().onClick(e.getButton());
 			break;
 		case 1:
-			getImageEditorController().onPick(e.getButton());
+			getImageEditorController().onFill(e.getButton());
 			break;
 		case 2:
-			getImageEditorController().onFill(e.getButton());
+			getImageEditorController().onPick(e.getButton());
 			break;
 		default:
 			break;

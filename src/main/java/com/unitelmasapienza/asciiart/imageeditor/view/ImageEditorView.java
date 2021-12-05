@@ -227,18 +227,8 @@ public class ImageEditorView extends JFrame {
 		getCharColorPreview().setBackground(getDrawnCharColor());
 		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
 		
-		getPaintToolButton().setBounds(0, 0, 80, 40);
-		getFillToolButton().setBounds(0, 40, 80, 40);
-		getPickToolButton().setBounds(0, 80, 80, 40);
-		getMinusButton().setBounds(0, 120, 15, 40);
-		getCharIndexButton().setBounds(15, 120, 34, 40);
-		getPlusButton().setBounds(65, 120, 15, 40);
-		getCharColorPreview().setBounds(0, 160, 40, 40);
-		getCharBackgroundColorPreview().setBounds(40, 160, 40, 40);
-		getSelectedCharPreview().setBounds(49, 120, 16, 16);
-		
-		controlTool.setBounds(0, 0, 80, 80 * 16);
-		this.add(controlTool);
+		//positioning all GUI elements
+		positioningViewElements(controlTool);
 		
 		//Menu Bar
 		setMenuBar(menuBar);
@@ -259,8 +249,27 @@ public class ImageEditorView extends JFrame {
 		this.menuBar.setVisible(true);
 	}
 	
-	
-	//EVENTS
+	/**
+	 * This method positions the GUI elements in the view.
+	 * It takes the controlTool in input to set the buttons and add it to the Container class which is the main 
+	 * super-class that contains the view.
+	 * 
+	 * @param controlTool is the panel object which contains all GUI elements.
+	 */
+	private void positioningViewElements(JPanel controlTool) {
+		getPaintToolButton().setBounds(0, 0, 80, 40);
+		getFillToolButton().setBounds(0, 40, 80, 40);
+		getPickToolButton().setBounds(0, 80, 80, 40);
+		getMinusButton().setBounds(0, 120, 15, 40);
+		getCharIndexButton().setBounds(15, 120, 34, 40);
+		getPlusButton().setBounds(65, 120, 15, 40);
+		getCharColorPreview().setBounds(0, 160, 40, 40);
+		getCharBackgroundColorPreview().setBounds(40, 160, 40, 40);
+		getSelectedCharPreview().setBounds(49, 120, 16, 16);
+		
+		controlTool.setBounds(0, 0, 80, 80 * 16);
+		this.add(controlTool);
+	}
 	
 	
 	/**

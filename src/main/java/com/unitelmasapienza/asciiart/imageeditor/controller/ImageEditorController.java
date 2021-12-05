@@ -150,7 +150,7 @@ public class ImageEditorController {
 		view.getFillToolButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(2);
+				view.setSelectedToolIndex(1);
 			}
 		});
 		
@@ -158,7 +158,7 @@ public class ImageEditorController {
 		view.getPickToolButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(1);
+				view.setSelectedToolIndex(2);
 			}
 		});
 		
@@ -379,6 +379,16 @@ public class ImageEditorController {
 		view.getPanel().repaint();
 	}
 	
+	/**
+	 * This method reset the GUI tool to default <i>Paint Tool</i>.
+	 * So when we need to reset the view (for example to create a new one) this method directly set the
+	 * paint tool as default for drawing canvas.
+	 * 
+	 */
+	public void resetView() {
+		getView().setSelectedToolIndex(0);
+		getView().repaint(); 
+	}
 	
 	
 	//GETTERS AND SETTERS
