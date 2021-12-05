@@ -4,18 +4,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.LookupOp;
 import java.awt.image.ShortLookupTable;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
 
 /**
  * The class represents the <b>drawing space (canvas) of the application</b>.

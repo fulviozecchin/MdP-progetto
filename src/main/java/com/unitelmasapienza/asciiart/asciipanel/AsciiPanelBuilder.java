@@ -15,32 +15,135 @@ import java.awt.image.BufferedImage;
 public class AsciiPanelBuilder {
 	
 	/**
-	 * Follow all fields of AsciiPanel
-	 * @see AsciiPanel to understand every field
+	 * <i>Builder</i> version of field offscreenGraphics in AsciiPanel
 	 * 
 	 */
-	
     private Graphics offscreenGraphics;
+    
+	/**
+	 * <i>Builder</i> version of field panelWidthInCharacters in AsciiPanel
+	 * 
+	 */
     private int panelWidthInCharacters;
+    
+	/**
+	 * <i>Builder</i> version of field panelHeightInCharacters in AsciiPanel
+	 * 
+	 */
     private int panelHeightInCharacters;
+    
+	/**
+	 * <i>Builder</i> version of field charWidth in AsciiPanel
+	 * 
+	 */
     private int charWidth = 9;
+    
+	/**
+	 * <i>Builder</i> version of field charHeight in AsciiPanel
+	 * 
+	 */
     private int charHeight = 16;
+    
+	/**
+	 * <i>Builder</i> version of field panelFontFilename in AsciiPanel
+	 * 
+	 */
     private String panelFontFilename = "cp437_9x16.png";
+    
+	/**
+	 * <i>Builder</i> version of field defaultBackgroundColor in AsciiPanel
+	 * 
+	 */
     private Color defaultBackgroundColor;
+    
+	/**
+	 * <i>Builder</i> version of field defaultForegroundColor in AsciiPanel
+	 * 
+	 */
     private Color defaultForegroundColor;
+    
+	/**
+	 * <i>Builder</i> version of field cursorDistanceFromLeft in AsciiPanel
+	 * 
+	 */
     private int cursorDistanceFromLeft;
+    
+	/**
+	 * <i>Builder</i> version of field cursorDistanceFromTop in AsciiPanel
+	 * 
+	 */
     private int cursorDistanceFromTop;
+    
+	/**
+	 * <i>Builder</i> version of field glyphSprite in AsciiPanel
+	 * 
+	 */
     private BufferedImage glyphSprite;
+    
+	/**
+	 * <i>Builder</i> version of field glyphsList in AsciiPanel
+	 * 
+	 */
     private BufferedImage[] glyphsList;
+    
+	/**
+	 * <i>Builder</i> version of field panelCharsMatrix in AsciiPanel
+	 * 
+	 */
     private char[][] panelCharsMatrix;
+    
+	/**
+	 * <i>Builder</i> version of field panelCharsBackgroundColors in AsciiPanel
+	 * 
+	 */
     private Color[][] panelCharsBackgroundColors;
+    
+	/**
+	 * <i>Builder</i> version of field panelCharsForegroundColors in AsciiPanel
+	 * 
+	 */
     private Color[][] panelCharsForegroundColors;
+    
+	/**
+	 * <i>Builder</i> version of field panelOldChars in AsciiPanel
+	 * 
+	 */
     private char[][] panelOldChars;
+    
+	/**
+	 * <i>Builder</i> version of field panelOldCharsBackgroundColors in AsciiPanel
+	 * 
+	 */
     private Color[][] panelOldCharsBackgroundColors;
+    
+	/**
+	 * <i>Builder</i> version of field panelOldCharsForegroundColors in AsciiPanel
+	 * 
+	 */
     private Color[][] panelOldCharsForegroundColors;
+    
+	/**
+	 * <i>Builder</i> version of field asciiFont in AsciiPanel
+	 * 
+	 */
     private AsciiFont asciiFont;
+    
+	/**
+	 * <i>Builder</i> version of field mouseCursorX in AsciiPanel
+	 * 
+	 */
     private int mouseCursorX;
+
+	/**
+	 * <i>Builder</i> version of field mouseCursorY in AsciiPanel
+	 * 
+	 */
     private int mouseCursorY;
+    
+	/**
+	 * <i>Builder</i> version of field offscreenBuffer in AsciiPanel
+	 * 
+	 */
 	private Image offscreenBuffer;
 	
 	/**
