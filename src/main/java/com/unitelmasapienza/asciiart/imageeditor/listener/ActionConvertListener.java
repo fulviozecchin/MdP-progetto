@@ -197,7 +197,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The ascii panel getter
 	 * @return the asciiPanel
 	 */
-	AsciiPanel getAsciiPanel() {
+	public AsciiPanel getAsciiPanel() {
 		return asciiPanel;
 	}
 
@@ -205,7 +205,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The asciiPanel setter
 	 * @param asciiPanel the ascii panel to set
 	 */
-	void setAsciiPanel(AsciiPanel asciiPanel) {
+	public void setAsciiPanel(AsciiPanel asciiPanel) {
 		this.asciiPanel = asciiPanel;
 	}
 
@@ -213,7 +213,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The threshold textbox getter
 	 * @return the thresholdTextbox
 	 */
-	JTextField getThresholdTextbox() {
+	public JTextField getThresholdTextbox() {
 		return thresholdTextbox;
 	}
 
@@ -221,7 +221,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The threshold textbox setter
 	 * @param thresholdTextbox the thresholdTextbox to set
 	 */
-	void setThresholdTextbox(JTextField thresholdTextbox) {
+	public void setThresholdTextbox(JTextField thresholdTextbox) {
 		this.thresholdTextbox = thresholdTextbox;
 	}
 
@@ -229,7 +229,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The checkbox for 'all colors' getter
 	 * @return the allColorsCheckbox
 	 */
-	JToggleButton getAllColorsCheckbox() {
+	public JToggleButton getAllColorsCheckbox() {
 		return allColorsCheckbox;
 	}
 
@@ -237,7 +237,7 @@ public class ActionConvertListener implements ActionListener {
 	 * The checkbox for 'all colors' setter
 	 * @param allColorsCheckbox the allColorsCheckbox to set
 	 */
-	void setAllColorsCheckbox(JToggleButton allColorsCheckbox) {
+	public void setAllColorsCheckbox(JToggleButton allColorsCheckbox) {
 		this.allColorsCheckbox = allColorsCheckbox;
 	}
 }
