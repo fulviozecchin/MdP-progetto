@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.asciipanel.factory;
+package com.unitelmasapienza.asciiart.asciipanel.factories;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;

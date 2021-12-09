@@ -1,7 +1,7 @@
-package com.unitelmasapienza.asciiart.imageeditor.factory;
+package com.unitelmasapienza.asciiart.imageeditor.factories;
 
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorViewBuilder;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorViewBuilder;
 
 /**
  * This is a factory class to implement the <b>Factory Design Pattern</b>.

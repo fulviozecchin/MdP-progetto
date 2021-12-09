@@ -1,10 +1,10 @@
-package com.unitelmasapienza.asciiart.imageeditor.listener;
+package com.unitelmasapienza.asciiart.imageeditor.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.SelectCharView;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.views.SelectCharView;
 
 /**
  * The class manages the <b>Action Listener for each character selected from the character palette frame</b>.

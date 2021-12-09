@@ -1,11 +1,11 @@
-package com.unitelmasapienza.asciiart.imageeditor.listener;
+package com.unitelmasapienza.asciiart.imageeditor.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
-import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.views.NewView;
 
 /**
  * The class represents the action listener for the <b>reset functionality</b> of the main canvas panel.

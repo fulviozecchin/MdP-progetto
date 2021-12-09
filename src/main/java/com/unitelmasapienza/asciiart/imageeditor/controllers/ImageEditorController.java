@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.controller;
+package com.unitelmasapienza.asciiart.imageeditor.controllers;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -10,18 +10,18 @@ import javax.swing.JColorChooser;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactory;
-import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
-import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactory;
-import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactoryConcrete;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionLoadListener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionSaveListener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ControllerMouseLintener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ControllerMouseMotionLintener;
-import com.unitelmasapienza.asciiart.imageeditor.view.SelectCharView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
-import com.unitelmasapienza.asciiart.imageeditor.view.NewView;
+import com.unitelmasapienza.asciiart.asciipanel.factories.AsciiPanelFactory;
+import com.unitelmasapienza.asciiart.asciipanel.factories.AsciiPanelFactoryConcrete;
+import com.unitelmasapienza.asciiart.imageeditor.factories.ImageEditorViewFactory;
+import com.unitelmasapienza.asciiart.imageeditor.factories.ImageEditorViewFactoryConcrete;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionLoadListener;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionSaveListener;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ControllerMouseLintener;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ControllerMouseMotionLintener;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImporterView;
+import com.unitelmasapienza.asciiart.imageeditor.views.NewView;
+import com.unitelmasapienza.asciiart.imageeditor.views.SelectCharView;
 
 /**
  * This class, in <b>MVC (Model View Controller) Design Pattern</b> represents the controller.

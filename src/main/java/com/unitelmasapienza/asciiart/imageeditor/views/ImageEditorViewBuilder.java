@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.view;
+package com.unitelmasapienza.asciiart.imageeditor.views;
 
 import java.awt.image.BufferedImage;
 

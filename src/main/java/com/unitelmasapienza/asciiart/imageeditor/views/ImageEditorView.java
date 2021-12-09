@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.view;
+package com.unitelmasapienza.asciiart.imageeditor.views;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.factory.ImageEditorViewFactoryConcrete;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.factories.ImageEditorViewFactoryConcrete;
 
 /**
  * This class is the main graphics class for the application. It's represents the GUI used by user to interact with

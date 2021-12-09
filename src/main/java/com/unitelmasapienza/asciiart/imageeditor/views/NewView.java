@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.view;
+package com.unitelmasapienza.asciiart.imageeditor.views;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionNewListener;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionNewListener;
 
 /**
  * The class manages the frame dialog for the creation of a <b>new main drawing canvas</b>.

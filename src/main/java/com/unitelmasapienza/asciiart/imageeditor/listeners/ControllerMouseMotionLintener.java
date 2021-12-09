@@ -1,10 +1,10 @@
-package com.unitelmasapienza.asciiart.imageeditor.listener;
+package com.unitelmasapienza.asciiart.imageeditor.listeners;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
 
 /**
  * The class represents the mouse listener for <b>mouse movement</b> functionality for the drawing canvas panel.

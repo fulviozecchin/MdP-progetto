@@ -14,11 +14,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import com.unitelmasapienza.asciiart.asciipanel.factory.AsciiPanelFactoryConcrete;
+import com.unitelmasapienza.asciiart.asciipanel.factories.AsciiPanelFactoryConcrete;
 
 /**
  * The class represents the <b>drawing space (canvas) of the application</b>.
- * @see com.unitelmasapienza.asciiart.imageeditor.ImageEditor which instantiates one when it is created
+ * @see asciiart.imageeditor.ImageEditor which instantiates one when it is created
  *      and use it to draw, import images or load drawings on it.
  * 
  * @author Fulvio Zecchin
@@ -396,7 +396,7 @@ public class AsciiPanel extends JPanel {
      * The method is called when you want to save a drawing in a file. 
      * It takes the file name as an absolute path and saves it in the desired path with the chosen name.
      * 
-     * @see com.unitelmasapienza.asciiart.imageeditor.ActionSave which representing the save action.
+     * @see asciiart.imageeditor.ActionSave which representing the save action.
      * 
      * @param filename is the absolute path, contains file system directory in which file will be saved and filename
      */
@@ -738,7 +738,7 @@ public class AsciiPanel extends JPanel {
     
     /**
      * The method is used for the filler functionality of the application. It fills the drawing canvas with the selected character.
-	 * @see com.unitelmasapienza.asciiart.imageeditor.ImageEditor#onFill(int button) class that calls this method when the fill functionality is chosen.
+	 * @see asciiart.imageeditor.ImageEditor#onFill(int button) class that calls this method when the fill functionality is chosen.
      * @param character chosen
      * @param x coordinate from mouse cursor
      * @param y coordinate from mouse cursor
@@ -990,7 +990,7 @@ public class AsciiPanel extends JPanel {
     }
 
     /**
-     * This method seems to be a sort of "wrapper method" to perform some tile transformation in the panel using the interface com.unitelmasapienza.asciiart.asciipanel.TileTransformer.
+     * This method seems to be a sort of "wrapper method" to perform some tile transformation in the panel using the interface asciiart.asciipanel.TileTransformer.
 	 * However, it is never called or used in the application.
 	 * 
      * @param transformer is the interface containing the method with the behaviour for the transformation
@@ -1065,7 +1065,7 @@ public class AsciiPanel extends JPanel {
 	/**
 	 * Draws the raster of the image to be loaded into the drawing canvas.
 	 * 
-	 * @see com.unitelmasapienza.asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which is the method that call this with image to load.
+	 * @see asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which is the method that call this with image to load.
 	 * 
 	 * @param raster is the image raster to draw
 	 * @param x is the <i>x</i>-coordinate to start to draw

@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.view;
+package com.unitelmasapienza.asciiart.imageeditor.views;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionViewCharListener;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionViewCharListener;
 
 /**
  * The class manages the <b>character palette frame</b> for choosing and selecting the character to draw.

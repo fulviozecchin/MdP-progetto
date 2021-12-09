@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.listener;
+package com.unitelmasapienza.asciiart.imageeditor.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import javax.swing.JFileChooser;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiRaster;
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
 
 /**
  * The class manages the Action Listener for the <b>function of loading an existing Ascii image</b> in the drawing canvas.

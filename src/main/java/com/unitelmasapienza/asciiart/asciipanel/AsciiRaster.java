@@ -11,7 +11,7 @@ import java.io.FileReader;
  * It is used for parsing a drawing to be loaded into the application, 
  * from which it is then copied/written to the canvas.
  * 
- * @see com.unitelmasapienza.asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which use it to load an Ascii file into canvas.
+ * @see asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which use it to load an Ascii file into canvas.
  * 
  * @author Fulvio Zecchin
  *
@@ -69,7 +69,7 @@ public class AsciiRaster {
 	 * This method can be seen as a "constructor" which is called from other classes. 
 	 * It creates and returns an AsciiRaster from the absolute path of a file (this filename) to be loaded.
 	 * 
-	 * @see com.unitelmasapienza.asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which call to load an Ascii image into drawing canvas.
+	 * @see asciiart.imageeditor.ActionLoad#actionPerformed(ActionEvent e) which call to load an Ascii image into drawing canvas.
 	 * @param filename is the filename to be loaded (its absolute path in the file system will be retrieved)
 	 * @return an AsciiRaster object containing all the information of the image to be uploaded.
 	 */

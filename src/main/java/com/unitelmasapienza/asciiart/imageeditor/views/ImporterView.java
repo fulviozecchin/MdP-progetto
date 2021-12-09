@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.view;
+package com.unitelmasapienza.asciiart.imageeditor.views;
 
 
 import javax.swing.JButton;
@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionConvertListener;
-import com.unitelmasapienza.asciiart.imageeditor.listener.ActionImportListener;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionConvertListener;
+import com.unitelmasapienza.asciiart.imageeditor.listeners.ActionImportListener;
 /**
  * The class manages the <b>importing images frame</b> into the canvas of application.
  * 

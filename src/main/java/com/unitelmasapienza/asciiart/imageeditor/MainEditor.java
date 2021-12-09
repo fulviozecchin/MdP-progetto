@@ -1,6 +1,6 @@
 package com.unitelmasapienza.asciiart.imageeditor;
 
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
 
 /**
  * The <b>application's entry point</b>

@@ -1,4 +1,4 @@
-package com.unitelmasapienza.asciiart.imageeditor.listener;
+package com.unitelmasapienza.asciiart.imageeditor.listeners;
 
 import java.awt.Color;
 import java.awt.Transparency;
@@ -16,9 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
-import com.unitelmasapienza.asciiart.imageeditor.controller.ImageEditorController;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImageEditorView;
-import com.unitelmasapienza.asciiart.imageeditor.view.ImporterView;
+import com.unitelmasapienza.asciiart.imageeditor.controllers.ImageEditorController;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImageEditorView;
+import com.unitelmasapienza.asciiart.imageeditor.views.ImporterView;
 
 /**
  * The class represents the action listener for the <b>image conversion functionality</b>, after the image has been imported.
