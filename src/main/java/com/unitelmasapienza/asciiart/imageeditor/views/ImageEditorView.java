@@ -141,6 +141,12 @@ public class ImageEditorView extends JFrame {
 	private JMenu menuBarFile;
 	
 	/**
+	 * In the choice menu in GUI palette it represents the menu called 'Edit' which
+	 * contains all the menu item
+	 */
+	private JMenu menuBarEdit;
+	
+	/**
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'New'
 	 */
 	private JMenuItem menuBarFileNew;
@@ -159,6 +165,27 @@ public class ImageEditorView extends JFrame {
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'Import'
 	 */
 	private JMenuItem menuBarFileImport;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Edit' menu it represents the field 'Select'
+	 */
+	private JMenuItem menuItemSelect;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Edit' menu it represents the field 'Copy'
+	 */
+	private JMenuItem menuItemCopy;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Edit' menu it represents the field 'Cut'
+	 */
+	private JMenuItem menuItemCut;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Edit' menu it represents the field 'Paste'
+	 */
+	private JMenuItem menuItemPaste;
+
 	
 	/**
 	 * This is public constructor used by Builder to create physically the ImageEditorView object for application.
@@ -184,10 +211,15 @@ public class ImageEditorView extends JFrame {
 	 * @param controlTool is the controlTool which contains all tool objects
 	 * @param menuBar is the top menu bar for GUI
 	 * @param fileMenu is the <i>File</i> menu for top menu bar
+	 * @param editMenu is the <i>Edit</i> menu for top menu bar
 	 * @param newFileItem is the <i>New</i> menu item for File menu
 	 * @param loadFileItem is the <i>Load</i> menu item for File menu
 	 * @param saveFileItem is the <i>Save</i> menu item for File menu
 	 * @param importFileItem is the <i>Import</i> menu item for File menu
+	 * @param selectItem is the <i>Select</i> menu item for Edit menu
+	 * @param copyItem is the <i>Copy</i> menu item for Edit menu
+	 * @param cutItem is the <i>Cut</i> menu item for Edit menu
+	 * @param pasteItem is the <i>Paste</i> menu item for Edit menu
 	 * 
 	 */
 	public ImageEditorView(AsciiPanel selectedCharPreview, 
@@ -201,11 +233,17 @@ public class ImageEditorView extends JFrame {
 			JButton fillToolButton, 
 			JPanel controlTool, 
 			JMenuBar menuBar, 
-			JMenu fileMenu, 
+			JMenu fileMenu,
+			JMenu editMenu,
 			JMenuItem newFileItem, 
 			JMenuItem loadFileItem,
 			JMenuItem saveFileItem, 
-			JMenuItem importFileItem) {
+			JMenuItem importFileItem,
+			JMenuItem selectItem,
+			JMenuItem copyItem,
+			JMenuItem cutItem,
+			JMenuItem pasteItem
+			) {
 		
 		super("ASCII ART - Image Editor");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -231,23 +269,10 @@ public class ImageEditorView extends JFrame {
 		//positioning all GUI elements
 		positioningViewElements(controlTool);
 		
-		//Menu Bar
-		setMenuBar(menuBar);
-		setMenuBarFile(fileMenu);
+		//positioning top-menu bar
+		composingMenuBar(menuBar, fileMenu, editMenu, newFileItem, loadFileItem, saveFileItem, importFileItem, 
+				selectItem, copyItem, cutItem, pasteItem);
 		
-		setMenuBarFileNew(newFileItem);
-		setMenuBarFileLoad(loadFileItem);
-		setMenuBarFileSave(saveFileItem);
-		setMenuBarFileImport(importFileItem);
-		
-		this.menuBar.add(getMenuBarFile());
-		getMenuBarFile().add(getMenuBarFileNew());
-		getMenuBarFile().add(getMenuBarFileLoad());
-		getMenuBarFile().add(getMenuBarFileSave());
-		getMenuBarFile().add(getMenuBarFileImport());
-		
-		this.setJMenuBar(menuBar);
-		this.menuBar.setVisible(true);
 	}
 	
 	/**
@@ -270,6 +295,72 @@ public class ImageEditorView extends JFrame {
 		
 		controlTool.setBounds(0, 0, 80, 80 * 16);
 		this.add(controlTool);
+	}
+	
+	/**
+	 * This method positions the top-menu bar to the GUI.
+	 * It takes all fields related to top-menu bar (the <i>main</i> bar, and the relative voices (<i>File</i>, <i>Edit</i>) with
+	 * all relative sub-items, and sets to the top main bar.
+	 * Finally it adds the menu-bar to the parent (<b>Application Frame</> menu bar and sets it to visible.
+	 * 
+	 * @param menuBar is the general top-menu bar
+	 * @param fileMenu is the 'File' menu bar voice
+	 * @param editMenu is the 'Edit' menu bar voice
+	 * @param newFileItem is the 'New' item on File Menu
+	 * @param loadFileItem is the 'Load' item on File Menu
+	 * @param saveFileItem is the 'Save' item on File Menu
+	 * @param importFileItem is the 'Import' item on File Menu
+	 * @param selectItem is the 'Select' item on Edit Menu
+	 * @param copyItem is the 'Copy' item on Edit Menu
+	 * @param cutItem is the 'Cut' item on Edit Menu
+	 * @param pasteItem is the 'Paste' item on Edit Menu
+	 */
+	private void composingMenuBar(
+			JMenuBar menuBar, 
+			JMenu fileMenu,
+			JMenu editMenu,
+			JMenuItem newFileItem, 
+			JMenuItem loadFileItem,
+			JMenuItem saveFileItem, 
+			JMenuItem importFileItem,
+			JMenuItem selectItem,
+			JMenuItem copyItem,
+			JMenuItem cutItem,
+			JMenuItem pasteItem) {
+		
+		setMenuBar(menuBar);
+		setMenuBarFile(fileMenu);
+		setMenuBarEdit(editMenu);
+		
+		//setting file menu items
+		setMenuBarFileNew(newFileItem);
+		setMenuBarFileLoad(loadFileItem);
+		setMenuBarFileSave(saveFileItem);
+		setMenuBarFileImport(importFileItem);
+		
+		//setting edit menu items
+		setMenuItemSelect(selectItem);
+		setMenuItemCopy(copyItem);
+		setMenuItemCut(cutItem);
+		setMenuItemPaste(pasteItem);
+		
+		//add file menu to top-bar
+		this.menuBar.add(getMenuBarFile());
+		if(getMenuBarFileNew() != null) getMenuBarFile().add(getMenuBarFileNew());
+		if(getMenuBarFileLoad() != null) getMenuBarFile().add(getMenuBarFileLoad());
+		if(getMenuBarFileSave() != null) getMenuBarFile().add(getMenuBarFileSave());
+		if(getMenuBarFileImport() != null) getMenuBarFile().add(getMenuBarFileImport());
+		
+		//add edit menu to top-bar
+		this.menuBar.add(getMenuBarEdit());
+		if(getMenuItemSelect() != null) getMenuBarEdit().add(getMenuItemSelect());
+		if(getMenuItemCopy() != null) getMenuBarEdit().add(getMenuItemCopy());
+		if(getMenuItemCut() != null) getMenuBarEdit().add(getMenuItemCut());
+		if(getMenuItemPaste() != null) getMenuBarEdit().add(getMenuItemPaste());
+		
+		//make top-bar visible
+		this.setJMenuBar(menuBar);
+		this.menuBar.setVisible(true);
 	}
 	
 	
@@ -584,6 +675,24 @@ public class ImageEditorView extends JFrame {
 	}
 
 	/**
+	 * The top menu bar Edit object getter.
+	 * 
+	 * @return top menu bar Edit.
+	 */
+	private JMenu getMenuBarEdit() {
+		return menuBarEdit;
+	}
+
+	/**
+	 * The top menu bar Edit object setter. 
+	 * 
+	 * @param menuBarEdit the menu object to set.
+	 */	
+	private void setMenuBarEdit(JMenu menuBarEdit) {
+		this.menuBarEdit = menuBarEdit;
+	}
+	
+	/**
 	 * The <i>New</i> item of menu file getter.
 	 * 
 	 * @return the new item of menu file.
@@ -653,6 +762,78 @@ public class ImageEditorView extends JFrame {
 	 */
 	public void setMenuBarFileImport(JMenuItem menuBarFileImport) {
 		this.menuBarFileImport = menuBarFileImport;
+	}
+	
+	/**
+	 * The <i>Select</i> item of menu edit getter.
+	 * 
+	 * @return the select item of menu edit.
+	 */
+	private JMenuItem getMenuItemSelect() {
+		return menuItemSelect;
+	}
+
+	/**
+	 * The <i>Select</i> item of menu edit setter.
+	 *  
+	 * @param menuItemSelect item to set
+	 */
+	private void setMenuItemSelect(JMenuItem menuItemSelect) {
+		this.menuItemSelect = menuItemSelect;
+	}
+	
+	/**
+	 * The <i>Copy</i> item of menu edit getter.
+	 * 
+	 * @return the copy item of menu edit.
+	 */
+	private JMenuItem getMenuItemCopy() {
+		return menuItemCopy;
+	}
+
+	/**
+	 * The <i>Copy</i> item of menu edit setter.
+	 *  
+	 * @param menuItemCopy item to set
+	 */
+	private void setMenuItemCopy(JMenuItem menuItemCopy) {
+		this.menuItemCopy = menuItemCopy;
+	}
+
+	/**
+	 * The <i>Cut</i> item of menu edit getter.
+	 * 
+	 * @return the cut item of menu edit.
+	 */
+	private JMenuItem getMenuItemCut() {
+		return menuItemCut;
+	}
+
+	/**
+	 * The <i>Cut</i> item of menu edit setter.
+	 *  
+	 * @param menuItemCut item to set
+	 */
+	private void setMenuItemCut(JMenuItem menuItemCut) {
+		this.menuItemCut = menuItemCut;
+	}
+
+	/**
+	 * The <i>Paste</i> item of menu edit getter.
+	 * 
+	 * @return the paste item of menu edit.
+	 */
+	private JMenuItem getMenuItemPaste() {
+		return menuItemPaste;
+	}
+
+	/**
+	 * The <i>Paste</i> item of menu edit setter.
+	 *  
+	 * @param menuItemPaste item to set
+	 */
+	private void setMenuItemPaste(JMenuItem menuItemPaste) {
+		this.menuItemPaste = menuItemPaste;
 	}
 	
 }

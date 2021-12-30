@@ -50,6 +50,8 @@ public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 				.loadFileMenuItem()
 				.saveFileMenuItem()
 				.importFileMenuItem()
+				.selectMenuItem()
+				.addEditToMenuBar()
 				.addFileToMenuBar()
 				.build();
 		return view;

@@ -40,10 +40,15 @@ public class ImageEditorViewBuilder {
 	private BufferedImage importBI;
 	private JMenuBar menuBar;
 	private JMenu menuBarFile;
+	private JMenu menuBarEdit;
 	private JMenuItem menuBarFileNew;
 	private JMenuItem menuBarFileLoad;
 	private JMenuItem menuBarFileSave;
 	private JMenuItem menuBarFileImport;
+	private JMenuItem menuItemSelect;
+	private JMenuItem menuItemCopy;
+	private JMenuItem menuItemCut;
+	private JMenuItem menuItemPaste;
 	
 	//This field will be passed to concrete view object already
 	private JPanel controlTool;
@@ -326,8 +331,18 @@ public class ImageEditorViewBuilder {
 		return this;
 	}
 	
+	public ImageEditorViewBuilder selectMenuItem(JMenuItem... selectMenuItem) {
+		
+		if(selectMenuItem.length > 0 && selectMenuItem[0] != null) setMenuBarFileImport(selectMenuItem[0]);
+		else {
+			ImageIcon selectIcon = new ImageIcon("src/main/resources/icons/select icon.png");
+			setMenuItemSelect(new JMenuItem("Select"));
+			getMenuItemSelect().setIcon(selectIcon);
+		}
+		return this;
+	}
 	
-	//Chiamare alla fine per il menu' che conterra' tutte le voci di opzione aggiunte
+	
 	/**
 	 * This method add all menu item to 'File' option of top menu bar.
 	 * 
@@ -339,12 +354,36 @@ public class ImageEditorViewBuilder {
 		
 		if(fileMenu.length > 0 && fileMenu[0] != null) setMenuBarFile(fileMenu[0]);
 		else {
+			//Setting 'File' menu
 			setMenuBarFile(new JMenu("File"));
 			getMenuBar().add(getMenuBarFile());
 			if(getMenuBarFileNew() != null) getMenuBarFile().add(getMenuBarFileNew());
 			if(getMenuBarFileLoad() != null) getMenuBarFile().add(getMenuBarFileLoad());
 			if(getMenuBarFileSave() != null) getMenuBarFile().add(getMenuBarFileSave());
 			if(getMenuBarFileImport() != null) getMenuBarFile().add(getMenuBarFileImport());
+		}
+		
+		return this;
+	}
+	
+	/**
+	 * This method add all menu item to 'Edit' option of top menu bar.
+	 * 
+	 * @param editMenu is the edit menu to set.
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder addEditToMenuBar(JMenu... editMenu) {
+		
+		if(editMenu.length > 0 && editMenu[0] != null) setMenuBarFile(editMenu[0]);
+		else {
+			//Setting 'File' menu
+			setMenuBarEdit(new JMenu("Edit"));
+			getMenuBar().add(getMenuBarEdit());
+			if(getMenuItemSelect() != null) getMenuBarEdit().add(getMenuItemSelect());
+			if(getMenuItemCopy() != null) getMenuBarEdit().add(getMenuItemCopy());
+			if(getMenuItemCut() != null) getMenuBarEdit().add(getMenuItemCut());
+			if(getMenuItemPaste() != null) getMenuBarEdit().add(getMenuItemPaste());
 		}
 		
 		return this;
@@ -369,10 +408,16 @@ public class ImageEditorViewBuilder {
 				getControlTool(),
 				getMenuBar(),
 				getMenuBarFile(),
+				getMenuBarEdit(),
 				getMenuBarFileNew(),
 				getMenuBarFileLoad(),
 				getMenuBarFileSave(),
-				getMenuBarFileImport());
+				getMenuBarFileImport(),
+				getMenuItemSelect(),
+				getMenuItemCopy(),
+				getMenuItemCut(),
+				getMenuItemPaste()
+				);
 	}
 	
 	
@@ -593,6 +638,24 @@ public class ImageEditorViewBuilder {
 	}
 
 	/**
+	 * <b>Builder</b> Version of the menu bar Edit getter.
+	 * 
+	 * @return the menu bar Edit
+	 */
+	private JMenu getMenuBarEdit() {
+		return menuBarEdit;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit setter.
+	 * 
+	 * @param menuBarEdit is the menu bar edit to set.
+	 */
+	private void setMenuBarEdit(JMenu menuBarEdit) {
+		this.menuBarEdit = menuBarEdit;
+	}
+
+	/**
 	 * <b>Builder</b> Version of the menu bar File <i>New</i> item getter.
 	 * 
 	 * @return the menu item for 'New' option.
@@ -611,7 +674,7 @@ public class ImageEditorViewBuilder {
 	}
 
 	/**
-	 * <b>Builder</b> Version of the menu bar File <i>Load</i> item setter.
+	 * <b>Builder</b> Version of the menu bar File <i>Load</i> item getter.
 	 * 
 	 * @return the menu item for 'Load' option.
 	 */
@@ -629,7 +692,7 @@ public class ImageEditorViewBuilder {
 	}
 
 	/**
-	 * <b>Builder</b> Version of the menu bar File <i>Save</i> item setter.
+	 * <b>Builder</b> Version of the menu bar File <i>Save</i> item getter.
 	 * 
 	 * @return the menu item for 'Save' option.
 	 */
@@ -647,7 +710,7 @@ public class ImageEditorViewBuilder {
 	}
 
 	/**
-	 * <b>Builder</b> Version of the menu bar File <i>Import</i> item setter.
+	 * <b>Builder</b> Version of the menu bar File <i>Import</i> item getter.
 	 * 
 	 * @return the menu item for 'Import' option.
 	 */
@@ -662,6 +725,78 @@ public class ImageEditorViewBuilder {
 	 */
 	private void setMenuBarFileImport(JMenuItem menuBarFileImport) {
 		this.menuBarFileImport = menuBarFileImport;
+	}
+	
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Select</i> item getter.
+	 * 
+	 * @return the menu item for 'Select' option.
+	 */
+	private JMenuItem getMenuItemSelect() {
+		return menuItemSelect;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Select</i> item setter.
+	 * 
+	 * @param menuItemSelect is the menu item for 'Select' option to set.
+	 */
+	private void setMenuItemSelect(JMenuItem menuItemSelect) {
+		this.menuItemSelect = menuItemSelect;
+	}
+	
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Copy</i> item getter.
+	 * 
+	 * @return the menu item for 'Copy' option.
+	 */
+	private JMenuItem getMenuItemCopy() {
+		return menuItemCopy;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Copy</i> item setter.
+	 * 
+	 * @param menuItemCopy is the menu item for 'Copy' option to set.
+	 */
+	private void setMenuItemCopy(JMenuItem menuItemCopy) {
+		this.menuItemCopy = menuItemCopy;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Cut</i> item getter.
+	 * 
+	 * @return the menu item for 'Cut' option.
+	 */
+	private JMenuItem getMenuItemCut() {
+		return menuItemCut;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Cut</i> item setter.
+	 * 
+	 * @param menuItemCut is the menu item for 'Cut' option to set.
+	 */
+	private void setMenuItemCut(JMenuItem menuItemCut) {
+		this.menuItemCut = menuItemCut;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Paste</i> item getter.
+	 * 
+	 * @return the menu item for 'Paste' option.
+	 */
+	private JMenuItem getMenuItemPaste() {
+		return menuItemPaste;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Edit <i>Paste</i> item setter.
+	 * 
+	 * @param menuItemPaste is the menu item for 'Paste' option to set.
+	 */
+	private void setMenuItemPaste(JMenuItem menuItemPaste) {
+		this.menuItemPaste = menuItemPaste;
 	}
 	
 	/**
