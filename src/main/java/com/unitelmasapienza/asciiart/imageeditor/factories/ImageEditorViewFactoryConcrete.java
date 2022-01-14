@@ -41,16 +41,20 @@ public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 				.minusButton()
 				.plusButton()
 				.charIndexButton()
-				.pickToolButton()
-				.paintToolButton()
-				.fillToolButton()
 				.createControlTool()
+				//create top-bar 
 				.menuBar()
+				//file menu
 				.newFileMenuItem()
 				.loadFileMenuItem()
 				.saveFileMenuItem()
 				.importFileMenuItem()
 				.addFileToMenuBar()
+				//tools menu
+				.paintToolsMenuItem()
+				.fillToolsMenuItem()
+				.pickToolsMenuItem()
+				.addToolsToMenuBar()
 				.build();
 		return view;
 	}

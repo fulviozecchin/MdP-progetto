@@ -100,24 +100,6 @@ public class ImageEditorView extends JFrame {
 	private JButton charIndexButton;
 	
 	/**
-	 * In the GUI palette it represents the button <b>"Pick"</b>
-	 * 
-	 */
-	private JButton pickToolButton;
-	
-	/**
-	 * In the GUI palette it represents the button <b>"Paint"</b>
-	 * 
-	 */
-	private JButton paintToolButton;
-	
-	/**
-	 * In the GUI palette it represents the button <b>"Fill"</b>
-	 * 
-	 */
-	private JButton fillToolButton;
-	
-	/**
 	 * In the GUI palette it represents the preview of selected character
 	 * 
 	 */
@@ -131,34 +113,65 @@ public class ImageEditorView extends JFrame {
 	
 	/**
 	 * In the GUI palette it represents the top choice menu
+	 * 
 	 */
 	private JMenuBar menuBar;
 	
 	/**
 	 * In the choice menu in GUI palette it represents the menu called 'File' which
 	 * contains all the menu item
+	 * 
 	 */
 	private JMenu menuBarFile;
 	
 	/**
+	 * In the choice menu in GUI palette it represents the menu called 'Tools' which
+	 * contains all the menu item
+	 * 
+	 */
+	private JMenu menuBarTools;
+	
+	/**
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'New'
+	 * 
 	 */
 	private JMenuItem menuBarFileNew;
 	
 	/**
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'Load'
+	 * 
 	 */
 	private JMenuItem menuBarFileLoad;
 	
 	/**
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'Save'
+	 * 
 	 */
 	private JMenuItem menuBarFileSave;
 	
 	/**
 	 * In the choice menu in GUI palette, inside 'File' menu it represents the field 'Import'
+	 * 
 	 */
 	private JMenuItem menuBarFileImport;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Tools' menu it represents the field 'Paint'
+	 * 
+	 */
+	private JMenuItem menuBarToolsPaint;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Tools' menu it represents the field 'Fill'
+	 * 
+	 */
+	private JMenuItem menuBarToolsFill;
+	
+	/**
+	 * In the choice menu in GUI palette, inside 'Tools' menu it represents the field 'Pick'
+	 * 
+	 */
+	private JMenuItem menuBarToolsPick;
 	
 	
 	/**
@@ -179,21 +192,17 @@ public class ImageEditorView extends JFrame {
 	 * @param minusButton is the minus button for GUI
 	 * @param plusButton is the plus button for GUI
 	 * @param charIndexButton is the char index button for GUI
- 	 * @param pickToolButton is the pick button for GUI
-	 * @param paintToolButton is the paint button for GUI
-	 * @param fillToolButton is the fill button for GUI
 	 * @param controlTool is the controlTool which contains all tool objects
 	 * @param menuBar is the top menu bar for GUI
 	 * @param fileMenu is the <i>File</i> menu for top menu bar
-	 * @param editMenu is the <i>Edit</i> menu for top menu bar
+	 * @param toolsMenu is the <i>Tools</i> menu for top menu bar
 	 * @param newFileItem is the <i>New</i> menu item for File menu
 	 * @param loadFileItem is the <i>Load</i> menu item for File menu
 	 * @param saveFileItem is the <i>Save</i> menu item for File menu
 	 * @param importFileItem is the <i>Import</i> menu item for File menu
-	 * @param selectItem is the <i>Select</i> menu item for Edit menu
-	 * @param copyItem is the <i>Copy</i> menu item for Edit menu
-	 * @param cutItem is the <i>Cut</i> menu item for Edit menu
-	 * @param pasteItem is the <i>Paste</i> menu item for Edit menu
+	 * @param paintToolsItem is the <i>Paint</i> menu item for Tools menu
+	 * @param fillToolsItem is the <i>Fill</i> menu item for Tools menu
+	 * @param pickToolsItem is the <i>Pick</i> menu item for Tools menu
 	 * 
 	 */
 	public ImageEditorView(AsciiPanel selectedCharPreview, 
@@ -202,16 +211,17 @@ public class ImageEditorView extends JFrame {
 			JButton minusButton,
 			JButton plusButton, 
 			JButton charIndexButton, 
-			JButton pickToolButton, 
-			JButton paintToolButton,
-			JButton fillToolButton, 
 			JPanel controlTool, 
 			JMenuBar menuBar, 
 			JMenu fileMenu,
+			JMenu toolsMenu,
 			JMenuItem newFileItem, 
 			JMenuItem loadFileItem,
 			JMenuItem saveFileItem, 
-			JMenuItem importFileItem
+			JMenuItem importFileItem,
+			JMenuItem paintToolsItem,
+			JMenuItem fillToolsItem,
+			JMenuItem pickToolsItem
 			) {
 		
 		super("ASCII ART - Image Editor");
@@ -228,9 +238,6 @@ public class ImageEditorView extends JFrame {
 		setMinusButton(minusButton);
 		setPlusButton(plusButton);
 		setCharIndexButton(charIndexButton);
-		setPickToolButton(pickToolButton);
-		setPaintToolButton(paintToolButton);
-		setFillToolButton(fillToolButton);
 		
 		getCharColorPreview().setBackground(getDrawnCharColor());
 		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
@@ -239,8 +246,12 @@ public class ImageEditorView extends JFrame {
 		positioningViewElements(controlTool);
 		
 		//positioning top-menu bar
-		composingMenuBar(menuBar, fileMenu, newFileItem, loadFileItem, saveFileItem, importFileItem);
+		composingFileMenuBar(menuBar, fileMenu, newFileItem, loadFileItem, saveFileItem, importFileItem);
+		composingToolsMenuBar(menuBar, toolsMenu, paintToolsItem, fillToolsItem, pickToolsItem);
 		
+		//make top-bar visible
+		this.setJMenuBar(menuBar);
+		this.menuBar.setVisible(true);
 	}
 	
 	/**
@@ -251,39 +262,35 @@ public class ImageEditorView extends JFrame {
 	 * @param controlTool is the panel object which contains all GUI elements.
 	 */
 	private void positioningViewElements(JPanel controlTool) {
-		getPaintToolButton().setBounds(0, 0, 80, 40);
-		getFillToolButton().setBounds(0, 40, 80, 40);
-		getPickToolButton().setBounds(0, 80, 80, 40);
-		getMinusButton().setBounds(0, 120, 15, 40);
-		getCharIndexButton().setBounds(15, 120, 34, 40);
-		getPlusButton().setBounds(65, 120, 15, 40);
-		getCharColorPreview().setBounds(0, 160, 40, 40);
-		getCharBackgroundColorPreview().setBounds(40, 160, 40, 40);
-		getSelectedCharPreview().setBounds(49, 120, 16, 16);
+		
+		getMinusButton().setBounds(0, 0, 40, 40);
+		getPlusButton().setBounds(40, 0, 40, 40);
+		
+		getSelectedCharPreview().setBounds(15, 50, 16, 16);
+		getCharIndexButton().setBounds(35, 40, 35, 35);
+		
+		getCharColorPreview().setBounds(0, 80, 40, 40);
+		getCharBackgroundColorPreview().setBounds(40, 80, 40, 40);
 		
 		controlTool.setBounds(0, 0, 80, 80 * 16);
 		this.add(controlTool);
 	}
 	
 	/**
-	 * This method positions the top-menu bar to the GUI.
-	 * It takes all fields related to top-menu bar (the <i>main</i> bar, and the relative voices (<i>File</i>, <i>Edit</i>) with
+	 * This method positions the top-menu file bar to the GUI.
+	 * It takes all fields related to top-menu bar (the <i>main</i> bar, and the relative voices (<i>File</i>) with
 	 * all relative sub-items, and sets to the top main bar.
 	 * Finally it adds the menu-bar to the parent (<b>Application Frame</> menu bar and sets it to visible.
 	 * 
 	 * @param menuBar is the general top-menu bar
 	 * @param fileMenu is the 'File' menu bar voice
-	 * @param editMenu is the 'Edit' menu bar voice
 	 * @param newFileItem is the 'New' item on File Menu
 	 * @param loadFileItem is the 'Load' item on File Menu
 	 * @param saveFileItem is the 'Save' item on File Menu
 	 * @param importFileItem is the 'Import' item on File Menu
-	 * @param selectItem is the 'Select' item on Edit Menu
-	 * @param copyItem is the 'Copy' item on Edit Menu
-	 * @param cutItem is the 'Cut' item on Edit Menu
-	 * @param pasteItem is the 'Paste' item on Edit Menu
+	 * 
 	 */
-	private void composingMenuBar(
+	private void composingFileMenuBar(
 			JMenuBar menuBar, 
 			JMenu fileMenu,
 			JMenuItem newFileItem, 
@@ -306,12 +313,40 @@ public class ImageEditorView extends JFrame {
 		if(getMenuBarFileLoad() != null) getMenuBarFile().add(getMenuBarFileLoad());
 		if(getMenuBarFileSave() != null) getMenuBarFile().add(getMenuBarFileSave());
 		if(getMenuBarFileImport() != null) getMenuBarFile().add(getMenuBarFileImport());
-		
-		//make top-bar visible
-		this.setJMenuBar(menuBar);
-		this.menuBar.setVisible(true);
 	}
 	
+	/**
+	 * This method positions the top-menu tools bar to the GUI.
+	 * It takes all fields related to top-menu bar (the <i>main</i> bar, and the relative voices (<i>Tools</i>) with
+	 * all relative sub-items, and sets to the top main bar.
+	 * Finally it adds the menu-bar to the parent (<b>Application Frame</> menu bar and sets it to visible.
+	 * 
+	 * @param menuBar is the general top-menu bar
+	 * @param toolsMenu is the 'Tools' menu bar voice
+	 * @param paintItem is the 'Paint' item on Tools Menu
+	 * @param fillItem is the 'Fill' item on Tools Menu
+	 * @param pickItem is the 'Pick' item on Tools Menu
+	 * 
+	 */
+	private void composingToolsMenuBar (
+			JMenuBar menuBar,
+			JMenu toolsMenu,
+			JMenuItem paintItem,
+			JMenuItem fillItem,
+			JMenuItem pickItem) {
+		setMenuBarTools(toolsMenu);
+		
+		//setting tools menu items
+		setMenuBarToolsPaint(paintItem);
+		setMenuBarToolsFill(fillItem);
+		setMenuBarToolsPick(pickItem);
+		
+		//add tools menu to top-bar
+		this.menuBar.add(getMenuBarTools());
+		if(getMenuBarToolsPaint() != null) getMenuBarTools().add(getMenuBarToolsPaint());
+		if(getMenuBarToolsFill() != null) getMenuBarTools().add(getMenuBarToolsFill());
+		if(getMenuBarToolsPick() != null) getMenuBarTools().add(getMenuBarToolsPick());
+	}
 	
 	/**
 	 * Updates the preview of the selected character
@@ -507,60 +542,6 @@ public class ImageEditorView extends JFrame {
 	}
 
 	/**
-	 * The pick tool button getter.
-	 * 
-	 * @return the pick tool button.
-	 */
-	public JButton getPickToolButton() {
-		return pickToolButton;
-	}
-
-	/**
-	 * The pick tool button getter.
-	 * 
-	 * @param pickToolButton the button to set.
-	 */
-	public void setPickToolButton(JButton pickToolButton) {
-		this.pickToolButton = pickToolButton;
-	}
-
-	/**
-	 * The paint tool button getter.
-	 * 
-	 * @return the paint tool button.
-	 */
-	public JButton getPaintToolButton() {
-		return paintToolButton;
-	}
-
-	/**
-	 * The paint tool button setter.
-	 * 
-	 * @param paintToolButton the button to set.
-	 */
-	public void setPaintToolButton(JButton paintToolButton) {
-		this.paintToolButton = paintToolButton;
-	}
-
-	/**
-	 * The fill tool button getter.
-	 * 
-	 * @return the fill tool button.
-	 */
-	public JButton getFillToolButton() {
-		return fillToolButton;
-	}
-
-	/**
-	 * The fill tool button setter.
-	 * 
-	 * @param fillToolButton the button to set.
-	 */
-	public void setFillToolButton(JButton fillToolButton) {
-		this.fillToolButton = fillToolButton;
-	}
-
-	/**
 	 * The selected char preview getter.
 	 * 
 	 * @return the selected char preview.
@@ -621,6 +602,24 @@ public class ImageEditorView extends JFrame {
 	 */
 	public void setMenuBarFile(JMenu menuBarFile) {
 		this.menuBarFile = menuBarFile;
+	}
+	
+	/**
+	 * The top menu bar Tools object getter.
+	 * 
+	 * @return top menu bar Tools.
+	 */
+	public JMenu getMenuBarTools() {
+		return menuBarTools;
+	}
+
+	/**
+	 * The top menu bar Tools object setter. 
+	 * 
+	 * @param menuBarTools the menu object to set.
+	 */
+	public void setMenuBarTools(JMenu menuBarTools) {
+		this.menuBarTools = menuBarTools;
 	}
 
 	/**
@@ -694,6 +693,61 @@ public class ImageEditorView extends JFrame {
 	public void setMenuBarFileImport(JMenuItem menuBarFileImport) {
 		this.menuBarFileImport = menuBarFileImport;
 	}
+
+	/**
+	 * The <i>Paint</i> item of menu tools getter.
+	 * 
+	 * @return the import item of menu tools.
+	 */
+	public JMenuItem getMenuBarToolsPaint() {
+		return menuBarToolsPaint;
+	}
+
+	/**
+	 * The <i>Paint</i> item of menu tools setter.
+	 *  
+	 * @param menuBarToolsPaint item to set
+	 */
+	public void setMenuBarToolsPaint(JMenuItem menuBarToolsPaint) {
+		this.menuBarToolsPaint = menuBarToolsPaint;
+	}
+
+	/**
+	 * The <i>Fill</i> item of menu file getter.
+	 * 
+	 * @return the import item of menu tools.
+	 */
+	public JMenuItem getMenuBarToolsFill() {
+		return menuBarToolsFill;
+	}
+
+	/**
+	 * The <i>Fill</i> item of menu file setter.
+	 *  
+	 * @param menuBarToolsFill item to set
+	 */
+	public void setMenuBarToolsFill(JMenuItem menuBarToolsFill) {
+		this.menuBarToolsFill = menuBarToolsFill;
+	}
+
+	/**
+	 * The <i>Pick</i> item of menu file getter.
+	 * 
+	 * @return the import item of menu tools.
+	 */
+	public JMenuItem getMenuBarToolsPick() {
+		return menuBarToolsPick;
+	}
+
+	/**
+	 * The <i>Pick</i> item of menu file setter.
+	 *  
+	 * @param menuBarToolsPick item to set
+	 */
+	public void setMenuBarToolsPick(JMenuItem menuBarToolsPick) {
+		this.menuBarToolsPick = menuBarToolsPick;
+	}
+	
 	
 	
 }

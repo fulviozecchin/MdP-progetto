@@ -138,30 +138,6 @@ public class ImageEditorController {
 			}
 		});
 		
-		//Listener for paint button
-		view.getPaintToolButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(0);
-			}
-		});
-		
-		//Listener for fill button
-		view.getFillToolButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(1);
-			}
-		});
-		
-		//Listener for pick button
-		view.getPickToolButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				view.setSelectedToolIndex(2);
-			}
-		});
-		
 		//Listener for minus button
 		view.getMinusButton().addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
@@ -249,7 +225,7 @@ public class ImageEditorController {
 		view.getPanel().addMouseListener(new ControllerMouseLintener(this));
 		view.getPanel().addMouseMotionListener(new ControllerMouseMotionLintener(this));
 		
-		//Listener for menu bar
+		//Listener for file menu bar
 		view.getMenuBarFileSave().addActionListener(new ActionSaveListener());
 		view.getMenuBarFileLoad().addActionListener(new ActionLoadListener());
 		view.getMenuBarFileImport().addActionListener(new ActionListener() {
@@ -264,6 +240,28 @@ public class ImageEditorController {
 			public void actionPerformed(ActionEvent e) {
 				NewView.getInstance().setVisible(true);
 				;
+			}
+		});
+		
+		//Listener for tools menu bar
+		view.getMenuBarToolsPaint().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setSelectedToolIndex(0);
+			}
+		});
+		
+		view.getMenuBarToolsFill().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setSelectedToolIndex(1);
+			}
+		});
+		
+		view.getMenuBarToolsPick().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.setSelectedToolIndex(2);
 			}
 		});
 	}

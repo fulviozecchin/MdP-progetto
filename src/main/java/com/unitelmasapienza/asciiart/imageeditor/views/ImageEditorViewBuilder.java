@@ -2,6 +2,7 @@ package com.unitelmasapienza.asciiart.imageeditor.views;
 
 import java.awt.image.BufferedImage;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -33,17 +34,18 @@ public class ImageEditorViewBuilder {
 	private JButton minusButton;
 	private JButton plusButton;
 	private JButton charIndexButton;
-	private JButton pickToolButton;
-	private JButton paintToolButton;
-	private JButton fillToolButton;
 	private AsciiPanel selectedCharPreview;
 	private BufferedImage importBI;
 	private JMenuBar menuBar;
 	private JMenu menuBarFile;
+	private JMenu menuBarTools;
 	private JMenuItem menuBarFileNew;
 	private JMenuItem menuBarFileLoad;
 	private JMenuItem menuBarFileSave;
 	private JMenuItem menuBarFileImport;
+	private JMenuItem menuBarToolsPaint;
+	private JMenuItem menuBarToolsFill;
+	private JMenuItem menuBarToolsPick;
 	
 	//This field will be passed to concrete view object already
 	private JPanel controlTool;
@@ -59,7 +61,11 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder selectedCharPreview(AsciiPanel... selectedChar) {
 		
 		if(selectedChar.length > 0 && selectedChar[0] != null) setSelectedCharPreview(selectedChar[0]);
-		else setSelectedCharPreview(new AsciiPanel(1, 1, AsciiFont.CP437_16x16));
+		else {
+			AsciiPanel charPreview = new AsciiPanel(1, 1, AsciiFont.CP437_16x16);
+			charPreview.setToolTipText("Selected Char Preview");
+			setSelectedCharPreview(charPreview);
+		}
 		
 		return this;
 	}
@@ -75,7 +81,11 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder charColorPreview(JPanel... charColorPreview) {
 		
 		if(charColorPreview.length > 0) setCharColorPreview(charColorPreview[0]);
-		else setCharColorPreview(new JPanel());
+		else {
+			JPanel panel = new JPanel();
+			panel.setToolTipText("Char Color");
+			setCharColorPreview(panel);
+		}
 		
 		return this;
 	}
@@ -91,7 +101,11 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder charBackgroundColorPreview(JPanel... charBackgroundColorPreview) {
 		
 		if(charBackgroundColorPreview.length > 0) setCharBackgroundColorPreview(charBackgroundColorPreview[0]);
-		else setCharBackgroundColorPreview(new JPanel());
+		else {
+			JPanel panel = new JPanel();
+			panel.setToolTipText("Char Background Color");
+			setCharBackgroundColorPreview(panel);
+		}
 		
 		return this;
 	}
@@ -107,7 +121,13 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder minusButton(JButton... minusButton) {
 		
 		if(minusButton.length > 0) setMinusButton(minusButton[0]);
-		else setMinusButton(new JButton("-"));
+		else {
+			JButton button = new JButton();
+			Icon minusIcon = new ImageIcon("src/main/resources/icons/minus icon.png");
+			button.setIcon(minusIcon);
+			button.setToolTipText("Previous Char");
+			setMinusButton(button);
+		}
 		
 		return this;
 	}
@@ -123,7 +143,13 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder plusButton(JButton... plusButton) {
 		
 		if(plusButton.length > 0) setPlusButton(plusButton[0]);
-		else setPlusButton(new JButton("+"));
+		else {
+			JButton button = new JButton();
+			Icon plusIcon = new ImageIcon("src/main/resources/icons/plus icon.png");
+			button.setIcon(plusIcon);
+			button.setToolTipText("Next Char");
+			setPlusButton(button);
+		}
 		
 		return this;
 	}
@@ -139,74 +165,15 @@ public class ImageEditorViewBuilder {
 	public ImageEditorViewBuilder charIndexButton(JButton... charIndexButton) {
 		
 		if(charIndexButton.length > 0 ) setCharIndexButton(charIndexButton[0]);
-		else setCharIndexButton(new JButton("1"));
-		
-		return this;
-	}
-	
-	/**
-	 * This method sets the pick tool button.
-	 * Its input could be null. In this case, it will create a new pick tool button.
-	 * 
-	 * @param pickToolButton is the button to set
-	 * 
-	 * @return Builder itself, as <i>Builder Pattern</i>.
-	 */
-	public ImageEditorViewBuilder pickToolButton(JButton... pickToolButton ) {
-		
-		if(pickToolButton.length > 0) setPickToolButton(pickToolButton[0]);
 		else {
-			JButton pickButton = new JButton();
-			ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
-			pickButton.setIcon(pickIcon);
-			pickButton.setToolTipText("Pick");
-			setPickToolButton(pickButton);
-		}
-		return this;
-	}
-	
-	/**
-	 * This method sets the paint tool button.
-	 * Its input could be null. In this case, it will create a new paint tool button.
-	 * 
-	 * @param paintToolButton is the button to set
-	 * 
-	 * @return Builder itself, as <i>Builder Pattern</i>.
-	 */
-	public ImageEditorViewBuilder paintToolButton(JButton... paintToolButton) {
-		
-		if(paintToolButton.length > 0) setPaintToolButton(paintToolButton[0]);
-		else {
-			JButton paintButton = new JButton();
-			ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
-			paintButton.setIcon(paintIcon);
-			paintButton.setToolTipText("Paint");
-			setPaintToolButton(paintButton);
-		}
-		return this;
-	}
-	
-	/**
-	 * This method sets the fill tool button.
-	 * Its input could be null. In this case, it will create a new fill tool button.
-	 * 
-	 * @param fillToolButton is the button to set
-	 * 
-	 * @return Builder itself, as <i>Builder Pattern</i>.
-	 */
-	public ImageEditorViewBuilder fillToolButton(JButton... fillToolButton) {
-		
-		if(fillToolButton.length > 0) setFillToolButton(fillToolButton[0]);
-		else {
-			JButton fillButton = new JButton();
-			ImageIcon fillIcon = new ImageIcon("src/main/resources/icons/fill icon.png");
-			fillButton.setIcon(fillIcon);
-			fillButton.setToolTipText("Fill");
-			setFillToolButton(fillButton);
+			JButton button = new JButton("1");
+			button.setToolTipText("Characters List");
+			setCharIndexButton(button);
 		}
 		
 		return this;
 	}
+	
 	
 	/**
 	 * This method is to set the all GUI components (buttons, preview etc.) to the GUI control tool.
@@ -224,9 +191,6 @@ public class ImageEditorViewBuilder {
 		if(getPlusButton() != null) controlTool.add(getPlusButton());
 		if(getCharColorPreview() != null) controlTool.add(getCharColorPreview());
 		if(getCharBackgroundColorPreview() != null) controlTool.add(getCharBackgroundColorPreview());
-		if(getPickToolButton() != null) controlTool.add(getPickToolButton());
-		if(getPaintToolButton() != null) controlTool.add(getPaintToolButton());
-		if(getFillToolButton() != null) controlTool.add(getFillToolButton());
 		if(getSelectedCharPreview() != null) controlTool.add(getSelectedCharPreview());
 		
 		setControlTool(controlTool);
@@ -327,6 +291,63 @@ public class ImageEditorViewBuilder {
 	}
 	
 	/**
+	 * This method sets the 'Paint' menu option on top Tools menu bar.
+	 * Its input could be null. In this case, it will create a new menu item on Tools.
+	 * 
+	 * @param paintToolsItem is the item to set
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder paintToolsMenuItem(JMenuItem... paintToolsItem) {
+		
+		if(paintToolsItem.length > 0 && paintToolsItem[0] != null) setMenuBarToolsPaint(paintToolsItem[0]);
+		else {
+			ImageIcon paintIcon = new ImageIcon("src/main/resources/icons/paint icon.png");
+			setMenuBarToolsPaint(new JMenuItem("Paint"));
+			getMenuBarToolsPaint().setIcon(paintIcon);
+		}
+		return this;
+	}
+	
+	/**
+	 * This method sets the 'Fill' menu option on top Tools menu bar.
+	 * Its input could be null. In this case, it will create a new menu item on Tools.
+	 * 
+	 * @param fillToolsItem is the item to set
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder fillToolsMenuItem(JMenuItem... fillToolsItem) {
+		
+		if(fillToolsItem.length > 0 && fillToolsItem[0] != null) setMenuBarToolsFill(fillToolsItem[0]);
+		else {
+			ImageIcon fillIcon = new ImageIcon("src/main/resources/icons/fill icon.png");
+			setMenuBarToolsFill(new JMenuItem("Fill"));
+			getMenuBarToolsFill().setIcon(fillIcon);
+		}
+		return this;
+	}
+	
+	/**
+	 * This method sets the 'Pick' menu option on top Tools menu bar.
+	 * Its input could be null. In this case, it will create a new menu item on Tools.
+	 * 
+	 * @param fillToolsItem is the item to set
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder pickToolsMenuItem(JMenuItem... pickToolsItem) {
+		
+		if(pickToolsItem.length > 0 && pickToolsItem[0] != null) setMenuBarToolsPick(pickToolsItem[0]);
+		else {
+			ImageIcon pickIcon = new ImageIcon("src/main/resources/icons/pick icon.png");
+			setMenuBarToolsPick(new JMenuItem("Pick"));
+			getMenuBarToolsPick().setIcon(pickIcon);
+		}
+		return this;
+	}
+	
+	/**
 	 * This method add all menu item to 'File' option of top menu bar.
 	 * 
 	 * @param fileMenu is the file menu to set.
@@ -350,6 +371,28 @@ public class ImageEditorViewBuilder {
 	}
 	
 	/**
+	 * This method add all menu item to 'Tools' option of top menu bar.
+	 * 
+	 * @param toolsMenu is the file menu to set.
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder addToolsToMenuBar(JMenu... toolsMenu) {
+		
+		if(toolsMenu.length > 0 && toolsMenu[0] != null) setMenuBarTools(toolsMenu[0]);
+		else {
+			//Setting 'Tools' menu
+			setMenuBarTools(new JMenu("Tools"));
+			getMenuBar().add(getMenuBarTools());
+			if(getMenuBarToolsPaint() != null) getMenuBarTools().add(getMenuBarToolsPaint());
+			if(getMenuBarToolsFill() != null) getMenuBarTools().add(getMenuBarToolsFill());
+			if(getMenuBarToolsPick() != null) getMenuBarTools().add(getMenuBarToolsPick());
+		}
+		
+		return this;
+	}
+	
+	/**
 	 * This method is the final method in the cascade calls to create a concrete ImageEditorView object.
 	 * It direct calls the constructor of ImageEditorView passing all its values (already sets by previous calls).
 	 * 
@@ -362,16 +405,17 @@ public class ImageEditorViewBuilder {
 				getMinusButton(),
 				getPlusButton(),
 				getCharIndexButton(),
-				getPickToolButton(),
-				getPaintToolButton(),
-				getFillToolButton(),
 				getControlTool(),
 				getMenuBar(),
 				getMenuBarFile(),
+				getMenuBarTools(),
 				getMenuBarFileNew(),
 				getMenuBarFileLoad(),
 				getMenuBarFileSave(),
-				getMenuBarFileImport()
+				getMenuBarFileImport(),
+				getMenuBarToolsPaint(),
+				getMenuBarToolsFill(),
+				getMenuBarToolsPick()
 				);
 	}
 	
@@ -467,60 +511,6 @@ public class ImageEditorViewBuilder {
 	}
 
 	/**
-	 * <b>Builder</b> Version of the pick tool button getter.
-	 * 
-	 * @return pick tool button.
-	 */
-	private JButton getPickToolButton() {
-		return pickToolButton;
-	}
-
-	/**
-	 * <b>Builder</b> Version of the pick tool button setter.
-	 * 
-	 * @param pickToolButton is the pick tool button to set.
-	 */
-	private void setPickToolButton(JButton pickToolButton) {
-		this.pickToolButton = pickToolButton;
-	}
-
-	/**
-	 * <b>Builder</b> Version of the paint tool button getter.
-	 * 
-	 * @return paint tool button.
-	 */
-	private JButton getPaintToolButton() {
-		return paintToolButton;
-	}
-
-	/**
-	 * <b>Builder</b> Version of the paint tool button getter.
-	 * 
-	 * @param paintToolButton is the paint tool button to set.
-	 */
-	private void setPaintToolButton(JButton paintToolButton) {
-		this.paintToolButton = paintToolButton;
-	}
-
-	/**
-	 * <b>Builder</b> Version of the fill tool button getter.
-	 * 
-	 * @return fill tool button.
-	 */
-	private JButton getFillToolButton() {
-		return fillToolButton;
-	}
-
-	/**
-	 * <b>Builder</b> Version of the fill tool button setter.
-	 * 
-	 * @param fillToolButton is the fill tool button to set.
-	 */
-	private void setFillToolButton(JButton fillToolButton) {
-		this.fillToolButton = fillToolButton;
-	}
-
-	/**
 	 * <b>Builder</b> Version of the selected char preview getter.
 	 * 
 	 * @return the selected char preview.
@@ -592,6 +582,24 @@ public class ImageEditorViewBuilder {
 		this.menuBarFile = menuBarFile;
 	}
 
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools getter.
+	 * 
+	 * @return the menu bar Tools
+	 */
+	private JMenu getMenuBarTools() {
+		return menuBarTools;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools setter.
+	 * 
+	 * @param menuBarTools is the menu bar tools to set.
+	 */
+	private void setMenuBarTools(JMenu menuBarTools) {
+		this.menuBarTools = menuBarTools;
+	}
+	
 	/**
 	 * <b>Builder</b> Version of the menu bar File <i>New</i> item getter.
 	 * 
@@ -681,5 +689,61 @@ public class ImageEditorViewBuilder {
 	private void setControlTool(JPanel controlTool) {
 		this.controlTool = controlTool;
 	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Paint</i> item getter.
+	 * 
+	 * @return the menu item for 'Paint' option.
+	 */
+	private JMenuItem getMenuBarToolsPaint() {
+		return menuBarToolsPaint;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Paint</i> item setter.
+	 * 
+	 * @param menuBarToolsPaint is the menu item for 'Paint' option to set.
+	 */
+	private void setMenuBarToolsPaint(JMenuItem menuBarToolsPaint) {
+		this.menuBarToolsPaint = menuBarToolsPaint;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Fill</i> item getter.
+	 * 
+	 * @return the menu item for 'Fill' option.
+	 */
+	private JMenuItem getMenuBarToolsFill() {
+		return menuBarToolsFill;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Fill</i> item setter.
+	 * 
+	 * @param menuBarToolsFill is the menu item for 'Paint' option to set.
+	 */
+	private void setMenuBarToolsFill(JMenuItem menuBarToolsFill) {
+		this.menuBarToolsFill = menuBarToolsFill;
+	}
+	
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Pick</i> item getter.
+	 * 
+	 * @return the menu item for 'Pick' option.
+	 */
+	private JMenuItem getMenuBarToolsPick() {
+		return menuBarToolsPick;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the menu bar Tools <i>Pick</i> item setter.
+	 * 
+	 * @param menuBarToolsPick is the menu item for 'Pick' option to set.
+	 */
+	private void setMenuBarToolsPick(JMenuItem menuBarToolsPick) {
+		this.menuBarToolsPick = menuBarToolsPick;
+	}
+	
+	
 
 }
