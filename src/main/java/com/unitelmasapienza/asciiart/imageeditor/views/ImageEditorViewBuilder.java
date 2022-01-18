@@ -33,6 +33,8 @@ public class ImageEditorViewBuilder {
 	private JPanel charBackgroundColorPreview;
 	private JButton minusButton;
 	private JButton plusButton;
+	private JButton undoButton;
+	private JButton redoButton;
 	private JButton charIndexButton;
 	private AsciiPanel selectedCharPreview;
 	private BufferedImage importBI;
@@ -155,6 +157,50 @@ public class ImageEditorViewBuilder {
 	}
 	
 	/**
+	 * This method sets the undo button.
+	 * Its input could be null. In this case, it will create a new undo button.
+	 * 
+	 * @param undoButton is the button to set
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder undoButton(JButton... undoButton) {
+		
+		if(undoButton.length > 0) setUndoButton(undoButton[0]);
+		else {
+			JButton button = new JButton();
+			Icon undoIcon = new ImageIcon("src/main/resources/icons/undo icon.png");
+			button.setIcon(undoIcon);
+			button.setToolTipText("Undo");
+			setUndoButton(button);
+		}
+		
+		return this;
+	}
+	
+	/**
+	 * This method sets the redo button.
+	 * Its input could be null. In this case, it will create a new redo button.
+	 * 
+	 * @param redoButton is the button to set
+	 * 
+	 * @return Builder itself, as <i>Builder Pattern</i>.
+	 */
+	public ImageEditorViewBuilder redoButton(JButton... redoButton) {
+		
+		if(redoButton.length > 0) setRedoButton(redoButton[0]);
+		else {
+			JButton button = new JButton();
+			Icon redoIcon = new ImageIcon("src/main/resources/icons/redo icon.png");
+			button.setIcon(redoIcon);
+			button.setToolTipText("Redo");
+			setRedoButton(button);
+		}
+		
+		return this;
+	}
+	
+	/**
 	 * This method sets the char index button.
 	 * Its input could be null. In this case, it will create a new char index button.
 	 * 
@@ -192,6 +238,8 @@ public class ImageEditorViewBuilder {
 		if(getCharColorPreview() != null) controlTool.add(getCharColorPreview());
 		if(getCharBackgroundColorPreview() != null) controlTool.add(getCharBackgroundColorPreview());
 		if(getSelectedCharPreview() != null) controlTool.add(getSelectedCharPreview());
+		if(getUndoButton() != null) controlTool.add(getUndoButton());
+		if(getRedoButton() != null) controlTool.add(getRedoButton());
 		
 		setControlTool(controlTool);
 		
@@ -404,6 +452,8 @@ public class ImageEditorViewBuilder {
 				getCharBackgroundColorPreview(),
 				getMinusButton(),
 				getPlusButton(),
+				getUndoButton(),
+				getRedoButton(),
 				getCharIndexButton(),
 				getControlTool(),
 				getMenuBar(),
@@ -491,7 +541,43 @@ public class ImageEditorViewBuilder {
 	private void setPlusButton(JButton plusButton) {
 		this.plusButton = plusButton;
 	}
+	
+	/**
+	 * <b>Builder</b> Version of the undo button getter.
+	 * 
+	 * @return the undo button.
+	 */
+	private JButton getUndoButton() {
+		return undoButton;
+	}
 
+	/**
+	 * <b>Builder</b> Version of the undo button setter.
+	 * 
+	 * @param undoButton is the undo button to set.
+	 */
+	private void setUndoButton(JButton undoButton) {
+		this.undoButton = undoButton;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the redo button getter.
+	 * 
+	 * @return the redo button.
+	 */
+	private JButton getRedoButton() {
+		return redoButton;
+	}
+
+	/**
+	 * <b>Builder</b> Version of the redo button setter.
+	 * 
+	 * @param redoButton is the redo button to set.
+	 */
+	private void setRedoButton(JButton redoButton) {
+		this.redoButton = redoButton;
+	}
+	
 	/**
 	 * <b>Builder</b> Version of the char index button getter.
 	 * 

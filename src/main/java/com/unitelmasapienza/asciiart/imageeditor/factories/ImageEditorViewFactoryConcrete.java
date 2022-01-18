@@ -40,6 +40,8 @@ public class ImageEditorViewFactoryConcrete extends ImageEditorViewFactory {
 				.charBackgroundColorPreview()
 				.minusButton()
 				.plusButton()
+				.undoButton()
+				.redoButton()
 				.charIndexButton()
 				.createControlTool()
 				//create top-bar 

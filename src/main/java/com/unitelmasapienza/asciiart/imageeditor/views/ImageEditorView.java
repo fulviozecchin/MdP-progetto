@@ -94,6 +94,18 @@ public class ImageEditorView extends JFrame {
 	private JButton plusButton;
 	
 	/**
+	 * In the GUI palette is the <b>"Undo"</b> button to undo last action
+	 * 
+	 */
+	private JButton undoButton;
+	
+	/**
+	 * In the GUI palette is the <b>"Redo"</b> button to redo last action
+	 * 
+	 */
+	private JButton redoButton;
+	
+	/**
 	 * In the GUI palette it represents the index of the chosen character 
 	 * 
 	 */
@@ -209,7 +221,9 @@ public class ImageEditorView extends JFrame {
 			JPanel charColorPreview, 
 			JPanel charBackgroundColorPreview, 
 			JButton minusButton,
-			JButton plusButton, 
+			JButton plusButton,
+			JButton undoButton,
+			JButton redoButton,
 			JButton charIndexButton, 
 			JPanel controlTool, 
 			JMenuBar menuBar, 
@@ -238,6 +252,8 @@ public class ImageEditorView extends JFrame {
 		setMinusButton(minusButton);
 		setPlusButton(plusButton);
 		setCharIndexButton(charIndexButton);
+		setUndoButton(undoButton);
+		setRedoButton(redoButton);
 		
 		getCharColorPreview().setBackground(getDrawnCharColor());
 		getCharBackgroundColorPreview().setBackground(getDrawnCharBackgroundColor());
@@ -266,11 +282,17 @@ public class ImageEditorView extends JFrame {
 		getMinusButton().setBounds(0, 0, 40, 40);
 		getPlusButton().setBounds(40, 0, 40, 40);
 		
+		getUndoButton().setBounds(0, 130, 40, 40);
+		getRedoButton().setBounds(40, 130, 40, 40);
+		
 		getSelectedCharPreview().setBounds(15, 50, 16, 16);
 		getCharIndexButton().setBounds(35, 40, 35, 35);
 		
 		getCharColorPreview().setBounds(0, 80, 40, 40);
 		getCharBackgroundColorPreview().setBounds(40, 80, 40, 40);
+		
+		controlTool.add(undoButton);
+		controlTool.add(redoButton);
 		
 		controlTool.setBounds(0, 0, 80, 80 * 16);
 		this.add(controlTool);
@@ -521,6 +543,42 @@ public class ImageEditorView extends JFrame {
 	 */
 	public void setPlusButton(JButton plusButton) {
 		this.plusButton = plusButton;
+	}
+	
+	/**
+	 * The undo button getter.
+	 * 
+	 * @return the undo button.
+	 */
+	public JButton getUndoButton() {
+		return undoButton;
+	}
+
+	/**
+	 * The undo button setter.
+	 * 
+	 * @param undoButton the button to set.
+	 */
+	public void setUndoButton(JButton undoButton) {
+		this.undoButton = undoButton;
+	}
+
+	/**
+	 * The redo button getter.
+	 * 
+	 * @return the redo button.
+	 */
+	public JButton getRedoButton() {
+		return redoButton;
+	}
+
+	/**
+	 * The redo button setter.
+	 * 
+	 * @param redoButton the button to set.
+	 */
+	public void setRedoButton(JButton redoButton) {
+		this.redoButton = redoButton;
 	}
 
 	/**

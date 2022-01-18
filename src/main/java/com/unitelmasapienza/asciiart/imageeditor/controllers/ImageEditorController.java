@@ -5,11 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Stack;
 
 import javax.swing.JColorChooser;
 
 import com.unitelmasapienza.asciiart.asciipanel.AsciiFont;
 import com.unitelmasapienza.asciiart.asciipanel.AsciiPanel;
+import com.unitelmasapienza.asciiart.asciipanel.PanelChar;
 import com.unitelmasapienza.asciiart.asciipanel.factories.AsciiPanelFactory;
 import com.unitelmasapienza.asciiart.asciipanel.factories.AsciiPanelFactoryConcrete;
 import com.unitelmasapienza.asciiart.imageeditor.factories.ImageEditorViewFactory;
@@ -35,6 +37,36 @@ import com.unitelmasapienza.asciiart.imageeditor.views.SelectCharView;
  *
  */
 public class ImageEditorController {
+	
+	/**
+	 * This field is to implement the stack of <b>Undo</b> function in application.
+	 * Every time that a character is drawn, here will be inserted a new PanelChar object which contains
+	 * its data.
+	 * When is clicked the Undo button, from this stack will be took the first element (last inserted) and relative character 
+	 * will be canceled from drawing panel.
+	 * This PanelChar, will be moved on the other stack <i>stackRedo</i> which represents the stack of <b>Redo</b> function in application.
+	 * 
+	 * So if is clicked the Redo button, after the re-painting of specific character, the relative PanelChar in stackRedo (last inserted) will be
+	 * moved on stackUndo, ready to be (another time) canceled by Undo click.
+	 * And so on...
+	 * 
+	 */
+	private static Stack<PanelChar> stackUndo;
+	
+	/**
+	 * This field is to implement the stack of <b>Redo</b> function in application.
+	 * Every time that a character is canceled by Undo function, here will be inserted a new PanelChar object which contains
+	 * its data.
+	 * When is clicked the Redo button, from this stack will be took the first element (last inserted) and relative character 
+	 * will be drawn in panel, at the same previous position (see PanelChar object fields).
+	 * This PanelChar, will be moved on the other stack <i>stackUndo</i> which represents the stack of <b>Undo</b> function in application.
+	 * 
+	 * So if is clicked the Redo button, after the re-painting of specific character, the relative PanelChar in stackRedo (last inserted) will be
+	 * moved on stackUndo, ready to be (another time) canceled by Undo click.
+	 * And so on...
+	 * 
+	 */
+	private static Stack<PanelChar> stackRedo;
 	
 	/**
 	 * The only instance of the class
@@ -102,6 +134,32 @@ public class ImageEditorController {
 	}
 	
 	/**
+	 * <b>Singleton</b> implementation. Checks if an instance of the <b>Undo Stack</b> already exists and returns it. 
+	 * If it does not exist it creates and returns it.
+	 * 
+	 * @return stackUndo, the only stack for undo function on application.
+	 * 
+	 */
+	public static Stack<PanelChar> getStackUndoInstance() {
+		if(stackUndo == null)
+			stackUndo = new Stack<PanelChar>();
+		return stackUndo;
+	}
+	
+	/**
+	 * <b>Singleton</b> implementation. Checks if an instance of the <b>Redo Stack</b> already exists and returns it. 
+	 * If it does not exist it creates and returns it.
+	 * 
+	 * @return stackRedo, the only stack for redo function on application.
+	 * 
+	 */
+	public static Stack<PanelChar> getStackRedoInstance() {
+		if(stackRedo == null)
+			stackRedo = new Stack<PanelChar>();
+		return stackRedo;
+	}
+	
+	/**
 	 * This method sets graphical information for model
 	 * @param model is the model
 	 */
@@ -122,6 +180,8 @@ public class ImageEditorController {
 	private void initController() {
 		setListeners();
 		getView().updatePreview();
+		getStackUndoInstance();
+		getStackRedoInstance();
 	}
 	
 	/**
@@ -264,6 +324,20 @@ public class ImageEditorController {
 				view.setSelectedToolIndex(2);
 			}
 		});
+		
+		view.getUndoButton().addActionListener(new ActionLoadListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				undo();
+			}
+		});
+		
+		view.getRedoButton().addActionListener(new ActionLoadListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				redo();
+			}
+		});
 	}
 	
 	
@@ -304,12 +378,133 @@ public class ImageEditorController {
 		model.setCursorDistanceFromLeft(valueX);
 		model.setCursorDistanceFromTop(valueY);
 
-		if (button == 1)
+		if (button == 1) {
+			PanelChar character = new PanelChar(valueX, valueY, (char) (view.getSelectedChar() + 0), view.getDrawnCharColor(), view.getDrawnCharBackgroundColor());
+			pushInUndoStack(character);
 			model.write((char) (view.getSelectedChar() + 0), view.getDrawnCharColor(), view.getDrawnCharBackgroundColor());
+		}
 		else
 			model.write((char) 0);
 
 		model.repaint();
+	}
+	
+	/**
+	 * This method manage the insert in undo stack.
+	 * If the stack size is major of 20 (the max limit) it will remove the
+	 * last element in stack (first inserted) and push the new element on top.
+	 * 
+	 * @param character is the character to push into stack
+	 */
+	private void pushInUndoStack(PanelChar character) {
+		if(getStackUndoInstance().size() == 20) {
+			getStackUndoInstance().remove(0);
+			getStackUndoInstance().push(character);
+		} else getStackUndoInstance().push(character);
+	}
+	
+	/**
+	 * This method manage the insert in redo stack.
+	 * If the stack size is major of 20 (the max limit) it will remove the
+	 * last element in stack (first inserted) and push the new element on top.
+	 * 
+	 * @param character is the character to push into stack
+	 */
+	private void pushInRedoStack(PanelChar character) {
+		if(getStackRedoInstance().size() == 20) {
+			getStackRedoInstance().remove(0);
+			getStackRedoInstance().push(character);
+		} else getStackRedoInstance().push(character);
+	}
+	
+	/**
+	 * This method manage the remove in undo stack.
+	 * If there is something to remove from the stack, it will be remove the first (last inserted),
+	 * and return it, else it return null.
+	 * 
+	 * @return first PanelChar from the stack, null otherwise
+	 */
+	private PanelChar popInUndoStack() {
+		if(getStackUndoInstance().size() > 0) {
+			PanelChar lastChar = getStackUndoInstance().pop();
+			return lastChar;
+		} else return null;
+	}
+	
+	/**
+	 * This method manage the remove in redo stack.
+	 * If there is something to remove from the stack, it will be remove the first (last inserted),
+	 * and return it, else it return null.
+	 * 
+	 * @return first PanelChar from the stack, null otherwise
+	 */
+	private PanelChar popInRedoStack() {
+		if(getStackRedoInstance().size() > 0) {
+			PanelChar lastChar = getStackRedoInstance().pop();
+			return lastChar;
+		} else return null;
+	}
+	
+	/**
+	 * This method checks if is possible to an undo.
+	 * Simply check if there is something inside the undo stack (some operation).
+	 * 
+	 * @return true if is possible to do an Undo, false otherwise.
+	 */
+	private boolean canUndo() {
+		return getStackUndoInstance().size() > 0 ? true : false;
+	}
+	
+	/**
+	 * This method checks if is possible to a redo.
+	 * Simply check if there is something inside the redo stack (some operation).
+	 * 
+	 * @return true if is possible to do an Redo, false otherwise.
+	 */
+	private boolean canRedo() {
+		return getStackRedoInstance().size() > 0 ? true : false;
+	}
+	
+	/**
+	 * This method provides to do an Undo.
+	 * If is possible to proceed with undo, it take the first element in undo stack,
+	 * push it in redo stack (for eventual redo function of this) and cancel the relative
+	 * character from drawing panel.
+	 * 
+	 */
+	private void undo() {
+		if(canUndo()) {
+			PanelChar character = popInUndoStack();
+			pushInRedoStack(character);
+			int x = character.getX();
+			int y = character.getY();
+			model.setCursorDistanceFromLeft(x);
+			model.setCursorDistanceFromTop(y);
+			model.write((char) 0);
+			model.repaint();
+		}
+	}
+	
+	/**
+	 * This method provides to do a Redo.
+	 * If is possible to proceed with redo, it take the first element in redo stack,
+	 * push it in undo stack (for eventual undo function of this) and re-writing the relative
+	 * character in drawing panel.
+	 */
+	private void redo() {
+		if(canRedo()) {
+			PanelChar character = popInRedoStack();
+			pushInUndoStack(character);
+			int x = character.getX();
+			int y = character.getY();
+			char c = character.getSelectedChar();
+			Color foreground = character.getForegroundColor();
+			Color background = character.getBackgroundColor();
+			model.setCursorDistanceFromLeft(x);
+			model.setCursorDistanceFromTop(y);
+			model.write((char) (c + 0), foreground, background);
+			model.repaint();
+		}
 	}
 	
 	/**
